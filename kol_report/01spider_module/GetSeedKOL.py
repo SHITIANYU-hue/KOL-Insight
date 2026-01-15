@@ -363,7 +363,7 @@ def main():
     
     # 使用命令行参数创建并运行爬虫
     crawler = GetSeedKOL(
-        api_key="tweetscout api",  # 可以从环境变量获取
+        api_key="your tweetscout key",  # 可以从环境变量获取
         input_file=args.input
     )
     

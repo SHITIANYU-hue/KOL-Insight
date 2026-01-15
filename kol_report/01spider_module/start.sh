@@ -15,8 +15,8 @@ set -euo pipefail
 # 配置变量
 KOL_DB_FILE="KOL_yes.db"
 KOL_LIST_FILE="kol_list.json"
-MAX_KOL_COUNT=5           # 从数据库最多读取多少个KOL用户 (设为0表示读取全部)
-MAX_TWEETS=50
+MAX_KOL_COUNT=10           # 从数据库最多读取多少个KOL用户 (设为0表示读取全部)
+MAX_TWEETS=25
 MAX_CONCURRENT_TASKS=5
 OPENAI_API_KEY="${OPENAI_API_KEY:-}"  # 从环境变量读取，或手动设置
 # 是否将最终输出复制到上一级 data 目录（默认 1 = 复制，设置为0可跳过复制）

@@ -560,7 +560,7 @@ def main():
     parser = argparse.ArgumentParser(description="KOLTweetCrawler - 专门用于抓取指定KOL的推文")
     parser.add_argument("--max_tweets", type=int, default=100, help="每个KOL的最大推文数")
     parser.add_argument("--db_dir", type=str, required=True, help="包含followingA.db的目录以及用于创建tweets.db的目录")
-    parser.add_argument("--api_key", type=str, default="tweetscout api", help="TweetScout API密钥")
+    parser.add_argument("--api_key", type=str, default="your tweetscout key", help="TweetScout API密钥")
     parser.add_argument("--max_concurrent_tasks", type=int, default=5, help="并发作者任务数")
     parser.add_argument("--skip_comments", action="store_true", help="跳过抓取推文评论")
     args = parser.parse_args()
@@ -568,7 +568,7 @@ def main():
     print(f"使用db_dir运行KOLTweetCrawler: {args.db_dir}")
     # 从环境变量安全加载API密钥
     api_key = os.getenv("TWEETSCOUT_API_KEY", args.api_key)
-    if api_key == "tweetscout api": 
+    if api_key == "your tweetscout key": 
         print("警告: 使用默认API密钥运行。")
 
     crawler = KOLTweetCrawler(

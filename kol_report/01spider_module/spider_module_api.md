@@ -167,7 +167,7 @@ tweetscout_key = config['tweetscout_api_key']
 ```python
 # 硬编码在代码中（需要修改）
 crawler = GetSeedKOL(
-    api_key="tweetscout api",  # 当前的TweetScout密钥
+    api_key="your tweetscout key",  # 当前的TweetScout密钥
     input_file=args.input
 )
 ```
@@ -176,7 +176,7 @@ crawler = GetSeedKOL(
 
 ```python
 # 从环境变量获取
-api_key = os.getenv("TWEETSCOUT_API_KEY", "tweetscout api")
+api_key = os.getenv("TWEETSCOUT_API_KEY", "your tweetscout key")
 crawler = GetSeedKOL(api_key=api_key, input_file=args.input)
 ```
 

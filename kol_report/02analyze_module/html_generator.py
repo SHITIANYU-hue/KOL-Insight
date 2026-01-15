@@ -1083,7 +1083,17 @@ class HTMLReportGenerator:
                 
                 for cp in check_points:
                     try:
-                        if isinstance(cp, dict) and 'is_correct' in cp:
+                        if isinstance(cp, dict) and cp.get('data_quality') == 'pending':
+                            check_point = self._safe_format_value(cp.get('check_point', 'N/A'))
+                            target_date = self._safe_format_value(cp.get('target_date', ''))
+                            html += f'''
+                            <div class="verification-item verification-pending">
+                                <strong>{check_point}</strong><br>
+                                待预测<br>
+                                {target_date}
+                            </div>
+                            '''
+                        elif isinstance(cp, dict) and 'is_correct' in cp:
                             is_correct = cp.get('is_correct', False)
                             css_class = 'verification-correct' if is_correct else 'verification-incorrect'
                             
@@ -2104,6 +2114,16 @@ class HTMLReportGenerator:
             background: #f8d7da;
             color: #721c24;
         }
+
+        .verification-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .verification-failed {
+            background: #e2e3e5;
+            color: #383d41;
+        }
         
         /* 搜索结果手风琴样式 - 完整版 */
         .search-results-accordion {
@@ -2896,6 +2916,15 @@ class HTMLReportGenerator:
             
             // 检查点相对时间映射
             const checkPointTimeMap = {
+                '24h': 1,
+                '1d': 1,
+                '3d': 3,
+                '7d': 7,
+                '14d': 14,
+                '30d': 30,
+                '60d': 60,
+                '90d': 90,
+                '180d': 180,
                 '1天': 1,
                 '3天': 3,
                 '7天': 7,
@@ -2985,11 +3014,31 @@ class HTMLReportGenerator:
             const check_points = real_verification.check_points || [];
             
             const verificationItems = check_points.map(cp => {
-                const isCorrect = cp.is_correct;
-                const change = cp.price_change_percent || 0;
-                return `<div class="verification-item ${isCorrect ? 'verification-correct' : 'verification-incorrect'}">
-                    <strong>${cp.check_point || 'N/A'}</strong><br>
-                    ${isCorrect ? '✅' : '❌'} ${change.toFixed(1)}%
+                const checkPoint = (cp && typeof cp === 'object' ? cp.check_point : '') || 'N/A';
+                const dataQuality = (cp && typeof cp === 'object' ? cp.data_quality : '') || '';
+
+                if (dataQuality === 'pending' || (cp && typeof cp === 'object' && cp.error === '待预测')) {
+                    const dateText = (cp && typeof cp === 'object' && cp.target_date) ? `<div style="opacity:0.85;margin-top:4px;font-size:0.85em;">${cp.target_date}</div>` : '';
+                    return `<div class="verification-item verification-pending">
+                        <strong>${checkPoint}</strong><br>
+                        ⏳ 待预测
+                        ${dateText}
+                    </div>`;
+                }
+
+                if (cp && typeof cp === 'object' && cp.is_correct !== undefined) {
+                    const isCorrect = !!cp.is_correct;
+                    const change = Number(cp.price_change_percent || 0);
+                    return `<div class="verification-item ${isCorrect ? 'verification-correct' : 'verification-incorrect'}">
+                        <strong>${checkPoint}</strong><br>
+                        ${isCorrect ? '✅' : '❌'} ${change.toFixed(1)}%
+                    </div>`;
+                }
+
+                const err = (cp && typeof cp === 'object' ? (cp.error || 'Unknown error') : 'Unknown error');
+                return `<div class="verification-item verification-failed">
+                    <strong>${checkPoint}</strong><br>
+                    ⚠️ ${err}
                 </div>`;
             }).join('');
             

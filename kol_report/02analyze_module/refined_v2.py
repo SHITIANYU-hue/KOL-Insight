@@ -329,52 +329,69 @@ class RealTimestampVerificationEngine:
 
                 self.logger.info(f"⏰ 获取 {check_point} 后价格: {target_date.strftime('%Y-%m-%d %H:%M:%S')}")
 
-                # 获取真实历史价格
-                target_price = self.get_precise_historical_price(coin_id, target_timestamp)
+                # 检查目标时间是否在未来
+                current_timestamp = int(time.time())
+                is_future = target_timestamp > current_timestamp
 
-                if target_price is not None:
-                    # 计算价格变化
-                    price_change = ((target_price - base_price) / base_price) * 100
-
-                    # 判断预测是否正确
-                    is_correct = self.evaluate_prediction_accuracy(sentiment, price_change)
-
-                    check_result = {
-                        'check_point': str(check_point),
-                        'target_timestamp': target_timestamp,
-                        'target_date': target_date.strftime('%Y-%m-%d %H:%M:%S'),
-                        'target_price': target_price,
-                        'price_change_percent': price_change,
-                        'price_change_absolute': target_price - base_price,
-                        'is_correct': is_correct,
-                        'evaluation': 'CORRECT' if is_correct else 'INCORRECT',
-                        'data_quality': 'verified'
-                    }
-
-                    verification_results['check_points'].append(check_result)
-
-                    self.logger.info(f"  💵 {check_point}后价格: ${target_price:.4f}")
-                    self.logger.info(f"  📊 价格变化: {price_change:+.2f}%")
-                    self.logger.info(f"  ✅ 预测结果: {'正确' if is_correct else '错误'}")
-                else:
-                    self.logger.warning(f"  ❌ 无法获取{check_point}后价格")
+                if is_future:
+                    # 目标时间在未来，标记为待预测（不计入成功/失败）
+                    self.logger.info(f"  ⏳ 目标时间在未来，标记为待预测")
                     verification_results['check_points'].append({
                         'check_point': str(check_point),
                         'target_timestamp': target_timestamp,
                         'target_date': target_date.strftime('%Y-%m-%d %H:%M:%S'),
-                        'error': 'API数据获取失败',
-                        'data_quality': 'failed'
+                        'error': '待预测',
+                        'data_quality': 'pending'
                     })
+                else:
+                    # 目标时间在过去或现在，获取真实历史价格
+                    target_price = self.get_precise_historical_price(coin_id, target_timestamp)
+
+                    if target_price is not None:
+                        # 计算价格变化
+                        price_change = ((target_price - base_price) / base_price) * 100
+
+                        # 判断预测是否正确
+                        is_correct = self.evaluate_prediction_accuracy(sentiment, price_change)
+
+                        check_result = {
+                            'check_point': str(check_point),
+                            'target_timestamp': target_timestamp,
+                            'target_date': target_date.strftime('%Y-%m-%d %H:%M:%S'),
+                            'target_price': target_price,
+                            'price_change_percent': price_change,
+                            'price_change_absolute': target_price - base_price,
+                            'is_correct': is_correct,
+                            'evaluation': 'CORRECT' if is_correct else 'INCORRECT',
+                            'data_quality': 'verified'
+                        }
+
+                        verification_results['check_points'].append(check_result)
+
+                        self.logger.info(f"  💵 {check_point}后价格: ${target_price:.4f}")
+                        self.logger.info(f"  📊 价格变化: {price_change:+.2f}%")
+                        self.logger.info(f"  ✅ 预测结果: {'正确' if is_correct else '错误'}")
+                    else:
+                        self.logger.warning(f"  ❌ 无法获取{check_point}后价格（历史数据不可用）")
+                        verification_results['check_points'].append({
+                            'check_point': str(check_point),
+                            'target_timestamp': target_timestamp,
+                            'target_date': target_date.strftime('%Y-%m-%d %H:%M:%S'),
+                            'error': '历史数据不可用',
+                            'data_quality': 'failed'
+                        })
 
                 # API限频
                 time.sleep(self.rate_limit)
 
             # Step 3: 计算整体准确率
             valid_checks = [cp for cp in verification_results['check_points'] if 'is_correct' in cp]
+            pending_checks = [cp for cp in verification_results['check_points'] if cp.get('data_quality') == 'pending']
             correct_predictions = sum(1 for cp in valid_checks if cp['is_correct'])
             total_predictions = len(valid_checks)
 
             # 二值准确度：只要任意一个检查点命中，则视为通过（100%），否则视为未通过（0%）。
+            # 重要：如果所有检查点都是待预测状态（total_predictions = 0），则准确率为0%
             if total_predictions > 0 and correct_predictions > 0:
                 overall_accuracy = 100
                 binary_correct_count = 1
@@ -386,10 +403,17 @@ class RealTimestampVerificationEngine:
             # 为兼容历史字段，保留 correct_count/total_count，但 correct_count 对应于是否有通过（0/1）
             verification_results['correct_count'] = binary_correct_count
             verification_results['total_count'] = total_predictions
+            verification_results['pending_count'] = len(pending_checks)
             verification_results['verification_method'] = 'real_timestamp_api'
             verification_results['verification_timestamp'] = datetime.now().isoformat()
 
-            self.logger.info(f"🎯 验证结果: {'通过' if overall_accuracy==100 else '未通过'} (整体准确率: {overall_accuracy}%) ({binary_correct_count}/{total_predictions} 条检查通过)")
+            # 详细的日志信息
+            if total_predictions == 0:
+                self.logger.info(f"🎯 验证结果: 待预测 (所有检查点都是未来时间，准确率: {overall_accuracy}%)")
+            elif overall_accuracy == 100:
+                self.logger.info(f"🎯 验证结果: 通过 (整体准确率: {overall_accuracy}%) ({binary_correct_count}/{total_predictions} 条检查通过)")
+            else:
+                self.logger.info(f"🎯 验证结果: 未通过 (整体准确率: {overall_accuracy}%) ({binary_correct_count}/{total_predictions} 条检查通过)")
 
             return verification_results
 
@@ -438,7 +462,7 @@ class RealTimestampVerificationEngine:
             match = re.match(r'^(\d+)([a-z]+)$', check_point)
             if not match:
                 self.logger.warning(f"无法解析时间点格式: {check_point}, 使用默认24小时")
-            return base_timestamp + 86400
+                return base_timestamp + 86400
             
             num = int(match.group(1))
             unit = match.group(2)
@@ -2699,7 +2723,7 @@ def parse_arguments():
                        help='数据库目录路径 (默认: ./data)')
     parser.add_argument('--api_key', type=str, required=True, 
                        help='OpenAI API密钥 (必需)')
-    parser.add_argument('--coingecko_api_key', type=str, default="CoinGecko Pro API密钥", 
+    parser.add_argument('--coingecko_api_key', type=str, default="你的api key", 
                        help='CoinGecko Pro API密钥 (可选，建议使用以获得更好的分析效果)')
     parser.add_argument('--limit', type=int, default=None, 
                        help='限制分析的推理链数量 (可选，用于测试)')
