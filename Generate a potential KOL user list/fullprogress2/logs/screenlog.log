@@ -1,961 +1,0 @@
-Welcome to fish, the friendly interactive shell
-Type [32mhelp(B[m for instructions on how to use fish
-]7;file://ip-172-31-47-107.ap-southeast-1.compute.internal/home/ec2-user/fullprogress1_17/fullprogress1_9]0;[ip-172-31-] ~/f/fullprogress1_9[30m(B[m]133;A;special_key=1[92mec2-user(B[m@[33mip-172-31-47-107(B[m [32m~/f/fullprogress1_9(B[m(B[m> [K[47C[?2004h[>4;1m[=5u=l[48C[90ml[30m(B[m[48C[91ml[90ml[30m(B[m[48C[91ml[30m(B[m[49C[49Cll[49C[49C
-[30m(B[m]133;C;cmdline_url=ll[?2004l[>4;0m[=0u>]0;[ip-172-31-] ll ~/f/fullprogress1_9[30m(B[mtotal 68K
--rw-rw-rw-. 1 ec2-user ec2-user 2.5K Jun 22 13:09 Readme.md
-drwxrwxrwx. 3 ec2-user ec2-user   25 Jul  1 08:55 [0m[34;42mconfig[0m/
-drwxrwxrwx. 5 ec2-user ec2-user   45 Jul  1 09:30 [34;42mdata[0m/
-drwxrwxrwx. 2 ec2-user ec2-user   55 Jul  1 08:18 [34;42mkol_complete_crawler[0m/
-drwxrwxrwx. 2 ec2-user ec2-user   82 Jul  1 08:49 [34;42mlog[0m/
-drwxrwxrwx. 2 ec2-user ec2-user  150 Jul  1 09:42 [34;42mlogs[0m/
-drwxrwxrwx. 4 ec2-user ec2-user   35 Jul  1 08:52 [34;42moutput[0m/
--rw-rw-rw-. 1 ec2-user ec2-user 6.5K Jun 27 02:24 readme_625.md
--rw-rw-rw-. 1 ec2-user ec2-user  132 Jun 22 13:09 requirements.txt
--rw-r--r--. 1 ec2-user ec2-user    0 Jul  1 10:33 screenlog.0
-drwxrwxrwx. 7 ec2-user ec2-user   75 Jul  1 10:23 [34;42mscripts[0m/
--rw-rw-rw-. 1 ec2-user ec2-user 4.6K Jun 22 13:09 start.sh
--rw-rw-rw-. 1 ec2-user ec2-user 9.2K Jun 29 03:29 start_625.sh
--rw-rw-rw-. 1 ec2-user ec2-user  13K Jul  1 10:11 start_701.sh
--rw-r--r--. 1 ec2-user ec2-user  15K Jul  1 10:33 start_702.sh
-]133;D;0[?25h[2m⏎(B[m                                                                                                                                                                          ⏎ [K]0;[ip-172-31-] ~/f/fullprogress1_9[30m(B[m]133;A;special_key=1[92mec2-user(B[m@[33mip-172-31-47-107(B[m [32m~/f/fullprogress1_9(B[m(B[m> [K[47C[?2004h[>4;1m[=5u=c[48C[91mc[30m(B[m[48C[90mhmod +x start_702.sh[30m(B[m[48C[91mh[90mmod +x start_702.sh[30m(B[m[49Cchmod +x start_702.sh[68C[68C[21Dchmod [36m+x [36m[4mstart_702.sh[30m(B[m[68C[68C
-[30m(B[m]133;C;cmdline_url=chmod%20%2Bx%20start_702.sh[?2004l[>4;0m[=0u>]0;[ip-172-31-] chmod +x start_702.s ~/f/fullprogress1_9[30m(B[m]133;D;0[?25h[2m⏎(B[m                                                                                                                                                                          ⏎ [K]0;[ip-172-31-] ~/f/fullprogress1_9[30m(B[m]133;A;special_key=1[92mec2-user(B[m@[33mip-172-31-47-107(B[m [32m~/f/fullprogress1_9(B[m(B[m> [K[47C[?2004h[>4;1m[=5u=d[48C[90mos2unix start_702.sh[30m(B[m[48C[91md[90mos2unix start_702.sh[30m(B[m[48C[91mo[90ms2unix start_702.sh[30m(B[m[49C[91ms[90m2unix start_702.sh[30m(B[m[50Cdos2unix start_702.sh[68C[68C[21Ddos2unix [36m[4mstart_702.sh[30m(B[m[68C[68C
-[30m(B[m]133;C;cmdline_url=dos2unix%20start_702.sh[?2004l[>4;0m[=0u>]0;[ip-172-31-] dos2unix start_702.s ~/f/fullprogress1_9[30m(B[mdos2unix: converting file start_702.sh to Unix format...
-]133;D;0[?25h[2m⏎(B[m                                                                                                                                                                          ⏎ [K]0;[ip-172-31-] ~/f/fullprogress1_9[30m(B[m]133;A;special_key=1[92mec2-user(B[m@[33mip-172-31-47-107(B[m [32m~/f/fullprogress1_9(B[m(B[m> [K[47C[?2004h[>4;1m[=5u=.[48C[90m/start_702.sh[30m(B[m[48C.[90m/start_702.sh[30m(B[m[48C/[90mstart_702.sh[30m(B[m[49C./start_702.sh[61C[61C[14D./start_702.sh[61C[61C
-[30m(B[m]133;C;cmdline_url=./start_702.sh[?2004l[>4;0m[=0u>]0;[ip-172-31-] ./start_702.sh ~/f/fullprogress1_9[30m(B[m🚀 KOL Pipeline 启动
-📁 检查目录结构...
-🏠 工作目录: /home/ec2-user/fullprogress1_17/fullprogress1_9
-✅ 目录结构和文件检查完成
-请设定你需要的 KOL 人数：^[[4~     10
-请输入每个用户最多获取的推文数量 (默认 100)：10
-请输入following数量阈值 (默认 3500，超过此数量的用户将被跳过)：2000
-
-Max_Threshold 设置为 100 (KOL ×10)
-Following_Threshold 设置为 2000
-
-[Step 0] 解析种子用户 …
-📊 输入: data/input/author.json → 输出: data/input/twitter_users.json
-📁 输入文件: /home/ec2-user/fullprogress1_17/fullprogress1_9/data/input/author.json
-📁 输出文件: /home/ec2-user/fullprogress1_17/fullprogress1_9/data/input/twitter_users.json
-📊 导出JSON: True
-2025-07-01 10:34:06,619 - INFO - Loaded 2 usernames from /home/ec2-user/fullprogress1_17/fullprogress1_9/data/input/author.json
-2025-07-01 10:34:06,619 - INFO - Starting to process 2 usernames
-2025-07-01 10:34:06,619 - INFO - Processing username: connectfarm1
-2025-07-01 10:34:07,951 - INFO - Retrieved user info for connectfarm1
-2025-07-01 10:34:07,957 - INFO - Saved user information for connectfarm1 (ID: 1373081719834775554)
-2025-07-01 10:34:08,959 - INFO - Processing username: Super4DeFi
-2025-07-01 10:34:09,849 - INFO - Retrieved user info for Super4DeFi
-2025-07-01 10:34:09,855 - INFO - Saved user information for Super4DeFi (ID: 1377637009871798277)
-2025-07-01 10:34:10,856 - INFO - 
-Crawling Statistics:
-2025-07-01 10:34:10,856 - INFO - Total users collected: 2
-2025-07-01 10:34:10,856 - INFO - User with most followers: connectfarm1 (118760 followers)
-2025-07-01 10:34:10,856 - INFO - Verified users: 2
-2025-07-01 10:34:10,856 - INFO - Non-verified users: 0
-2025-07-01 10:34:10,856 - INFO - Exported 2 users to /home/ec2-user/fullprogress1_17/fullprogress1_9/data/input/twitter_users.json
-2025-07-01 10:34:10,857 - INFO - Database connection closed
-2025-07-01 10:34:10,857 - INFO - Crawler finished, database connection closed (within run, export_json=True)
-✅ 种子用户处理完成，共 2 个用户
-
-[Step F-1] 输入：/home/ec2-user/fullprogress1_17/fullprogress1_9/data/input/twitter_users.json → 输出：/home/ec2-user/fullprogress1_17/fullprogress1_9/data/temp/following1.db
-2025-07-01 10:34:11,035 - INFO - FollowingCrawler:__init__ - 初始化爬虫，循环次数: 1, 输入文件: /home/ec2-user/fullprogress1_17/fullprogress1_9/data/input/twitter_users.json, 输出数据库: /home/ec2-user/fullprogress1_17/fullprogress1_9/data/temp/following1.db, following阈值: 2000
-2025-07-01 10:34:11,035 - INFO - FollowingCrawler:_init_database - Backed up existing database to /home/ec2-user/fullprogress1_17/fullprogress1_9/data/temp/following1.db.1751366051.bak
-2025-07-01 10:34:11,069 - INFO - FollowingCrawler:_init_database - 数据库初始化完成
-2025-07-01 10:34:11,069 - INFO - FollowingCrawler:run - 开始执行run方法，输入文件: /home/ec2-user/fullprogress1_17/fullprogress1_9/data/input/twitter_users.json
-2025-07-01 10:34:11,069 - INFO - FollowingCrawler:run - 检测到JSON输入文件，开始加载种子用户
-2025-07-01 10:34:11,069 - INFO - FollowingCrawler:load_seed_users - 从JSON文件加载了数据类型: <class 'list'>, 长度: 2
-2025-07-01 10:34:11,069 - INFO - FollowingCrawler:load_seed_users - 第一个用户数据: {"user_id": "1373081719834775554", "username": "connectfarm1", "name": "潜水观察员 🇨🇳", "description": "不被定义，头衔太多就不写了｜新人用ok: https://t.co/f52uvW5oK5｜链上神器：https://t.co/vci2xnFL0L ｜四亿用户在币安：https://t.co/cKzZoL9bvx", "followers_count": 118760, "friends_count": 1673, "tweets_count": 11377, "register_date": "2021-03-20", "avatar": "https://pbs.twimg.com/profile_images/1896754276699082752/Z6OKc6D1_normal.jpg", "banner": "https://pbs.twimg.com/profile_banners/1373081719834775554/1655043945", "verified": 1, "can_dm": 1, "last_updated": "2025-07-01 10:34:07"}
-2025-07-01 10:34:11,069 - INFO - FollowingCrawler:run - 加载了 2 个种子用户
-2025-07-01 10:34:11,069 - INFO - FollowingCrawler:run - 已按followers_count降序排列作者
-2025-07-01 10:34:11,070 - INFO - FollowingCrawler:run - 用户分布：低following用户(2)，高following用户(0)
-2025-07-01 10:34:11,070 - INFO - FollowingCrawler:run - 处理第 1/2 个作者: connectfarm1 (following: 1673)
-2025-07-01 10:34:11,070 - INFO - FollowingCrawler:process_author - 开始处理用户: connectfarm1 (following: 1673)
-2025-07-01 10:34:11,070 - INFO - FollowingCrawler:get_user_following - 开始获取用户 connectfarm1 (ID:1373081719834775554) 的following... (friends_count: 1673)
-2025-07-01 10:34:11,070 - INFO - FollowingCrawler:get_user_following - 开始请求API, 尝试次数: 1/3
-2025-07-01 10:34:11,070 - INFO - FollowingCrawler:get_user_following - 请求URL: https://api.tweetscout.io/v2/follows, Params: {'user_id': '1373081719834775554', 'limit': 100, 'order_by': 'score'}
-2025-07-01 10:35:28,657 - INFO - FollowingCrawler:get_user_following - API响应状态码: 200
-2025-07-01 10:35:28,666 - INFO - FollowingCrawler:get_user_following - 成功获取数据，条目数: 1673
-2025-07-01 10:35:28,667 - INFO - FollowingCrawler:get_user_following - 过滤后following数量(>2000): 1451/1673
-2025-07-01 10:35:28,667 - INFO - FollowingCrawler:get_user_following - Retrieved 100 filtered following (>2000, 排除已存在) for connectfarm1 (remain 100)
-2025-07-01 10:35:28,667 - INFO - FollowingCrawler:process_author - 将100个用户分为2批处理，每批50个
-2025-07-01 10:35:28,667 - INFO - FollowingCrawler:process_author - 处理第1/2批用户...
-2025-07-01 10:35:28,675 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
-2025-07-01 10:35:28,675 - INFO - FollowingCrawler:process_author - 第1批处理完成，耗时0.01秒，平均每用户0.0001秒
-2025-07-01 10:35:29,176 - INFO - FollowingCrawler:process_author - 处理第2/2批用户...
-2025-07-01 10:35:29,183 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
-2025-07-01 10:35:29,183 - INFO - FollowingCrawler:process_author - 第2批处理完成，耗时0.01秒，平均每用户0.0001秒
-2025-07-01 10:35:29,188 - INFO - FollowingCrawler:process_author - Completed author connectfarm1, saved 100 users (total_valid=100), 总耗时: 78.12秒
-2025-07-01 10:35:29,189 - INFO - FollowingCrawler:run - 该作者新增了 100 个用户，当前总计: 100/100
-2025-07-01 10:35:29,189 - INFO - FollowingCrawler:run - 处理第 2/2 个作者: Super4DeFi (following: 1725)
-2025-07-01 10:35:29,189 - INFO - FollowingCrawler:run - 已达到阈值 100，停止处理更多作者
-2025-07-01 10:35:29,189 - INFO - FollowingCrawler:run - 循环完成统计:
-2025-07-01 10:35:29,189 - INFO - FollowingCrawler:run -   - 处理作者数: 1/2
-2025-07-01 10:35:29,189 - INFO - FollowingCrawler:run -   - 跳过高following用户: 0
-2025-07-01 10:35:29,189 - INFO - FollowingCrawler:run -   - 新增有效用户: 100
-2025-07-01 10:35:29,189 - INFO - FollowingCrawler:run -   - 总计有效用户: 100
-2025-07-01 10:35:29,189 - INFO - FollowingCrawler:run -   - 总耗时: 78.12秒
-第1次循环完成，新增100个有效用户
-第1次循环完成，新增 100 个有效用户 (累计 100)
-
-[Step Merge] 合并 data/temp/following*.db → data/output/followingA.db
-📋 已备份现有数据库到: data/output/followingA.db.backup.20250701_103529
-🔧 创建合并数据库结构...
-  · 合并 /home/ec2-user/fullprogress1_17/fullprogress1_9/data/temp/following1.db
-✅ Merge 完成：
-   • 用户数: 100
-   • 关注关系: 100
-
-📊 数据质量统计:
-   • 认证用户: 83
-   • 高粉丝用户(>10万): 85
-
-[Step Tweets] 抓取推文 (max_tweets=10, 并发=20)
-Running TweetCrawler standalone with db_dir: /home/ec2-user/fullprogress1_17/fullprogress1_9/data/output
-Warning: Using default API Key for standalone run.
-2025-07-01 10:35:29,486 - INFO - [TweetCrawler:_init_database] - Tweet database /home/ec2-user/fullprogress1_17/fullprogress1_9/data/output/tweets.db initialized/connected successfully.
-2025-07-01 10:35:29,486 - INFO - [TweetCrawler:run] - --- Starting Tweet Collection Run (Max Tweets: 10, Concurrency: 20) ---
-2025-07-01 10:35:29,487 - INFO - [TweetCrawler:load_authors] - Loaded 100 unique authors from database /home/ec2-user/fullprogress1_17/fullprogress1_9/data/output/followingA.db. Sample: ['Elon Musk', 'vitalik.eth', 'CZ 🔶 BNB', 'ZachXBT', 'Coinbase 🛡️']...
-2025-07-01 10:35:29,487 - INFO - [TweetCrawler:run] - Processing 100 authors...
-2025-07-01 10:35:29,489 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Elon Musk (44196397)
-2025-07-01 10:35:29,489 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: vitalik.eth (295218901)
-2025-07-01 10:35:29,490 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: CZ 🔶 BNB (902926941413453824)
-2025-07-01 10:35:29,490 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: ZachXBT (3012852462)
-2025-07-01 10:35:29,490 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Coinbase 🛡️ (574032254)
-2025-07-01 10:35:29,490 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: gmoney (1311393885806100481)
-2025-07-01 10:35:29,490 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Donald J. Trump (25073877)
-2025-07-01 10:35:29,490 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Marc Andreessen 🇺🇸 (5943622)
-2025-07-01 10:35:29,490 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: dingaling (936048782206058496)
-2025-07-01 10:35:29,490 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Binance (877807935493033984)
-2025-07-01 10:35:29,490 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Ansem (973261472)
-2025-07-01 10:35:29,490 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Zhu Su (79714172)
-2025-07-01 10:35:29,491 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Arthur Hayes (983993370048630785)
-2025-07-01 10:35:29,491 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Justin Blau (196277177)
-2025-07-01 10:35:29,491 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: toly 🇺🇸 (2327407569)
-2025-07-01 10:35:29,491 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Solana (951329744804392960)
-2025-07-01 10:35:29,491 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Magic Eden 🪄 (1433121559057559555)
-2025-07-01 10:35:29,491 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Polygon (914738730740715521)
-2025-07-01 10:35:29,491 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: greg (1356434353623093249)
-2025-07-01 10:35:29,491 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: LooksRare (1427557319500472325)
-2025-07-01 10:35:31,985 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 877807935493033984.
-2025-07-01 10:35:31,986 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 877807935493033984
-2025-07-01 10:35:31,986 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Binance
-2025-07-01 10:35:31,988 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 574032254.
-2025-07-01 10:35:31,989 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 574032254
-2025-07-01 10:35:31,989 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Coinbase 🛡️
-2025-07-01 10:35:32,602 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1356434353623093249.
-2025-07-01 10:35:32,602 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1356434353623093249
-2025-07-01 10:35:32,602 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author greg
-2025-07-01 10:35:32,640 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 914738730740715521.
-2025-07-01 10:35:32,640 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 914738730740715521
-2025-07-01 10:35:32,640 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Polygon
-2025-07-01 10:35:32,791 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 5943622.
-2025-07-01 10:35:32,791 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 5943622
-2025-07-01 10:35:32,791 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Marc Andreessen 🇺🇸
-2025-07-01 10:35:33,080 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 951329744804392960.
-2025-07-01 10:35:33,080 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 951329744804392960
-2025-07-01 10:35:33,080 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Solana
-2025-07-01 10:35:33,362 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 25073877.
-2025-07-01 10:35:33,363 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 25073877
-2025-07-01 10:35:33,363 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Donald J. Trump
-2025-07-01 10:35:33,505 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 79714172.
-2025-07-01 10:35:33,505 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 79714172
-2025-07-01 10:35:33,505 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Zhu Su
-2025-07-01 10:35:33,519 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1433121559057559555.
-2025-07-01 10:35:33,519 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1433121559057559555
-2025-07-01 10:35:33,519 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Magic Eden 🪄
-2025-07-01 10:35:33,647 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 973261472.
-2025-07-01 10:35:33,647 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 973261472
-2025-07-01 10:35:33,647 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Ansem
-2025-07-01 10:35:33,864 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 2327407569.
-2025-07-01 10:35:33,864 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 2327407569
-2025-07-01 10:35:33,864 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author toly 🇺🇸
-2025-07-01 10:35:33,881 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1427557319500472325.
-2025-07-01 10:35:33,881 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1427557319500472325
-2025-07-01 10:35:33,881 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author LooksRare
-2025-07-01 10:35:33,933 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 983993370048630785.
-2025-07-01 10:35:33,933 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 983993370048630785
-2025-07-01 10:35:33,933 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Arthur Hayes
-2025-07-01 10:35:33,999 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Binance (877807935493033984). Saved 10 tweets.
-2025-07-01 10:35:33,999 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Pudgy Penguins (1415078650039443456)
-2025-07-01 10:35:34,002 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Coinbase 🛡️ (574032254). Saved 10 tweets.
-2025-07-01 10:35:34,002 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: CL (1073132650309726208)
-2025-07-01 10:35:34,317 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 902926941413453824.
-2025-07-01 10:35:34,317 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 902926941413453824
-2025-07-01 10:35:34,317 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author CZ 🔶 BNB
-2025-07-01 10:35:34,505 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1311393885806100481.
-2025-07-01 10:35:34,505 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1311393885806100481
-2025-07-01 10:35:34,505 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author gmoney
-2025-07-01 10:35:34,613 - INFO - [TweetCrawler:process_author] - Finished tweet processing for greg (1356434353623093249). Saved 10 tweets.
-2025-07-01 10:35:34,613 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: H.E. Justin Sun 🍌 (902839045356744704)
-2025-07-01 10:35:34,641 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 295218901.
-2025-07-01 10:35:34,641 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 295218901
-2025-07-01 10:35:34,641 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author vitalik.eth
-2025-07-01 10:35:34,652 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Polygon (914738730740715521). Saved 10 tweets.
-2025-07-01 10:35:34,653 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Murad 💹🧲 (844304603336232960)
-2025-07-01 10:35:34,807 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Marc Andreessen 🇺🇸 (5943622). Saved 10 tweets.
-2025-07-01 10:35:34,807 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Mario Nawfal (1319287761048723458)
-2025-07-01 10:35:34,885 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 196277177.
-2025-07-01 10:35:34,885 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 196277177
-2025-07-01 10:35:34,885 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Justin Blau
-2025-07-01 10:35:34,906 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 44196397.
-2025-07-01 10:35:34,906 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 44196397
-2025-07-01 10:35:34,906 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Elon Musk
-2025-07-01 10:35:35,090 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Solana (951329744804392960). Saved 10 tweets.
-2025-07-01 10:35:35,090 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: ye (169686021)
-2025-07-01 10:35:35,378 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Donald J. Trump (25073877). Saved 10 tweets.
-2025-07-01 10:35:35,378 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Dan Romero (9615352)
-2025-07-01 10:35:35,519 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Zhu Su (79714172). Saved 10 tweets.
-2025-07-01 10:35:35,519 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: optimism.eth (1044836083530452992)
-2025-07-01 10:35:35,530 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Magic Eden 🪄 (1433121559057559555). Saved 10 tweets.
-2025-07-01 10:35:35,531 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Arthur (1357451976)
-2025-07-01 10:35:35,660 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Ansem (973261472). Saved 10 tweets.
-2025-07-01 10:35:35,661 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Paradigm (166765173)
-2025-07-01 10:35:35,877 - INFO - [TweetCrawler:process_author] - Finished tweet processing for toly 🇺🇸 (2327407569). Saved 10 tweets.
-2025-07-01 10:35:35,877 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: aixbt (1852674305517342720)
-2025-07-01 10:35:35,893 - INFO - [TweetCrawler:process_author] - Finished tweet processing for LooksRare (1427557319500472325). Saved 10 tweets.
-2025-07-01 10:35:35,893 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: $zora (1168028988091985920)
-2025-07-01 10:35:35,943 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Arthur Hayes (983993370048630785). Saved 10 tweets.
-2025-07-01 10:35:35,943 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: FLAMINGO 🦩 (1307002014921101313)
-2025-07-01 10:35:36,331 - INFO - [TweetCrawler:process_author] - Finished tweet processing for CZ 🔶 BNB (902926941413453824). Saved 10 tweets.
-2025-07-01 10:35:36,331 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Sandeep | CEO, Polygon Foundation (※,※) (100798845)
-2025-07-01 10:35:36,368 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1415078650039443456.
-2025-07-01 10:35:36,368 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1415078650039443456
-2025-07-01 10:35:36,368 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Pudgy Penguins
-2025-07-01 10:35:36,518 - INFO - [TweetCrawler:process_author] - Finished tweet processing for gmoney (1311393885806100481). Saved 10 tweets.
-2025-07-01 10:35:36,518 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Nayib Bukele (20736511)
-2025-07-01 10:35:36,655 - INFO - [TweetCrawler:process_author] - Finished tweet processing for vitalik.eth (295218901). Saved 10 tweets.
-2025-07-01 10:35:36,655 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: 9x9x9 (1435343501802229760)
-2025-07-01 10:35:36,897 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Justin Blau (196277177). Saved 10 tweets.
-2025-07-01 10:35:36,897 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Michael Bouhanna (528517213)
-2025-07-01 10:35:36,917 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Elon Musk (44196397). Saved 10 tweets.
-2025-07-01 10:35:36,917 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: PlanB (918804624303382528)
-2025-07-01 10:35:37,070 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 169686021.
-2025-07-01 10:35:37,070 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 169686021
-2025-07-01 10:35:37,071 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author ye
-2025-07-01 10:35:37,182 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 902839045356744704.
-2025-07-01 10:35:37,182 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 902839045356744704
-2025-07-01 10:35:37,182 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author H.E. Justin Sun 🍌
-2025-07-01 10:35:37,268 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 844304603336232960.
-2025-07-01 10:35:37,268 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 844304603336232960
-2025-07-01 10:35:37,268 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Murad 💹🧲
-2025-07-01 10:35:37,727 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 9615352.
-2025-07-01 10:35:37,727 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 9615352
-2025-07-01 10:35:37,727 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Dan Romero
-2025-07-01 10:35:37,796 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1319287761048723458.
-2025-07-01 10:35:37,796 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1319287761048723458
-2025-07-01 10:35:37,796 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Mario Nawfal
-2025-07-01 10:35:38,000 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1357451976.
-2025-07-01 10:35:38,001 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1357451976
-2025-07-01 10:35:38,001 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Arthur
-2025-07-01 10:35:38,122 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1168028988091985920.
-2025-07-01 10:35:38,123 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1168028988091985920
-2025-07-01 10:35:38,123 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author $zora
-2025-07-01 10:35:38,138 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1044836083530452992.
-2025-07-01 10:35:38,138 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1044836083530452992
-2025-07-01 10:35:38,138 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author optimism.eth
-2025-07-01 10:35:38,220 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1852674305517342720.
-2025-07-01 10:35:38,220 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1852674305517342720
-2025-07-01 10:35:38,220 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author aixbt
-2025-07-01 10:35:38,380 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Pudgy Penguins (1415078650039443456). Saved 10 tweets.
-2025-07-01 10:35:38,380 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: The OpenDAO 🆘 (1474132989537918986)
-2025-07-01 10:35:38,462 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 166765173.
-2025-07-01 10:35:38,462 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 166765173
-2025-07-01 10:35:38,462 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Paradigm
-2025-07-01 10:35:38,926 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1435343501802229760.
-2025-07-01 10:35:38,926 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1435343501802229760
-2025-07-01 10:35:38,926 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author 9x9x9
-2025-07-01 10:35:39,081 - INFO - [TweetCrawler:process_author] - Finished tweet processing for ye (169686021). Saved 10 tweets.
-2025-07-01 10:35:39,081 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Daniele 🟧 ( Meme Quant ) (141007481)
-2025-07-01 10:35:39,092 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1307002014921101313.
-2025-07-01 10:35:39,092 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1307002014921101313
-2025-07-01 10:35:39,092 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author FLAMINGO 🦩
-2025-07-01 10:35:39,102 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 20736511.
-2025-07-01 10:35:39,102 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 20736511
-2025-07-01 10:35:39,102 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Nayib Bukele
-2025-07-01 10:35:39,194 - INFO - [TweetCrawler:process_author] - Finished tweet processing for H.E. Justin Sun 🍌 (902839045356744704). Saved 10 tweets.
-2025-07-01 10:35:39,194 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Monad ⨀ (1342961741718810632)
-2025-07-01 10:35:39,280 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Murad 💹🧲 (844304603336232960). Saved 10 tweets.
-2025-07-01 10:35:39,280 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Shibetoshi Nakamoto (30699048)
-2025-07-01 10:35:39,314 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 100798845.
-2025-07-01 10:35:39,314 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 100798845
-2025-07-01 10:35:39,314 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Sandeep | CEO, Polygon Foundation (※,※)
-2025-07-01 10:35:39,494 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 918804624303382528.
-2025-07-01 10:35:39,494 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 918804624303382528
-2025-07-01 10:35:39,494 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author PlanB
-2025-07-01 10:35:39,690 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 3012852462.
-2025-07-01 10:35:39,690 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 3012852462
-2025-07-01 10:35:39,690 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author ZachXBT
-2025-07-01 10:35:39,739 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Dan Romero (9615352). Saved 10 tweets.
-2025-07-01 10:35:39,740 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Lens Chain (1478109975406858245)
-2025-07-01 10:35:39,799 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 0 tweets in total for user ID 1474132989537918986
-2025-07-01 10:35:39,799 - INFO - [TweetCrawler:process_author] - Processing 0 tweets found for author The OpenDAO 🆘
-2025-07-01 10:35:39,803 - INFO - [TweetCrawler:process_author] - Finished tweet processing for The OpenDAO 🆘 (1474132989537918986). Saved 0 tweets.
-2025-07-01 10:35:39,803 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Darkfarms㊙️ (1362045599638503427)
-2025-07-01 10:35:39,806 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Mario Nawfal (1319287761048723458). Saved 10 tweets.
-2025-07-01 10:35:39,806 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Hyperliquid (1527020295059648513)
-2025-07-01 10:35:40,013 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Arthur (1357451976). Saved 10 tweets.
-2025-07-01 10:35:40,013 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Memeland ❤️ Memecoin (1491285218422300673)
-2025-07-01 10:35:40,057 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 936048782206058496.
-2025-07-01 10:35:40,057 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 936048782206058496
-2025-07-01 10:35:40,057 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author dingaling
-2025-07-01 10:35:40,058 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 528517213.
-2025-07-01 10:35:40,058 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 528517213
-2025-07-01 10:35:40,058 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Michael Bouhanna
-2025-07-01 10:35:40,136 - INFO - [TweetCrawler:process_author] - Finished tweet processing for $zora (1168028988091985920). Saved 10 tweets.
-2025-07-01 10:35:40,136 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Dovey "Rug the fiat" Wan (hiring) (386282560)
-2025-07-01 10:35:40,147 - INFO - [TweetCrawler:process_author] - Finished tweet processing for optimism.eth (1044836083530452992). Saved 10 tweets.
-2025-07-01 10:35:40,147 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: friend.tech (1635284454003597314)
-2025-07-01 10:35:40,230 - INFO - [TweetCrawler:process_author] - Finished tweet processing for aixbt (1852674305517342720). Saved 10 tweets.
-2025-07-01 10:35:40,231 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Kamala Harris (30354991)
-2025-07-01 10:35:40,476 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Paradigm (166765173). Saved 10 tweets.
-2025-07-01 10:35:40,476 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: meow (17194296)
-2025-07-01 10:35:40,940 - INFO - [TweetCrawler:process_author] - Finished tweet processing for 9x9x9 (1435343501802229760). Saved 10 tweets.
-2025-07-01 10:35:40,940 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: wallstreetbets (588569122)
-2025-07-01 10:35:41,102 - INFO - [TweetCrawler:process_author] - Finished tweet processing for FLAMINGO 🦩 (1307002014921101313). Saved 10 tweets.
-2025-07-01 10:35:41,103 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: EigenCloud (1542947918709080065)
-2025-07-01 10:35:41,116 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Nayib Bukele (20736511). Saved 10 tweets.
-2025-07-01 10:35:41,116 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Virtuals Protocol (1438365197505232902)
-2025-07-01 10:35:41,326 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Sandeep | CEO, Polygon Foundation (※,※) (100798845). Saved 10 tweets.
-2025-07-01 10:35:41,327 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Satoshi’s Mom (1372795153199460358)
-2025-07-01 10:35:41,337 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1342961741718810632.
-2025-07-01 10:35:41,337 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1342961741718810632
-2025-07-01 10:35:41,337 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Monad ⨀
-2025-07-01 10:35:41,406 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 30699048.
-2025-07-01 10:35:41,406 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 30699048
-2025-07-01 10:35:41,406 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Shibetoshi Nakamoto
-2025-07-01 10:35:41,429 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 141007481.
-2025-07-01 10:35:41,429 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 141007481
-2025-07-01 10:35:41,429 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Daniele 🟧 ( Meme Quant )
-2025-07-01 10:35:41,507 - INFO - [TweetCrawler:process_author] - Finished tweet processing for PlanB (918804624303382528). Saved 10 tweets.
-2025-07-01 10:35:41,508 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Senator Cynthia Lummis (22831059)
-2025-07-01 10:35:41,701 - INFO - [TweetCrawler:process_author] - Finished tweet processing for ZachXBT (3012852462). Saved 10 tweets.
-2025-07-01 10:35:41,701 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Berachain Foundation 🐻⛓ (1471917994762670081)
-2025-07-01 10:35:42,071 - INFO - [TweetCrawler:process_author] - Finished tweet processing for dingaling (936048782206058496). Saved 10 tweets.
-2025-07-01 10:35:42,071 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Michael Bouhanna (528517213). Saved 10 tweets.
-2025-07-01 10:35:42,071 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Grok (1720665183188922368)
-2025-07-01 10:35:42,071 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: pump.fun (1622243071806128131)
-2025-07-01 10:35:42,156 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1478109975406858245.
-2025-07-01 10:35:42,156 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1478109975406858245
-2025-07-01 10:35:42,156 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Lens Chain
-2025-07-01 10:35:42,161 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1527020295059648513.
-2025-07-01 10:35:42,161 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1527020295059648513
-2025-07-01 10:35:42,161 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Hyperliquid
-2025-07-01 10:35:42,192 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1073132650309726208.
-2025-07-01 10:35:42,192 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1073132650309726208
-2025-07-01 10:35:42,192 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author CL
-2025-07-01 10:35:42,545 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1362045599638503427.
-2025-07-01 10:35:42,545 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1362045599638503427
-2025-07-01 10:35:42,545 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Darkfarms㊙️
-2025-07-01 10:35:42,687 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 386282560.
-2025-07-01 10:35:42,687 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 386282560
-2025-07-01 10:35:42,687 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Dovey "Rug the fiat" Wan (hiring)
-2025-07-01 10:35:42,842 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1491285218422300673.
-2025-07-01 10:35:42,842 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1491285218422300673
-2025-07-01 10:35:42,842 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Memeland ❤️ Memecoin
-2025-07-01 10:35:42,980 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1635284454003597314.
-2025-07-01 10:35:42,980 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1635284454003597314
-2025-07-01 10:35:42,980 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author friend.tech
-2025-07-01 10:35:43,338 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 30354991.
-2025-07-01 10:35:43,338 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 30354991
-2025-07-01 10:35:43,338 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Kamala Harris
-2025-07-01 10:35:43,351 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Monad ⨀ (1342961741718810632). Saved 10 tweets.
-2025-07-01 10:35:43,352 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: SEECRITS🫵😹🐸 (1387064343989194756)
-2025-07-01 10:35:43,420 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Shibetoshi Nakamoto (30699048). Saved 10 tweets.
-2025-07-01 10:35:43,420 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: KuCoin (910110294625492992)
-2025-07-01 10:35:43,440 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Daniele 🟧 ( Meme Quant ) (141007481). Saved 10 tweets.
-2025-07-01 10:35:43,440 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: FreeLunchCapital (2616994416)
-2025-07-01 10:35:43,634 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 17194296.
-2025-07-01 10:35:43,634 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 17194296
-2025-07-01 10:35:43,634 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author meow
-2025-07-01 10:35:43,674 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1542947918709080065.
-2025-07-01 10:35:43,674 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1542947918709080065
-2025-07-01 10:35:43,674 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author EigenCloud
-2025-07-01 10:35:44,138 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1372795153199460358.
-2025-07-01 10:35:44,138 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1372795153199460358
-2025-07-01 10:35:44,138 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Satoshi’s Mom
-2025-07-01 10:35:44,167 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Lens Chain (1478109975406858245). Saved 10 tweets.
-2025-07-01 10:35:44,167 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Sonic Labs (977020204071792641)
-2025-07-01 10:35:44,168 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Hyperliquid (1527020295059648513). Saved 10 tweets.
-2025-07-01 10:35:44,168 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Sui (1428872926363754497)
-2025-07-01 10:35:44,202 - INFO - [TweetCrawler:process_author] - Finished tweet processing for CL (1073132650309726208). Saved 10 tweets.
-2025-07-01 10:35:44,203 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: BNB Chain (1052454006537314306)
-2025-07-01 10:35:44,346 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 22831059.
-2025-07-01 10:35:44,346 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 22831059
-2025-07-01 10:35:44,346 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Senator Cynthia Lummis
-2025-07-01 10:35:44,561 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Darkfarms㊙️ (1362045599638503427). Saved 10 tweets.
-2025-07-01 10:35:44,561 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Bybit (999947328621395968)
-2025-07-01 10:35:44,701 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Dovey "Rug the fiat" Wan (hiring) (386282560). Saved 10 tweets.
-2025-07-01 10:35:44,701 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Celestia 🦣 (1168944141449015296)
-2025-07-01 10:35:44,703 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1622243071806128131.
-2025-07-01 10:35:44,703 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1622243071806128131
-2025-07-01 10:35:44,703 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author pump.fun
-2025-07-01 10:35:44,854 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Memeland ❤️ Memecoin (1491285218422300673). Saved 10 tweets.
-2025-07-01 10:35:44,854 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Ethena Labs (1637885519374721035)
-2025-07-01 10:35:44,991 - INFO - [TweetCrawler:process_author] - Finished tweet processing for friend.tech (1635284454003597314). Saved 10 tweets.
-2025-07-01 10:35:44,991 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Wolf Game (1461404064160399365)
-2025-07-01 10:35:45,351 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Kamala Harris (30354991). Saved 10 tweets.
-2025-07-01 10:35:45,351 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Andy Ayrey (20006785)
-2025-07-01 10:35:45,576 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 910110294625492992.
-2025-07-01 10:35:45,576 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 910110294625492992
-2025-07-01 10:35:45,576 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author KuCoin
-2025-07-01 10:35:45,646 - INFO - [TweetCrawler:process_author] - Finished tweet processing for meow (17194296). Saved 10 tweets.
-2025-07-01 10:35:45,646 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Eugene Ng Ah Sio (1663502213870915584)
-2025-07-01 10:35:45,682 - INFO - [TweetCrawler:process_author] - Finished tweet processing for EigenCloud (1542947918709080065). Saved 10 tweets.
-2025-07-01 10:35:45,682 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Pavel Durov (16477634)
-2025-07-01 10:35:45,840 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1387064343989194756.
-2025-07-01 10:35:45,840 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1387064343989194756
-2025-07-01 10:35:45,840 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author SEECRITS🫵😹🐸
-2025-07-01 10:35:46,147 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 2616994416.
-2025-07-01 10:35:46,147 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 2616994416
-2025-07-01 10:35:46,147 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author FreeLunchCapital
-2025-07-01 10:35:46,152 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Satoshi’s Mom (1372795153199460358). Saved 10 tweets.
-2025-07-01 10:35:46,152 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Irene Zhao (1366964220768776192)
-2025-07-01 10:35:46,359 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Senator Cynthia Lummis (22831059). Saved 10 tweets.
-2025-07-01 10:35:46,359 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Moonshot (1788966273814339584)
-2025-07-01 10:35:46,378 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1052454006537314306.
-2025-07-01 10:35:46,378 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1052454006537314306
-2025-07-01 10:35:46,378 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author BNB Chain
-2025-07-01 10:35:46,615 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1428872926363754497.
-2025-07-01 10:35:46,615 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1428872926363754497
-2025-07-01 10:35:46,616 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Sui
-2025-07-01 10:35:46,717 - INFO - [TweetCrawler:process_author] - Finished tweet processing for pump.fun (1622243071806128131). Saved 10 tweets.
-2025-07-01 10:35:46,717 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Onchain Army (1749622182672527360)
-2025-07-01 10:35:46,766 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 977020204071792641.
-2025-07-01 10:35:46,766 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 977020204071792641
-2025-07-01 10:35:46,766 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Sonic Labs
-2025-07-01 10:35:46,951 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 999947328621395968.
-2025-07-01 10:35:46,952 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 999947328621395968
-2025-07-01 10:35:46,952 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Bybit
-2025-07-01 10:35:46,995 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1461404064160399365.
-2025-07-01 10:35:46,995 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1461404064160399365
-2025-07-01 10:35:46,995 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Wolf Game
-2025-07-01 10:35:47,097 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 9 tweets in total for user ID 1720665183188922368
-2025-07-01 10:35:47,097 - INFO - [TweetCrawler:process_author] - Processing 9 tweets found for author Grok
-2025-07-01 10:35:47,394 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1637885519374721035.
-2025-07-01 10:35:47,395 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1637885519374721035
-2025-07-01 10:35:47,395 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Ethena Labs
-2025-07-01 10:35:47,413 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1168944141449015296.
-2025-07-01 10:35:47,413 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1168944141449015296
-2025-07-01 10:35:47,413 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Celestia 🦣
-2025-07-01 10:35:47,588 - INFO - [TweetCrawler:process_author] - Finished tweet processing for KuCoin (910110294625492992). Saved 10 tweets.
-2025-07-01 10:35:47,588 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Lightning Labs⚡️🌐 (730518593004134400)
-2025-07-01 10:35:47,755 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 20006785.
-2025-07-01 10:35:47,755 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 20006785
-2025-07-01 10:35:47,755 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Andy Ayrey
-2025-07-01 10:35:47,854 - INFO - [TweetCrawler:process_author] - Finished tweet processing for SEECRITS🫵😹🐸 (1387064343989194756). Saved 10 tweets.
-2025-07-01 10:35:47,855 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Backpack 🎒 (1498029602261905408)
-2025-07-01 10:35:48,161 - INFO - [TweetCrawler:process_author] - Finished tweet processing for FreeLunchCapital (2616994416). Saved 10 tweets.
-2025-07-01 10:35:48,161 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: TIME (14293310)
-2025-07-01 10:35:48,264 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 16477634.
-2025-07-01 10:35:48,264 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 16477634
-2025-07-01 10:35:48,264 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Pavel Durov
-2025-07-01 10:35:48,369 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1788966273814339584.
-2025-07-01 10:35:48,370 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1788966273814339584
-2025-07-01 10:35:48,370 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Moonshot
-2025-07-01 10:35:48,392 - INFO - [TweetCrawler:process_author] - Finished tweet processing for BNB Chain (1052454006537314306). Saved 10 tweets.
-2025-07-01 10:35:48,392 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Story (1471420332862885889)
-2025-07-01 10:35:48,629 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Sui (1428872926363754497). Saved 10 tweets.
-2025-07-01 10:35:48,629 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Bubblemaps (1385312402795859968)
-2025-07-01 10:35:48,751 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1366964220768776192.
-2025-07-01 10:35:48,751 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1366964220768776192
-2025-07-01 10:35:48,751 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Irene Zhao
-2025-07-01 10:35:48,778 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Sonic Labs (977020204071792641). Saved 10 tweets.
-2025-07-01 10:35:48,778 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: him (1054149844384669696)
-2025-07-01 10:35:48,908 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Grok (1720665183188922368). Saved 9 tweets.
-2025-07-01 10:35:48,908 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Commentary Donald J. Trump Posts From Truth Social (1686901686185721857)
-2025-07-01 10:35:48,963 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Bybit (999947328621395968). Saved 10 tweets.
-2025-07-01 10:35:48,963 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Yi He (1003840309166366721)
-2025-07-01 10:35:49,009 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Wolf Game (1461404064160399365). Saved 10 tweets.
-2025-07-01 10:35:49,009 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Trippy Labs (1427195151688994822)
-2025-07-01 10:35:49,272 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 588569122.
-2025-07-01 10:35:49,272 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 588569122
-2025-07-01 10:35:49,272 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author wallstreetbets
-2025-07-01 10:35:49,408 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Ethena Labs (1637885519374721035). Saved 10 tweets.
-2025-07-01 10:35:49,409 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Binance Wallet (1400391752368992260)
-2025-07-01 10:35:49,423 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Celestia 🦣 (1168944141449015296). Saved 10 tweets.
-2025-07-01 10:35:49,423 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Aptos (1491526425580474368)
-2025-07-01 10:35:49,504 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1749622182672527360.
-2025-07-01 10:35:49,504 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1749622182672527360
-2025-07-01 10:35:49,504 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Onchain Army
-2025-07-01 10:35:49,766 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Andy Ayrey (20006785). Saved 10 tweets.
-2025-07-01 10:35:49,767 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Chill Pill 🍡 (1214757469785747457)
-2025-07-01 10:35:49,981 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1471917994762670081.
-2025-07-01 10:35:49,982 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1471917994762670081
-2025-07-01 10:35:49,982 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Berachain Foundation 🐻⛓
-2025-07-01 10:35:50,009 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1438365197505232902.
-2025-07-01 10:35:50,009 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1438365197505232902
-2025-07-01 10:35:50,009 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Virtuals Protocol
-2025-07-01 10:35:50,275 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Pavel Durov (16477634). Saved 10 tweets.
-2025-07-01 10:35:50,275 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: jesperish (3365588158)
-2025-07-01 10:35:50,367 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 14293310.
-2025-07-01 10:35:50,367 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 14293310
-2025-07-01 10:35:50,367 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author TIME
-2025-07-01 10:35:50,382 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Moonshot (1788966273814339584). Saved 10 tweets.
-2025-07-01 10:35:50,383 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: WONDERPALS 🌱 (1468963240126271489)
-2025-07-01 10:35:50,453 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 730518593004134400.
-2025-07-01 10:35:50,453 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 730518593004134400
-2025-07-01 10:35:50,454 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Lightning Labs⚡️🌐
-2025-07-01 10:35:50,763 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Irene Zhao (1366964220768776192). Saved 10 tweets.
-2025-07-01 10:35:50,763 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Manta Network (🔱,🔱) (1326658439527936000)
-2025-07-01 10:35:50,838 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1385312402795859968.
-2025-07-01 10:35:50,838 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1385312402795859968
-2025-07-01 10:35:50,838 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Bubblemaps
-2025-07-01 10:35:50,853 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1498029602261905408.
-2025-07-01 10:35:50,853 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1498029602261905408
-2025-07-01 10:35:50,853 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Backpack 🎒
-2025-07-01 10:35:50,891 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1054149844384669696.
-2025-07-01 10:35:50,891 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1054149844384669696
-2025-07-01 10:35:50,891 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author him
-2025-07-01 10:35:51,284 - INFO - [TweetCrawler:process_author] - Finished tweet processing for wallstreetbets (588569122). Saved 10 tweets.
-2025-07-01 10:35:51,285 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Galxe (1375235209495388161)
-2025-07-01 10:35:51,518 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Onchain Army (1749622182672527360). Saved 10 tweets.
-2025-07-01 10:35:51,518 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Mocaverse💼🪐 (1586321159745720321)
-2025-07-01 10:35:51,629 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1471420332862885889.
-2025-07-01 10:35:51,630 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1471420332862885889
-2025-07-01 10:35:51,630 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Story
-2025-07-01 10:35:51,887 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1686901686185721857.
-2025-07-01 10:35:51,888 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1686901686185721857
-2025-07-01 10:35:51,888 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Commentary Donald J. Trump Posts From Truth Social
-2025-07-01 10:35:51,993 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Berachain Foundation 🐻⛓ (1471917994762670081). Saved 10 tweets.
-2025-07-01 10:35:51,993 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Aurory: Seekers of Tokane (1383146606237745154)
-2025-07-01 10:35:52,018 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Virtuals Protocol (1438365197505232902). Saved 10 tweets.
-2025-07-01 10:35:52,018 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Tn̗˙n̖k'z (1399492734713487360)
-2025-07-01 10:35:52,063 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1400391752368992260.
-2025-07-01 10:35:52,063 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1400391752368992260
-2025-07-01 10:35:52,063 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Binance Wallet
-2025-07-01 10:35:52,080 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1427195151688994822.
-2025-07-01 10:35:52,080 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1427195151688994822
-2025-07-01 10:35:52,080 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Trippy Labs
-2025-07-01 10:35:52,365 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1491526425580474368.
-2025-07-01 10:35:52,365 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1491526425580474368
-2025-07-01 10:35:52,365 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Aptos
-2025-07-01 10:35:52,380 - INFO - [TweetCrawler:process_author] - Finished tweet processing for TIME (14293310). Saved 10 tweets.
-2025-07-01 10:35:52,380 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Ben Pasternak (356651832)
-2025-07-01 10:35:52,469 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Lightning Labs⚡️🌐 (730518593004134400). Saved 10 tweets.
-2025-07-01 10:35:52,469 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Marc, the Degen CEO of Polygon Labs (💜,⚔️, ※) (764131901258944512)
-2025-07-01 10:35:52,474 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1003840309166366721.
-2025-07-01 10:35:52,474 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1003840309166366721
-2025-07-01 10:35:52,474 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Yi He
-2025-07-01 10:35:52,652 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1468963240126271489.
-2025-07-01 10:35:52,653 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1468963240126271489
-2025-07-01 10:35:52,653 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author WONDERPALS 🌱
-2025-07-01 10:35:52,851 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Bubblemaps (1385312402795859968). Saved 10 tweets.
-2025-07-01 10:35:52,851 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Believe (1849494185151168512)
-2025-07-01 10:35:52,864 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Backpack 🎒 (1498029602261905408). Saved 10 tweets.
-2025-07-01 10:35:52,864 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: YZi Labs (960036444885565442)
-2025-07-01 10:35:52,865 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 0 tweets in total for user ID 1663502213870915584
-2025-07-01 10:35:52,865 - INFO - [TweetCrawler:process_author] - Processing 0 tweets found for author Eugene Ng Ah Sio
-2025-07-01 10:35:52,865 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Eugene Ng Ah Sio (1663502213870915584). Saved 0 tweets.
-2025-07-01 10:35:52,865 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Art Gobblers (1488988739883782144)
-2025-07-01 10:35:52,906 - INFO - [TweetCrawler:process_author] - Finished tweet processing for him (1054149844384669696). Saved 10 tweets.
-2025-07-01 10:35:52,906 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: Vibe Launcher 👾 (6501482)
-2025-07-01 10:35:53,128 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 3365588158.
-2025-07-01 10:35:53,128 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 3365588158
-2025-07-01 10:35:53,128 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author jesperish
-2025-07-01 10:35:53,620 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1375235209495388161.
-2025-07-01 10:35:53,620 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1375235209495388161
-2025-07-01 10:35:53,620 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Galxe
-2025-07-01 10:35:53,644 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Story (1471420332862885889). Saved 10 tweets.
-2025-07-01 10:35:53,644 - INFO - [TweetCrawler:process_author] - Starting tweet processing for author: BBC News (World) (742143)
-2025-07-01 10:35:53,899 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Commentary Donald J. Trump Posts From Truth Social (1686901686185721857). Saved 10 tweets.
-2025-07-01 10:35:54,074 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Binance Wallet (1400391752368992260). Saved 10 tweets.
-2025-07-01 10:35:54,091 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Trippy Labs (1427195151688994822). Saved 10 tweets.
-2025-07-01 10:35:54,097 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1383146606237745154.
-2025-07-01 10:35:54,098 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1383146606237745154
-2025-07-01 10:35:54,098 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Aurory: Seekers of Tokane
-2025-07-01 10:35:54,366 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1586321159745720321.
-2025-07-01 10:35:54,366 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1586321159745720321
-2025-07-01 10:35:54,366 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Mocaverse💼🪐
-2025-07-01 10:35:54,387 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Aptos (1491526425580474368). Saved 10 tweets.
-2025-07-01 10:35:54,485 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Yi He (1003840309166366721). Saved 10 tweets.
-2025-07-01 10:35:54,510 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1399492734713487360.
-2025-07-01 10:35:54,510 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1399492734713487360
-2025-07-01 10:35:54,510 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Tn̗˙n̖k'z
-2025-07-01 10:35:54,665 - INFO - [TweetCrawler:process_author] - Finished tweet processing for WONDERPALS 🌱 (1468963240126271489). Saved 10 tweets.
-2025-07-01 10:35:54,820 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 356651832.
-2025-07-01 10:35:54,820 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 356651832
-2025-07-01 10:35:54,820 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Ben Pasternak
-2025-07-01 10:35:55,047 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 960036444885565442.
-2025-07-01 10:35:55,047 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 960036444885565442
-2025-07-01 10:35:55,047 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author YZi Labs
-2025-07-01 10:35:55,061 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 764131901258944512.
-2025-07-01 10:35:55,061 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 764131901258944512
-2025-07-01 10:35:55,061 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Marc, the Degen CEO of Polygon Labs (💜,⚔️, ※)
-2025-07-01 10:35:55,141 - INFO - [TweetCrawler:process_author] - Finished tweet processing for jesperish (3365588158). Saved 10 tweets.
-2025-07-01 10:35:55,180 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1849494185151168512.
-2025-07-01 10:35:55,180 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1849494185151168512
-2025-07-01 10:35:55,180 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Believe
-2025-07-01 10:35:55,630 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Galxe (1375235209495388161). Saved 10 tweets.
-2025-07-01 10:35:55,702 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 742143.
-2025-07-01 10:35:55,702 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 742143
-2025-07-01 10:35:55,702 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author BBC News (World)
-2025-07-01 10:35:56,111 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Aurory: Seekers of Tokane (1383146606237745154). Saved 10 tweets.
-2025-07-01 10:35:56,379 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Mocaverse💼🪐 (1586321159745720321). Saved 10 tweets.
-2025-07-01 10:35:56,520 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Tn̗˙n̖k'z (1399492734713487360). Saved 10 tweets.
-2025-07-01 10:35:56,831 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Ben Pasternak (356651832). Saved 10 tweets.
-2025-07-01 10:35:57,060 - INFO - [TweetCrawler:process_author] - Finished tweet processing for YZi Labs (960036444885565442). Saved 10 tweets.
-2025-07-01 10:35:57,071 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Marc, the Degen CEO of Polygon Labs (💜,⚔️, ※) (764131901258944512). Saved 10 tweets.
-2025-07-01 10:35:57,192 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Believe (1849494185151168512). Saved 10 tweets.
-2025-07-01 10:35:57,715 - INFO - [TweetCrawler:process_author] - Finished tweet processing for BBC News (World) (742143). Saved 10 tweets.
-2025-07-01 10:35:58,022 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1214757469785747457.
-2025-07-01 10:35:58,022 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1214757469785747457
-2025-07-01 10:35:58,022 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Chill Pill 🍡
-2025-07-01 10:35:58,867 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1326658439527936000.
-2025-07-01 10:35:58,867 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1326658439527936000
-2025-07-01 10:35:58,867 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Manta Network (🔱,🔱)
-2025-07-01 10:36:00,033 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Chill Pill 🍡 (1214757469785747457). Saved 10 tweets.
-2025-07-01 10:36:00,601 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 1488988739883782144.
-2025-07-01 10:36:00,601 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 1488988739883782144
-2025-07-01 10:36:00,602 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Art Gobblers
-2025-07-01 10:36:00,879 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Manta Network (🔱,🔱) (1326658439527936000). Saved 10 tweets.
-2025-07-01 10:36:01,527 - INFO - [TweetCrawler:get_user_tweets] - Reached max_tweets (10) for user 6501482.
-2025-07-01 10:36:01,527 - INFO - [TweetCrawler:get_user_tweets] - Retrieved 10 tweets in total for user ID 6501482
-2025-07-01 10:36:01,527 - INFO - [TweetCrawler:process_author] - Processing 10 tweets found for author Vibe Launcher 👾
-2025-07-01 10:36:02,613 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Art Gobblers (1488988739883782144). Saved 10 tweets.
-2025-07-01 10:36:03,537 - INFO - [TweetCrawler:process_author] - Finished tweet processing for Vibe Launcher 👾 (6501482). Saved 10 tweets.
-2025-07-01 10:36:03,538 - INFO - [TweetCrawler:run] - All author tweet processing tasks have completed (or failed).
-2025-07-01 10:36:03,543 - INFO - [TweetCrawler:run] - Tweet database /home/ec2-user/fullprogress1_17/fullprogress1_9/data/output/tweets.db connection closed.
-2025-07-01 10:36:03,543 - INFO - [TweetCrawler:run] - --- Tweet Collection Run Finished (Duration: 34.06 seconds) ---
-
-[Step Analytics] 计算互动/原创性指标
-2025-07-01 10:36:03,964 - INFO - 打开 tweets.db …
-2025-07-01 10:36:03,965 - INFO - 准备输出库 analytics.db …
-2025-07-01 10:36:03,981 - INFO - 计算原创性…
-2025-07-01 10:36:03,983 - INFO - 提取原创推文…
-2025-07-01 10:36:03,988 - INFO - 计算推文级互动指标…
-2025-07-01 10:36:03,991 - INFO - 写入 enhanced_tweets…
-2025-07-01 10:36:04,020 - INFO - 计算用户级指标…
-2025-07-01 10:36:04,030 - INFO - 写入 user_originality_enhanced…
-2025-07-01 10:36:04,051 - INFO - 分析完成，结果写入 /home/ec2-user/fullprogress1_17/fullprogress1_9/data/output/analytics.db
-
-[Step KOL] GPT 评定 (目标 KOL=10)
-2025-07-01 10:36:05,092 - INFO - 已有 YES 数: 0 / 10
-2025-07-01 10:36:05,093 - INFO - 待评定候选总数: 98
-2025-07-01 10:36:05,093 - INFO - 本次规划处理: 98 位 (need=10)
-加载推文:   0%|                                                                                                                                     | 0/98 [00:00<?, ?it/s]加载推文: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 98/98 [00:00<00:00, 2779.98it/s]
-评定批次 1/2:   0%|                                                                                                                                 | 0/50 [00:00<?, ?it/s]2025-07-01 10:36:09,094 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:   2%|██▍                                                                                                                      | 1/50 [00:03<03:10,  3.89s/it]2025-07-01 10:36:09,216 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:   4%|████▊                                                                                                                    | 2/50 [00:04<01:20,  1.67s/it]2025-07-01 10:36:09,445 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:   6%|███████▎                                                                                                                 | 3/50 [00:04<00:47,  1.01s/it]2025-07-01 10:36:10,040 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:   8%|█████████▋                                                                                                               | 4/50 [00:04<00:38,  1.18it/s]2025-07-01 10:36:10,844 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  10%|████████████                                                                                                             | 5/50 [00:05<00:37,  1.20it/s]2025-07-01 10:36:11,287 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  12%|██████████████▌                                                                                                          | 6/50 [00:06<00:30,  1.43it/s]2025-07-01 10:36:11,394 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:36:11,406 - INFO - 新增 YES: 1311393885806100481 (total=1)
-评定批次 1/2:  14%|████████████████▉                                                                                                        | 7/50 [00:06<00:21,  1.98it/s]2025-07-01 10:36:11,493 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:36:12,421 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:36:12,433 - INFO - 新增 YES: 1357451976 (total=2)
-评定批次 1/2:  18%|█████████████████████▊                                                                                                   | 9/50 [00:07<00:20,  1.96it/s]2025-07-01 10:36:12,528 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:36:12,541 - INFO - 新增 YES: 1044836083530452992 (total=3)
-评定批次 1/2:  20%|████████████████████████                                                                                                | 10/50 [00:07<00:16,  2.46it/s]2025-07-01 10:36:12,953 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  22%|██████████████████████████▍                                                                                             | 11/50 [00:07<00:16,  2.43it/s]2025-07-01 10:36:14,449 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  24%|████████████████████████████▊                                                                                           | 12/50 [00:09<00:27,  1.41it/s]2025-07-01 10:36:14,880 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  26%|███████████████████████████████▏                                                                                        | 13/50 [00:09<00:23,  1.58it/s]2025-07-01 10:36:15,358 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:36:15,364 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  28%|█████████████████████████████████▌                                                                                      | 14/50 [00:10<00:21,  1.70it/s]2025-07-01 10:36:15,384 - INFO - 新增 YES: 100798845 (total=4)
-2025-07-01 10:36:15,548 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  32%|██████████████████████████████████████▍                                                                                 | 16/50 [00:10<00:12,  2.74it/s]2025-07-01 10:36:16,070 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  34%|████████████████████████████████████████▊                                                                               | 17/50 [00:10<00:13,  2.48it/s]2025-07-01 10:36:16,356 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  36%|███████████████████████████████████████████▏                                                                            | 18/50 [00:11<00:11,  2.68it/s]2025-07-01 10:36:16,917 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  38%|█████████████████████████████████████████████▌                                                                          | 19/50 [00:11<00:13,  2.36it/s]2025-07-01 10:36:18,929 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  40%|████████████████████████████████████████████████                                                                        | 20/50 [00:13<00:25,  1.16it/s]2025-07-01 10:36:19,496 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  42%|██████████████████████████████████████████████████▍                                                                     | 21/50 [00:14<00:22,  1.28it/s]2025-07-01 10:36:20,581 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  44%|████████████████████████████████████████████████████▊                                                                   | 22/50 [00:15<00:24,  1.15it/s]2025-07-01 10:36:20,936 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  46%|███████████████████████████████████████████████████████▏                                                                | 23/50 [00:15<00:19,  1.39it/s]2025-07-01 10:36:21,994 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  48%|█████████████████████████████████████████████████████████▌                                                              | 24/50 [00:16<00:21,  1.22it/s]2025-07-01 10:36:22,048 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:36:22,062 - INFO - 新增 YES: 1052454006537314306 (total=5)
-2025-07-01 10:36:22,066 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:36:23,051 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:36:23,063 - INFO - 新增 YES: 1471917994762670081 (total=6)
-评定批次 1/2:  54%|████████████████████████████████████████████████████████████████▊                                                       | 27/50 [00:17<00:12,  1.79it/s]2025-07-01 10:36:23,199 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  56%|███████████████████████████████████████████████████████████████████▏                                                    | 28/50 [00:17<00:10,  2.12it/s]2025-07-01 10:36:23,757 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  58%|█████████████████████████████████████████████████████████████████████▌                                                  | 29/50 [00:18<00:10,  2.03it/s]2025-07-01 10:36:24,513 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  60%|████████████████████████████████████████████████████████████████████████                                                | 30/50 [00:19<00:11,  1.79it/s]2025-07-01 10:36:24,594 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:36:24,680 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  64%|████████████████████████████████████████████████████████████████████████████▊                                           | 32/50 [00:19<00:06,  2.77it/s]2025-07-01 10:36:25,283 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  66%|███████████████████████████████████████████████████████████████████████████████▏                                        | 33/50 [00:20<00:07,  2.40it/s]2025-07-01 10:36:25,876 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  68%|█████████████████████████████████████████████████████████████████████████████████▌                                      | 34/50 [00:20<00:07,  2.17it/s]2025-07-01 10:36:26,460 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  70%|████████████████████████████████████████████████████████████████████████████████████                                    | 35/50 [00:21<00:07,  2.03it/s]2025-07-01 10:36:27,854 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  72%|██████████████████████████████████████████████████████████████████████████████████████▍                                 | 36/50 [00:22<00:10,  1.36it/s]2025-07-01 10:36:28,885 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  74%|████████████████████████████████████████████████████████████████████████████████████████▊                               | 37/50 [00:23<00:10,  1.22it/s]2025-07-01 10:36:29,140 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  76%|███████████████████████████████████████████████████████████████████████████████████████████▏                            | 38/50 [00:23<00:07,  1.52it/s]2025-07-01 10:36:29,466 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  78%|█████████████████████████████████████████████████████████████████████████████████████████████▌                          | 39/50 [00:24<00:06,  1.78it/s]2025-07-01 10:36:29,558 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:36:29,569 - INFO - 新增 YES: 1003840309166366721 (total=7)
-2025-07-01 10:36:30,254 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:36:30,261 - INFO - 新增 YES: 1385312402795859968 (total=8)
-评定批次 1/2:  82%|██████████████████████████████████████████████████████████████████████████████████████████████████▍                     | 41/50 [00:25<00:04,  2.06it/s]2025-07-01 10:36:30,564 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  84%|████████████████████████████████████████████████████████████████████████████████████████████████████▊                   | 42/50 [00:25<00:03,  2.26it/s]2025-07-01 10:36:31,127 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:36:31,134 - INFO - 新增 YES: 1427195151688994822 (total=9)
-评定批次 1/2:  86%|███████████████████████████████████████████████████████████████████████████████████████████████████████▏                | 43/50 [00:25<00:03,  2.11it/s]2025-07-01 10:36:32,632 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  88%|█████████████████████████████████████████████████████████████████████████████████████████████████████████▌              | 44/50 [00:27<00:04,  1.33it/s]2025-07-01 10:36:32,769 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  90%|████████████████████████████████████████████████████████████████████████████████████████████████████████████            | 45/50 [00:27<00:02,  1.72it/s]2025-07-01 10:36:33,055 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  92%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████▍         | 46/50 [00:27<00:01,  2.01it/s]2025-07-01 10:36:33,274 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  94%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████▊       | 47/50 [00:28<00:01,  2.40it/s]2025-07-01 10:36:33,483 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  96%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████▏    | 48/50 [00:28<00:00,  2.81it/s]2025-07-01 10:36:34,504 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2:  98%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌  | 49/50 [00:29<00:00,  1.81it/s]2025-07-01 10:36:48,466 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 1/2: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:43<00:00,  4.52s/it]评定批次 1/2: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [00:43<00:00,  1.16it/s]
-评定批次 2/2:   0%|                                                                                                                                 | 0/48 [00:00<?, ?it/s]2025-07-01 10:36:51,072 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 2/2:   2%|██▌                                                                                                                      | 1/48 [00:02<01:59,  2.54s/it]2025-07-01 10:36:52,222 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-评定批次 2/2:   4%|█████                                                                                                                    | 2/48 [00:03<01:19,  1.72s/it]2025-07-01 10:36:52,463 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:36:52,476 - INFO - 新增 YES: 295218901 (total=10)
-2025-07-01 10:36:52,476 - INFO - 达到目标 YES 数 10，提前退出评定
-评定批次 2/2:   4%|█████                                                                                                                    | 2/48 [00:03<01:30,  1.97s/it]
-2025-07-01 10:36:52,723 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:36:53,185 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:36:53,306 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:36:53,523 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:36:55,340 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:36:55,677 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:36:56,247 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:36:56,736 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:36:57,211 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:36:57,614 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:36:58,768 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:36:59,043 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:36:59,178 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:36:59,751 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:37:01,080 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:37:02,909 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:37:03,005 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:37:03,412 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:37:03,446 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:37:03,594 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:37:03,908 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:37:04,026 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:37:04,247 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:37:04,888 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:37:05,042 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:37:07,638 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:37:07,933 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:37:08,113 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:37:08,310 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:37:08,476 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:37:09,521 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:37:09,766 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:37:10,003 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:37:10,628 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:37:11,394 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:37:11,442 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:37:12,222 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:37:12,663 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:37:13,236 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:37:13,518 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:37:13,608 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:37:14,282 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:37:15,011 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:37:15,784 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:37:17,368 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-2025-07-01 10:37:17,381 - INFO - 导出 KOL_yes.db，记录数=10
-2025-07-01 10:37:17,395 - INFO - 导出 KOL_no.db，记录数=36
-2025-07-01 10:37:17,395 - INFO - kol_pipeline 完成！
-
-[Step Comments] 爬取 KOL 推文评论 (并发=5)
-使用 db_dir: /home/ec2-user/fullprogress1_17/fullprogress1_9/data/output 运行 KOL 评论爬虫
-警告: 使用默认 API 密钥
-2025-07-01 10:37:17,777 - INFO - [KOLCommentCrawler:_init_databases] - 所有数据库连接初始化完成
-2025-07-01 10:37:17,777 - INFO - [KOLCommentCrawler:run] - --- 开始 KOL 评论收集 (并发: 5) ---
-2025-07-01 10:37:17,777 - INFO - [KOLCommentCrawler:get_kol_user_ids] - 从 KOL_yes.db 中获取到 10 个 KOL 用户
-2025-07-01 10:37:17,782 - INFO - [KOLCommentCrawler:copy_kol_tweets_to_tweetsA] - 已复制 100 条推文 (批次 1, 累计 100)
-2025-07-01 10:37:17,782 - INFO - [KOLCommentCrawler:copy_kol_tweets_to_tweetsA] - 总共将 100 条 KOL 用户推文从 tweets.db 复制到 tweetsA.db
-2025-07-01 10:37:17,782 - INFO - [KOLCommentCrawler:get_tweets_to_process] - 从 tweetsA.db 中获取到 51 条需要爬取评论的推文
-2025-07-01 10:37:17,782 - INFO - [KOLCommentCrawler:run] - 开始处理 51 条推文的评论...
-2025-07-01 10:37:17,783 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 Yi He 的推文 1935358977229139998 的评论
-2025-07-01 10:37:17,784 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 vitalik.eth 的推文 1937762157854359734 的评论
-2025-07-01 10:37:17,784 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 vitalik.eth 的推文 1938894130601504846 的评论
-2025-07-01 10:37:17,784 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 vitalik.eth 的推文 1938874857837519139 的评论
-2025-07-01 10:37:17,784 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 BNB Chain 的推文 1939806203950809176 的评论
-2025-07-01 10:37:38,280 - WARNING - [KOLCommentCrawler:get_tweet_comments] - 推文 1939806203950809176 达到最大评论页数限制 (5)
-2025-07-01 10:37:38,281 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1939806203950809176 获取到 93 条评论，开始保存
-2025-07-01 10:37:38,285 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1939806203950809176。保存了 93 条评论。
-2025-07-01 10:37:38,286 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 BNB Chain 的推文 1939866576880034124 的评论
-2025-07-01 10:37:38,808 - WARNING - [KOLCommentCrawler:get_tweet_comments] - 推文 1938894130601504846 达到最大评论页数限制 (5)
-2025-07-01 10:37:38,808 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1938894130601504846 获取到 100 条评论，开始保存
-2025-07-01 10:37:38,812 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1938894130601504846。保存了 100 条评论。
-2025-07-01 10:37:38,812 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 optimism.eth 的推文 1939715997310869876 的评论
-2025-07-01 10:37:39,587 - WARNING - [KOLCommentCrawler:get_tweet_comments] - 推文 1938874857837519139 达到最大评论页数限制 (5)
-2025-07-01 10:37:39,587 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1938874857837519139 获取到 98 条评论，开始保存
-2025-07-01 10:37:39,591 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1938874857837519139。保存了 98 条评论。
-2025-07-01 10:37:39,592 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 BNB Chain 的推文 1939919401131606329 的评论
-2025-07-01 10:37:39,889 - WARNING - [KOLCommentCrawler:get_tweet_comments] - 推文 1937762157854359734 达到最大评论页数限制 (5)
-2025-07-01 10:37:39,889 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1937762157854359734 获取到 100 条评论，开始保存
-2025-07-01 10:37:39,894 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1937762157854359734。保存了 100 条评论。
-2025-07-01 10:37:39,894 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 Bubblemaps 的推文 1937465755949498755 的评论
-2025-07-01 10:37:47,602 - WARNING - [KOLCommentCrawler:get_tweet_comments] - 推文 1935358977229139998 达到最大评论页数限制 (5)
-2025-07-01 10:37:47,602 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1935358977229139998 获取到 100 条评论，开始保存
-2025-07-01 10:37:47,606 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1935358977229139998。保存了 100 条评论。
-2025-07-01 10:37:47,607 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 BNB Chain 的推文 1939792510466879601 的评论
-2025-07-01 10:38:00,524 - WARNING - [KOLCommentCrawler:get_tweet_comments] - 推文 1937465755949498755 达到最大评论页数限制 (5)
-2025-07-01 10:38:00,524 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1937465755949498755 获取到 83 条评论，开始保存
-2025-07-01 10:38:00,527 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1937465755949498755。保存了 83 条评论。
-2025-07-01 10:38:00,528 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 BNB Chain 的推文 1939836406873940098 的评论
-2025-07-01 10:38:02,503 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1939866576880034124 获取到 65 条评论，开始保存
-2025-07-01 10:38:02,508 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1939866576880034124。保存了 65 条评论。
-2025-07-01 10:38:02,508 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 BNB Chain 的推文 1939896789420687578 的评论
-2025-07-01 10:38:05,509 - WARNING - [KOLCommentCrawler:get_tweet_comments] - 推文 1939715997310869876 达到最大评论页数限制 (5)
-2025-07-01 10:38:05,509 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1939715997310869876 获取到 100 条评论，开始保存
-2025-07-01 10:38:05,514 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1939715997310869876。保存了 100 条评论。
-2025-07-01 10:38:05,514 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 gmoney 的推文 1938690254111703520 的评论
-2025-07-01 10:38:09,560 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1939919401131606329 获取到 56 条评论，开始保存
-2025-07-01 10:38:09,563 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1939919401131606329。保存了 56 条评论。
-2025-07-01 10:38:09,563 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 gmoney 的推文 1939070857181057413 的评论
-2025-07-01 10:38:16,106 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1939896789420687578 获取到 37 条评论，开始保存
-2025-07-01 10:38:16,110 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1939896789420687578。保存了 37 条评论。
-2025-07-01 10:38:16,111 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 BNB Chain 的推文 1939957202980131200 的评论
-2025-07-01 10:38:18,385 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1939792510466879601 获取到 58 条评论，开始保存
-2025-07-01 10:38:18,389 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1939792510466879601。保存了 58 条评论。
-2025-07-01 10:38:18,389 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 Bubblemaps 的推文 1937217320814018868 的评论
-2025-07-01 10:38:25,088 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1939957202980131200 获取到 35 条评论，开始保存
-2025-07-01 10:38:25,091 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1939957202980131200。保存了 35 条评论。
-2025-07-01 10:38:25,091 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 Arthur 的推文 1937148631607628133 的评论
-2025-07-01 10:38:26,671 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1939836406873940098 获取到 46 条评论，开始保存
-2025-07-01 10:38:26,675 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1939836406873940098。保存了 46 条评论。
-2025-07-01 10:38:26,675 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 Sandeep | CEO, Polygon Foundation (※,※) 的推文 1939802462535450778 的评论
-2025-07-01 10:38:26,864 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1939070857181057413 获取到 67 条评论，开始保存
-2025-07-01 10:38:26,869 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1939070857181057413。保存了 67 条评论。
-2025-07-01 10:38:26,869 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 Berachain Foundation 🐻⛓ 的推文 1938285575053971528 的评论
-2025-07-01 10:38:28,677 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1937217320814018868 获取到 40 条评论，开始保存
-2025-07-01 10:38:28,681 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1937217320814018868。保存了 40 条评论。
-2025-07-01 10:38:28,681 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 Sandeep | CEO, Polygon Foundation (※,※) 的推文 1939938418823151979 的评论
-2025-07-01 10:38:40,957 - WARNING - [KOLCommentCrawler:get_tweet_comments] - 推文 1938690254111703520 达到最大评论页数限制 (5)
-2025-07-01 10:38:40,957 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1938690254111703520 获取到 100 条评论，开始保存
-2025-07-01 10:38:40,961 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1938690254111703520。保存了 100 条评论。
-2025-07-01 10:38:40,962 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 optimism.eth 的推文 1938318855056842996 的评论
-2025-07-01 10:38:41,498 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1939802462535450778 获取到 40 条评论，开始保存
-2025-07-01 10:38:41,502 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1939802462535450778。保存了 40 条评论。
-2025-07-01 10:38:41,502 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 Berachain Foundation 🐻⛓ 的推文 1937256259335459034 的评论
-2025-07-01 10:38:42,329 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1939938418823151979 获取到 50 条评论，开始保存
-2025-07-01 10:38:42,334 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1939938418823151979。保存了 50 条评论。
-2025-07-01 10:38:42,334 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 Berachain Foundation 🐻⛓ 的推文 1934743624157438221 的评论
-2025-07-01 10:38:44,236 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1938285575053971528 获取到 38 条评论，开始保存
-2025-07-01 10:38:44,240 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1938285575053971528。保存了 38 条评论。
-2025-07-01 10:38:44,240 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 BNB Chain 的推文 1939987391889948779 的评论
-2025-07-01 10:38:49,961 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1937256259335459034 获取到 35 条评论，开始保存
-2025-07-01 10:38:49,965 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1937256259335459034。保存了 35 条评论。
-2025-07-01 10:38:49,965 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 optimism.eth 的推文 1939745671529341014 的评论
-2025-07-01 10:38:51,545 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1937148631607628133 获取到 47 条评论，开始保存
-2025-07-01 10:38:51,549 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1937148631607628133。保存了 47 条评论。
-2025-07-01 10:38:51,549 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 Berachain Foundation 🐻⛓ 的推文 1938330017811075490 的评论
-2025-07-01 10:38:55,503 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1939987391889948779 获取到 14 条评论，开始保存
-2025-07-01 10:38:55,507 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1939987391889948779。保存了 14 条评论。
-2025-07-01 10:38:55,507 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 gmoney 的推文 1939259075063152899 的评论
-2025-07-01 10:38:59,530 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1938318855056842996 获取到 45 条评论，开始保存
-2025-07-01 10:38:59,533 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1938318855056842996。保存了 45 条评论。
-2025-07-01 10:38:59,534 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 gmoney 的推文 1939309153220268335 的评论
-2025-07-01 10:39:01,793 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1934743624157438221 获取到 32 条评论，开始保存
-2025-07-01 10:39:01,798 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1934743624157438221。保存了 32 条评论。
-2025-07-01 10:39:01,798 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 Arthur 的推文 1939680860602769894 的评论
-2025-07-01 10:39:04,725 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1939259075063152899 获取到 22 条评论，开始保存
-2025-07-01 10:39:04,728 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1939259075063152899。保存了 22 条评论。
-2025-07-01 10:39:04,729 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 Sandeep | CEO, Polygon Foundation (※,※) 的推文 1939263051741778360 的评论
-2025-07-01 10:39:06,208 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1939745671529341014 获取到 22 条评论，开始保存
-2025-07-01 10:39:06,211 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1939745671529341014。保存了 22 条评论。
-2025-07-01 10:39:06,212 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 Bubblemaps 的推文 1937944229030023465 的评论
-2025-07-01 10:39:06,596 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1938330017811075490 获取到 37 条评论，开始保存
-2025-07-01 10:39:06,600 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1938330017811075490。保存了 37 条评论。
-2025-07-01 10:39:06,600 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 Arthur 的推文 1938554444142293061 的评论
-2025-07-01 10:39:11,014 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1939309153220268335 获取到 19 条评论，开始保存
-2025-07-01 10:39:11,018 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1939309153220268335。保存了 19 条评论。
-2025-07-01 10:39:11,018 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 Bubblemaps 的推文 1938575827421024293 的评论
-2025-07-01 10:39:11,513 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1938554444142293061 获取到 15 条评论，开始保存
-2025-07-01 10:39:11,516 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1938554444142293061。保存了 15 条评论。
-2025-07-01 10:39:11,516 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 gmoney 的推文 1939960675863756916 的评论
-2025-07-01 10:39:12,457 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1939680860602769894 获取到 29 条评论，开始保存
-2025-07-01 10:39:12,460 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1939680860602769894。保存了 29 条评论。
-2025-07-01 10:39:12,461 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 gmoney 的推文 1939386907324019098 的评论
-2025-07-01 10:39:16,631 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1937944229030023465 获取到 25 条评论，开始保存
-2025-07-01 10:39:16,635 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1937944229030023465。保存了 25 条评论。
-2025-07-01 10:39:16,635 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 Sandeep | CEO, Polygon Foundation (※,※) 的推文 1939700479195492658 的评论
-2025-07-01 10:39:17,144 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1939960675863756916 获取到 17 条评论，开始保存
-2025-07-01 10:39:17,147 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1939960675863756916。保存了 17 条评论。
-2025-07-01 10:39:17,147 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 Bubblemaps 的推文 1939712351952887970 的评论
-2025-07-01 10:39:20,245 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1938575827421024293 获取到 26 条评论，开始保存
-2025-07-01 10:39:20,249 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1938575827421024293。保存了 26 条评论。
-2025-07-01 10:39:20,249 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 gmoney 的推文 1938850401391968615 的评论
-2025-07-01 10:39:21,574 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1939700479195492658 获取到 19 条评论，开始保存
-2025-07-01 10:39:21,577 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1939700479195492658。保存了 19 条评论。
-2025-07-01 10:39:21,578 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 Arthur 的推文 1937813145197895817 的评论
-2025-07-01 10:39:22,210 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1939263051741778360 获取到 22 条评论，开始保存
-2025-07-01 10:39:22,214 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1939263051741778360。保存了 22 条评论。
-2025-07-01 10:39:22,214 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 Arthur 的推文 1938269671532503056 的评论
-2025-07-01 10:39:25,297 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1939712351952887970 获取到 21 条评论，开始保存
-2025-07-01 10:39:25,301 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1939712351952887970。保存了 21 条评论。
-2025-07-01 10:39:25,301 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 optimism.eth 的推文 1939716065996714037 的评论
-2025-07-01 10:39:27,710 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1938269671532503056 获取到 7 条评论，开始保存
-2025-07-01 10:39:27,713 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1938269671532503056。保存了 7 条评论。
-2025-07-01 10:39:27,713 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 Sandeep | CEO, Polygon Foundation (※,※) 的推文 1939923874826661901 的评论
-2025-07-01 10:39:29,128 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1939386907324019098 获取到 12 条评论，开始保存
-2025-07-01 10:39:29,131 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1939386907324019098。保存了 12 条评论。
-2025-07-01 10:39:29,132 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 Sandeep | CEO, Polygon Foundation (※,※) 的推文 1939932812305453282 的评论
-2025-07-01 10:39:31,882 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1937813145197895817 获取到 6 条评论，开始保存
-2025-07-01 10:39:31,886 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1937813145197895817。保存了 6 条评论。
-2025-07-01 10:39:31,886 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 gmoney 的推文 1939960108793880908 的评论
-2025-07-01 10:39:33,834 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1939932812305453282 获取到 7 条评论，开始保存
-2025-07-01 10:39:33,837 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1939932812305453282。保存了 7 条评论。
-2025-07-01 10:39:33,837 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 Bubblemaps 的推文 1937944241696858586 的评论
-2025-07-01 10:39:33,932 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1939923874826661901 获取到 9 条评论，开始保存
-2025-07-01 10:39:33,935 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1939923874826661901。保存了 9 条评论。
-2025-07-01 10:39:33,935 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 optimism.eth 的推文 1939716084325863816 的评论
-2025-07-01 10:39:34,812 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1938850401391968615 获取到 10 条评论，开始保存
-2025-07-01 10:39:34,817 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1938850401391968615。保存了 10 条评论。
-2025-07-01 10:39:34,817 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 Berachain Foundation 🐻⛓ 的推文 1938330020751294654 的评论
-2025-07-01 10:39:36,395 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1939960108793880908 获取到 6 条评论，开始保存
-2025-07-01 10:39:36,397 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1939960108793880908。保存了 6 条评论。
-2025-07-01 10:39:36,397 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 Bubblemaps 的推文 1939712526901456948 的评论
-2025-07-01 10:39:44,033 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1938330020751294654 获取到 36 条评论，开始保存
-2025-07-01 10:39:44,037 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1938330020751294654。保存了 36 条评论。
-2025-07-01 10:39:44,037 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 Bubblemaps 的推文 1939712603930136753 的评论
-2025-07-01 10:39:44,582 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1939712526901456948 获取到 20 条评论，开始保存
-2025-07-01 10:39:44,584 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1939712526901456948。保存了 20 条评论。
-2025-07-01 10:39:44,585 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 Berachain Foundation 🐻⛓ 的推文 1938285578056835460 的评论
-2025-07-01 10:39:44,668 - WARNING - [KOLCommentCrawler:get_tweet_comments] - 推文 1939716065996714037 达到最大评论页数限制 (5)
-2025-07-01 10:39:44,668 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1939716065996714037 获取到 100 条评论，开始保存
-2025-07-01 10:39:44,672 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1939716065996714037。保存了 100 条评论。
-2025-07-01 10:39:44,672 - INFO - [KOLCommentCrawler:process_tweet] - 开始处理作者 Bubblemaps 的推文 1938576345073668510 的评论
-2025-07-01 10:39:47,625 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1937944241696858586 获取到 24 条评论，开始保存
-2025-07-01 10:39:47,628 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1937944241696858586。保存了 24 条评论。
-2025-07-01 10:39:53,270 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1939712603930136753 获取到 20 条评论，开始保存
-2025-07-01 10:39:53,272 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1939712603930136753。保存了 20 条评论。
-2025-07-01 10:39:53,587 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1938576345073668510 获取到 25 条评论，开始保存
-2025-07-01 10:39:53,590 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1938576345073668510。保存了 25 条评论。
-2025-07-01 10:39:59,227 - WARNING - [KOLCommentCrawler:get_tweet_comments] - 推文 1939716084325863816 达到最大评论页数限制 (5)
-2025-07-01 10:39:59,227 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1939716084325863816 获取到 100 条评论，开始保存
-2025-07-01 10:39:59,231 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1939716084325863816。保存了 100 条评论。
-2025-07-01 10:40:00,031 - INFO - [KOLCommentCrawler:process_tweet] - 为推文 1938285578056835460 获取到 37 条评论，开始保存
-2025-07-01 10:40:00,035 - INFO - [KOLCommentCrawler:process_tweet] - 完成处理推文 1938285578056835460。保存了 37 条评论。
-2025-07-01 10:40:00,035 - INFO - [KOLCommentCrawler:run] - 所有推文评论处理任务已完成（或失败）
-2025-07-01 10:40:00,043 - INFO - [KOLCommentCrawler:_close_connections] - 所有数据库连接已关闭
-2025-07-01 10:40:00,043 - INFO - [KOLCommentCrawler:run] - --- KOL 评论收集结束 (耗时: 162.27 秒) ---
-
-🧹 清理临时文件...
-是否删除临时的following1.db, following2.db等文件？(y/n，默认 n)：y
-  🗑️  删除 data/temp/following1.db
-✅ 临时文件清理完成
-
-📋 整理日志文件...
-
-🎉 全流程完成！生成文件：
-  📊 数据文件：
-    • data/output/followingA.db      (用户数据: 100 个用户)
-    • data/output/tweets.db          (推文数据)
-    • data/output/analytics.db       (分析指标)
-    • data/output/KOL_yes.db         (优质KOL: 目标 10 个)
-    • data/output/KOL_no.db          (非KOL用户)
-    • data/output/tweetsA.db         (含KOL评论)
-  
-  📁 目录结构：
-    • data/input/     种子用户文件
-    • data/output/    最终结果文件
-    • data/temp/      临时处理文件
-    • logs/           所有日志文件
-  
-  📈 数据统计：
-    • 总爬取轮次: 1 轮
-    • 认证用户: 83 个
-    • 高粉丝用户: 85 个
-    • 关注关系: 100 条
-
-📝 使用建议：
-  1. 检查 logs/ 目录中的日志文件了解详细执行情况
-  2. 使用 scripts/db_inspector.py 查看数据库内容
-  3. 结果文件位于 data/output/ 目录中
-
-]133;D;0[?25h[2m⏎(B[m                                                                                                                                                                          ⏎ [K]0;[ip-172-31-] ~/f/fullprogress1_9[30m(B[m]133;A;special_key=1[92mec2-user(B[m@[33mip-172-31-47-107(B[m [32m~/f/fullprogress1_9(B[m(B[m> [J[47C[?2004h[>4;1m[=5u=[?2004l[>4;0m[=0u>[?2004h[>4;1m[=5u=[?2004l[>4;0m[=0u>]0;[ip-172-31-] ~/f/fullprogress1_9[30m(B[m]133;A;special_key=1[92mec2-user(B[m@[33mip-172-31-47-107(B[m [32m~/f/fullprogress1_9(B[m(B[m> [J[47C[?2004h[>4;1m[=5u=e[48C[90mxit[30m(B[m[48C[91me[90mxit[30m(B[m[48C[91mx[90mit[30m(B[m[49Cex[90mit[30m(B[m[49Ci[90mt[30m(B[m[50C[91mexi[90mt[30m(B[m[50C[91mt[30m(B[m[51C[51Cexit[51C[51C
-[30m(B[m]133;C;cmdline_url=exit[?2004l[>4;0m[=0u>]0;[ip-172-31-] exit ~/f/fullprogress1_9[30m(B[m]133;D;0[?25h[30m(B[m
