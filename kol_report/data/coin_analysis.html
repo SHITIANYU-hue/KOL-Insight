@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@{kol_name} × {coin_name} 推理链分析</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6; margin: 0; padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh; color: #333;
+        }
+        .container {
+            max-width: 1800px; margin: 0 auto; background: white;
+            border-radius: 20px; box-shadow: 0 15px 50px rgba(0,0,0,0.25);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; padding: 50px; text-align: center;
+            position: relative;
+        }
+        .navigation {
+            position: absolute; top: 20px; left: 20px;
+            display: flex; gap: 10px;
+        }
+        .nav-btn {
+            background: rgba(255,255,255,0.2); color: white;
+            padding: 10px 20px; border-radius: 25px; text-decoration: none;
+            font-weight: bold; backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .nav-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateX(-5px);
+        }
+        .header h1 { font-size: 3em; margin-bottom: 15px; font-weight: 700; }
+        .subtitle { font-size: 1.4em; opacity: 0.9; margin-bottom: 30px; }
+        
+        .coin-summary {
+            background: rgba(255,255,255,0.1); margin: 30px 0; 
+            padding: 25px; border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .summary-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px; margin-top: 20px;
+        }
+        .summary-item {
+            text-align: center;
+        }
+        .summary-label {
+            font-size: 0.9em; opacity: 0.8; margin-bottom: 5px;
+        }
+        .summary-value {
+            font-size: 1.8em; font-weight: bold;
+        }
+        
+        .section {
+            padding: 50px;
+        }
+        .section-title {
+            font-size: 2.2em; margin-bottom: 30px; color: #333; 
+            border-bottom: 3px solid #667eea; padding-bottom: 15px;
+        }
+        
+        .chart-container {
+            position: relative; text-align: center; margin: 40px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); 
+            border-radius: 20px; padding: 40px; box-shadow: inset 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .chart-title {
+            font-size: 1.6em; margin-bottom: 25px; font-weight: bold; 
+            color: #333; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .chart-wrapper {
+            position: relative; display: inline-block;
+            border-radius: 15px; overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 1200px;
+        }
+        .chart-image { 
+            width: 100%; 
+            height: auto; 
+            display: block;
+            max-height: 600px;
+            object-fit: contain;
+        }
+        
+        /* CSS Hotpoint - 精确定位 */
+        .chart-hotpoint {
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            z-index: 100;
+            transform: translate(-50%, -50%);
+            transition: all 0.3s ease;
+        }
+        
+        .chart-hotpoint:hover {
+            transform: translate(-50%, -50%) scale(1.2);
+            z-index: 200;
+        }
+        
+        .chart-hotpoint.active {
+            transform: translate(-50%, -50%) scale(1.3);
+            z-index: 200;
+            filter: drop-shadow(0 0 10px rgba(0, 123, 255, 0.8));
+        }
+        
+        .chart-hotpoint svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 3px 8px rgba(0,0,0,0.4));
+        }
+        
+        /* 固定悬浮面板 - 右侧位置 */
+        .fixed-floating-panel {
+            position: fixed;
+            top: 10vh;
+            right: 2vw;
+            width: 400px;
+            max-height: 80vh;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.25);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(100%);
+            transition: all 0.4s ease;
+            border: 2px solid #e9ecef;
+            overflow: hidden;
+        }
+        
+        .fixed-floating-panel.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+        
+        /* 面板头部 - 包含小图表 */
+        .panel-header {
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            color: white;
+            padding: 0;
+            margin: 0;
+            position: relative;
+        }
+        
+        .panel-title-section {
+            padding: 15px 20px 10px 20px;
+        }
+        
+        .panel-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin: 0 0 5px 0;
+        }
+        
+        .panel-subtitle {
+            font-size: 0.85em;
+            opacity: 0.9;
+            margin: 0;
+        }
+        
+        /* 小型验证图表区域 */
+        .mini-chart-container {
+            height: 120px;
+            background: rgba(255,255,255,0.1);
+            margin: 10px;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mini-chart-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        
+        .close-panel-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .close-panel-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        /* 面板内容 */
+        .panel-content {
+            padding: 20px;
+            max-height: calc(80vh - 200px);
+            overflow-y: auto;
+        }
+        
+        /* 预测详情卡片 */
+        .prediction-details {
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .detail-section {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .detail-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .section-title-small {
+            font-size: 1.0em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 6px 0;
+            padding: 5px 0;
+        }
+        
+        .detail-label {
+            color: #666;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+        
+        .detail-value {
+            color: #333;
+            font-weight: bold;
+            text-align: right;
+            font-size: 0.9em;
+        }
+        
+        .sentiment-badge {
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.75em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .sentiment-bullish {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .sentiment-bearish {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .sentiment-neutral {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .accuracy-meter {
+            width: 100%;
+            height: 6px;
+            background: #e9ecef;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 5px 0;
+        }
+        
+        .accuracy-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.8s ease;
+        }
+        
+        .accuracy-excellent { background: #28a745; }
+        .accuracy-good { background: #17a2b8; }
+        .accuracy-average { background: #ffc107; }
+        .accuracy-poor { background: #dc3545; }
+        
+        /* 预测内容 */
+        .prediction-content {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 12px;
+            margin: 8px 0;
+            font-style: italic;
+            line-height: 1.4;
+            border-left: 4px solid #007bff;
+            font-size: 0.9em;
+        }
+        
+        /* 验证结果网格 */
+        .verification-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin: 8px 0;
+        }
+        
+        .verification-item {
+            background: #f8f9fa;
+            padding: 8px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 0.8em;
+        }
+        
+        .verification-correct {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .verification-incorrect {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        /* 搜索结果手风琴样式 - 完整版 */
+        .search-results-accordion {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .accordion-item {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        
+        .accordion-summary {
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            color: white;
+            padding: 12px 15px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-summary:hover {
+            background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+        }
+        
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .accordion-item.open .accordion-icon {
+            transform: rotate(180deg);
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: white;
+        }
+        
+        .accordion-item.open .accordion-content {
+            max-height: 1000px;
+        }
+        
+        .accordion-inner {
+            padding: 15px;
+        }
+
+        /* 推文详情样式 */
+        .tweet-detail-card {
+            background: white; border-radius: 20px; padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15); margin: 25px 0;
+            border-left: 6px solid #2196F3;
+            transition: all 0.4s ease;
+        }
+        .tweet-detail-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .tweet-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 20px; border-bottom: 2px solid #eee; padding-bottom: 15px;
+        }
+        .tweet-title {
+            font-size: 1.4em; font-weight: bold; color: #333;
+        }
+        .tweet-meta {
+            color: #666; font-size: 0.95em; margin-top: 5px;
+        }
+
+        .expand-arrow {
+            font-size: 2em;
+            color: #2196F3;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+            padding: 10px;
+            margin: -10px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        .expand-arrow:hover {
+            background: rgba(33, 150, 243, 0.1);
+            transform: scale(1.1);
+        }
+
+        .tweet-content {
+            margin: 20px 0; padding: 20px; background: #f8f9fa;
+            border-radius: 12px; font-style: italic; color: #555;
+            border-left: 4px solid #007bff;
+        }
+
+        .analysis-section {
+            margin: 25px 0; padding: 20px; border-radius: 12px;
+        }
+        .ai-analysis { background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); }
+        .search-results { background: linear-gradient(135deg, #fff3e0 0%, #ffcc80 100%); }
+        .verification-results { background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c8 100%); }
+        .comprehensive-analysis { background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%); }
+
+        .analysis-title {
+            font-size: 1.3em; font-weight: bold; margin-bottom: 15px;
+            display: flex; align-items: center; gap: 10px;
+        }
+
+        .collapsible-content {
+            max-height: 0; overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        .collapsible-content.active {
+            max-height: 5000px;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 1200px) {
+            .fixed-floating-panel {
+                right: 1vw;
+                width: 350px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container { margin: 10px; }
+            .section { padding: 25px; }
+            .header h1 { font-size: 2em; }
+            .summary-grid { grid-template-columns: 1fr 1fr; }
+            .legend-grid { grid-template-columns: 1fr; }
+            
+            .fixed-floating-panel {
+                position: fixed;
+                top: auto;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: auto;
+                max-height: 60vh;
+                border-radius: 15px 15px 0 0;
+                transform: translateY(100%);
+            }
+            
+            .fixed-floating-panel.show {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <div class="navigation">
+                <a href="../index.html" class="nav-btn">← KOL列表</a>
+                <a href="../kol_reports/{kol_id}_analysis.html" class="nav-btn">← {kol_name}币种列表</a>
+                {coingecko_link_html}
+            </div>
+            
+            <h1>@{kol_name} × {coin_name}</h1>
+            <div class="subtitle">币种推理链详细分析</div>
+            
+            <div class="coin-summary">
+                <h3 style="margin-top: 0;">📊 币种分析摘要</h3>
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <div class="summary-label">预测数量</div>
+                        <div class="summary-value">{total_predictions}</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">准确率</div>
+                        <div class="summary-value">{accuracy}%</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">时间跨度</div>
+                        <div class="summary-value">{time_span}</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">表现评级</div>
+                        <div class="summary-value">{performance_grade}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Chart Section -->
+        <div class="section">
+            <h2 class="section-title">📈 推理链价格走势与综合分析</h2>
+            <div class="chart-container">
+                <div class="chart-title">
+                    {coin_name} 价格走势与预测点专业分析 (点击预测点查看详情)
+                </div>
+                <div class="chart-wrapper" id="chartWrapper">
+                    {chart_html}
+                </div>
+                <div class="chart-legend">
+                    <div class="legend-title">💡 专业级图表说明</div>
+                    <div class="legend-grid">
+                        <div class="legend-item">⭐ 深绿色：优秀预测 (≥80%准确率)</div>
+                        <div class="legend-item">✓ 绿色：良好预测 (70-79%准确率)</div>
+                        <div class="legend-item">~ 橙色：一般预测 (60-69%准确率)</div>
+                        <div class="legend-item">✗ 红色：较差预测 (<60%准确率)</div>
+                        <div class="legend-item">↗ 看涨预测 | ↘ 看跌预测 | → 中性预测</div>
+                        <div class="legend-item">ST/MT/LT：短期/中期/长期预测</div>
+                    </div>
+                    <div class="legend-note">
+                        点击图表上的预测点，右侧将显示详细分析和验证图表。验证图表展示预测前后5天的价格走势。
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Detailed Tweet Analysis -->
+        <div class="section">
+            <h2 class="section-title">📱 推文专业级详细分析</h2>
+            <div style="margin-bottom: 25px; padding: 20px; background: #e3f2fd; border-radius: 12px;">
+                <p style="color: #1565c0; margin: 0; font-weight: 500;">
+                    点击箭头图标展开查看完整的专业分析，包括AI深度分析、搜索结果、真实验证数据、综合评估等。
+                </p>
+            </div>
+            {tweet_details}
+        </div>
+    </div>
+    
+    <!-- 固定悬浮面板 -->
+    <div class="fixed-floating-panel" id="fixedFloatingPanel">
+        <div class="panel-header">
+            <button class="close-panel-btn" onclick="hidePredictionPanel()">×</button>
+            <div class="panel-title-section">
+                <div class="panel-title" id="panelTitle">📊 预测详情分析</div>
+                <div class="panel-subtitle" id="panelSubtitle">验证结果可视化</div>
+            </div>
+            
+            <!-- 小型验证图表 -->
+            <div class="mini-chart-container">
+                <canvas class="mini-chart-canvas" id="miniChart"></canvas>
+            </div>
+        </div>
+        
+        <div class="panel-content" id="panelContent">
+            <!-- 内容将动态填充 -->
+        </div>
+    </div>
+    
+    <script>
+        // 全局变量
+        const predictionData = {prediction_data_js};
+        const priceData = {price_data_js};
+        let hotpoints = [];
+        let selectedHotpoint = null;
+        let miniCanvas, miniCtx;
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            setupMiniCanvas();
+            initChartInteractions();
+        });
+        
+        // 设置小型Canvas
+        function setupMiniCanvas() {
+            miniCanvas = document.getElementById('miniChart');
+            if (!miniCanvas) return;
+            
+            miniCtx = miniCanvas.getContext('2d');
+            
+            const rect = miniCanvas.getBoundingClientRect();
+            const dpr = window.devicePixelRatio || 1;
+            
+            miniCanvas.width = rect.width * dpr;
+            miniCanvas.height = rect.height * dpr;
+            miniCtx.scale(dpr, dpr);
+        }
+        
+        // 绘制验证小图表
+        function drawMiniChart(prediction) {
+            if (!miniCanvas || !miniCtx) return;
+            
+            const rect = miniCanvas.getBoundingClientRect();
+            const width = rect.width;
+            const height = rect.height;
+            const padding = 15;
+            
+            miniCtx.clearRect(0, 0, width, height);
+            
+            const chartWidth = width - padding * 2;
+            const chartHeight = height - padding * 2;
+            
+            // 获取预测点前后的数据
+            const centerIndex = prediction.index || 0;
+            
+            // 修改：确定数据范围 - 验证时间前五天到最晚验证结果后五天
+            // 获取验证时间点和最晚验证结果时间点
+            const verificationTimepoints = [];
+            if (prediction.verification_timepoints && Array.isArray(prediction.verification_timepoints)) {
+                verificationTimepoints.push(...prediction.verification_timepoints);
+            } else if (prediction.check_points && Array.isArray(prediction.check_points)) {
+                verificationTimepoints.push(...prediction.check_points.map(cp => cp.timeIndex || centerIndex));
+            }
+            
+            // 如果没有验证时间点，使用默认范围（前后5天）
+            let startIndex = Math.max(0, centerIndex - 5);
+            let endIndex = Math.min(priceData.length - 1, centerIndex + 5);
+            
+            // 如果有验证时间点，调整范围
+            if (verificationTimepoints.length > 0) {
+                const earliestVerification = Math.min(...verificationTimepoints);
+                const latestVerification = Math.max(...verificationTimepoints);
+                
+                // 验证时间前五天到最晚验证结果后五天
+                startIndex = Math.max(0, earliestVerification - 5);
+                endIndex = Math.min(priceData.length - 1, latestVerification + 5);
+            }
+            
+            const miniData = priceData.slice(startIndex, endIndex + 1);
+            const predictionPointIndex = centerIndex - startIndex;
+            
+            if (miniData.length === 0) return;
+            
+            const prices = miniData.map(d => d.price);
+            const minPrice = Math.min(...prices);
+            const maxPrice = Math.max(...prices);
+            const priceRange = maxPrice - minPrice || 1;
+            
+            // 绘制背景
+            miniCtx.fillStyle = 'rgba(255,255,255,0.1)';
+            miniCtx.fillRect(0, 0, width, height);
+            
+            // 绘制价格线
+            miniCtx.strokeStyle = '#ffffff';
+            miniCtx.lineWidth = 2;
+            miniCtx.beginPath();
+            
+            miniData.forEach((point, index) => {
+                const x = padding + (index / (miniData.length - 1)) * chartWidth;
+                // 修改：移除1-计算，这样y轴坐标就会从下到上增长，符合价格图表惯例
+                const y = padding + chartHeight - ((point.price - minPrice) / priceRange) * chartHeight;
+                
+                if (index === 0) {
+                    miniCtx.moveTo(x, y);
+                } else {
+                    miniCtx.lineTo(x, y);
+                }
+            });
+            
+            miniCtx.stroke();
+            
+            // 标记预测点
+            if (predictionPointIndex >= 0 && predictionPointIndex < miniData.length) {
+                const predX = padding + (predictionPointIndex / (miniData.length - 1)) * chartWidth;
+                // 修改：预测点的y坐标也需要调整计算方式
+                const predY = padding + chartHeight - ((miniData[predictionPointIndex].price - minPrice) / priceRange) * chartHeight;
+                
+                // 预测点标记
+                miniCtx.fillStyle = '#FFD700';
+                miniCtx.beginPath();
+                miniCtx.arc(predX, predY, 4, 0, 2 * Math.PI);
+                miniCtx.fill();
+                
+                // 预测点边框
+                miniCtx.strokeStyle = '#ffffff';
+                miniCtx.lineWidth = 2;
+                miniCtx.stroke();
+                
+                // 垂直参考线
+                miniCtx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+                miniCtx.lineWidth = 1;
+                miniCtx.setLineDash([3, 3]);
+                miniCtx.beginPath();
+                miniCtx.moveTo(predX, padding);
+                miniCtx.lineTo(predX, height - padding);
+                miniCtx.stroke();
+                miniCtx.setLineDash([]);
+            }
+            
+            // 标记验证时间点
+            verificationTimepoints.forEach(timeIndex => {
+                const verificationIndex = timeIndex - startIndex;
+                if (verificationIndex >= 0 && verificationIndex < miniData.length) {
+                    const verX = padding + (verificationIndex / (miniData.length - 1)) * chartWidth;
+                    const verY = padding + ((maxPrice - miniData[verificationIndex].price) / priceRange) * chartHeight;
+                    
+                    // 验证点标记
+                    miniCtx.fillStyle = '#4CAF50';
+                    miniCtx.beginPath();
+                    miniCtx.arc(verX, verY, 3, 0, 2 * Math.PI);
+                    miniCtx.fill();
+                }
+            });
+            
+            // 添加时间标签
+            miniCtx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+            miniCtx.font = '10px Arial';
+            miniCtx.textAlign = 'center';
+            
+            // 修改标签文本，显示相对天数
+            miniCtx.fillText(`-${centerIndex - startIndex}d`, padding, height - 5);
+            if (predictionPointIndex >= 0 && predictionPointIndex < miniData.length) {
+                const predX = padding + (predictionPointIndex / (miniData.length - 1)) * chartWidth;
+                miniCtx.fillText('预测', predX, height - 5);
+            }
+            miniCtx.fillText(`+${endIndex - centerIndex}d`, width - padding, height - 5);
+            
+            // 添加价格范围标签 - 修改位置：minPrice现在在底部，maxPrice在顶部
+            miniCtx.textAlign = 'right';
+            miniCtx.fillText('$' + maxPrice.toFixed(0), width - 5, padding + 10);
+            miniCtx.fillText('$' + minPrice.toFixed(0), width - 5, height - padding - 5);
+        }
+        
+        function toggleTweetDetail(index) {
+            const content = document.getElementById('detail-' + index);
+            const arrow = document.getElementById('arrow-' + index);
+            content.classList.toggle('active');
+            arrow.textContent = content.classList.contains('active') ? '▲' : '▼';
+        }
+        
+        // 搜索结果手风琴切换
+        function toggleSearchAccordion(element) {
+            const accordionItem = element.parentElement;
+            const isOpen = accordionItem.classList.contains('open');
+            
+            // 可以同时打开多个accordion
+            if (isOpen) {
+                accordionItem.classList.remove('open');
+            } else {
+                accordionItem.classList.add('open');
+            }
+        }
+        
+        // 精确计算坐标 - 基于图片尺寸
+        function calculatePreciseCoordinates(pred, imgRect) {
+            const relativeX = pred.relative_x || 0.5;
+            const relativeY = pred.relative_y || 0.5;
+            
+            const percentX = Math.max(5, Math.min(95, relativeX * 100));
+            const percentY = Math.max(5, Math.min(95, relativeY * 100));
+            
+            return {
+                percentX,
+                percentY,
+                pixelX: imgRect.width * relativeX,
+                pixelY: imgRect.height * relativeY
+            };
+        }
+        
+        // 添加CSS hotpoint
+        function addCSSHotpoint(prediction, index) {
+            const wrapper = document.getElementById('chartWrapper');
+            const img = document.getElementById('priceChartImg');
+            if (!wrapper || !img) return;
+            
+            const imgRect = img.getBoundingClientRect();
+            const coords = calculatePreciseCoordinates(prediction, imgRect);
+            
+            // 根据准确率确定颜色
+            const getColorByAccuracy = (accuracy) => {
+                if (accuracy >= 80) return '#28a745';
+                if (accuracy >= 70) return '#4CAF50';
+                if (accuracy >= 60) return '#ffc107';
+                return '#dc3545';
+            };
+            
+            const accuracy = prediction.verification_accuracy || 0;
+            const color = getColorByAccuracy(accuracy);
+            
+            const shapes = {
+                'bullish': `<polygon points="14,3 26,23 2,23" fill="${color}" stroke="white" stroke-width="2"/>`,
+                'bearish': `<polygon points="14,25 26,5 2,5" fill="${color}" stroke="white" stroke-width="2"/>`,
+                'neutral': `<circle cx="14" cy="14" r="11" fill="${color}" stroke="white" stroke-width="2"/>`
+            };
+            
+            const sentiment = prediction.sentiment || 'bullish';
+            
+            const hotpoint = document.createElement('div');
+            hotpoint.className = 'chart-hotpoint';
+            hotpoint.style.left = `${coords.percentX}%`;
+            hotpoint.style.top = `${coords.percentY}%`;
+            
+            hotpoint.innerHTML = `
+                <svg viewBox="0 0 28 28">
+                    ${shapes[sentiment]}
+                    <text x="14" y="18" text-anchor="middle" fill="white" 
+                        font-size="9" font-weight="bold" 
+                        font-family="'Liberation Sans', 'Cantarell', 'DejaVu Sans', Arial, sans-serif">
+                        ${index + 1}
+                    </text>
+                </svg>
+            `;
+            
+            // 点击事件 - 显示固定悬浮面板
+            hotpoint.addEventListener('click', (e) => {
+                e.stopPropagation();
+                selectHotpoint(prediction, index);
+                
+                // 更新活动状态
+                document.querySelectorAll('.chart-hotpoint').forEach(h => h.classList.remove('active'));
+                hotpoint.classList.add('active');
+            });
+            
+            wrapper.appendChild(hotpoint);
+            hotpoints.push({
+                element: hotpoint,
+                prediction: prediction,
+                coords: coords
+            });
+        }
+        
+        // 选择hotpoint并显示详情
+        function selectHotpoint(prediction, index) {
+            selectedHotpoint = {
+                ...prediction,
+                index: index
+            };
+            showFixedFloatingPanel(prediction, index);
+        }
+        
+        // 显示固定悬浮面板
+        function showFixedFloatingPanel(prediction, index) {
+            const panel = document.getElementById('fixedFloatingPanel');
+            const content = document.getElementById('panelContent');
+            const title = document.getElementById('panelTitle');
+            const subtitle = document.getElementById('panelSubtitle');
+            
+            // 更新标题
+            title.textContent = `📊 预测 #${index + 1} - ${prediction.label || ''}`;
+            subtitle.textContent = `${prediction.timeframe || ''} | ${prediction.sentiment || ''}`;
+            
+            // 生成内容
+            content.innerHTML = generatePredictionDetailHTML(prediction);
+            
+            // 显示面板
+            panel.classList.add('show');
+            
+            // 绘制小图表
+            drawMiniChart(prediction);
+        }
+        
+        function hidePredictionPanel() {
+            const panel = document.getElementById('fixedFloatingPanel');
+            panel.classList.remove('show');
+        }
+        
+        // 生成预测详情HTML
+        function generatePredictionDetailHTML(pred) {
+            const acc = Math.max(0, Math.min(100, (pred.verification_accuracy || 0)));
+            const accClass = acc >= 80 ? 'accuracy-excellent' : acc >= 70 ? 'accuracy-good' : acc >= 60 ? 'accuracy-average' : 'accuracy-poor';
+            
+            // 选择情绪徽章
+            const sentimentClass = pred.sentiment === 'bullish' ? 'sentiment-bullish' : pred.sentiment === 'bearish' ? 'sentiment-bearish' : 'sentiment-neutral';
+            const sentimentText = pred.sentiment || 'N/A';
+            
+            // 验证结果
+            let verificationHTML = '';
+            if (pred.real_verification && Array.isArray(pred.real_verification.check_points)) {
+                verificationHTML += '<div class="verification-grid">';
+                pred.real_verification.check_points.forEach(cp => {
+                    const cls = cp.is_correct ? 'verification-item verification-correct' : (cp.is_correct === false ? 'verification-item verification-incorrect' : 'verification-item');
+                    const label = cp.check_point || '';
+                    const change = (cp.price_change_percent !== undefined && cp.price_change_percent !== null) ? `${cp.price_change_percent.toFixed(1)}%` : 'N/A';
+                    const emoji = cp.is_correct ? '✅' : (cp.is_correct === false ? '❌' : '⚠️');
+                    verificationHTML += `<div class="${cls}">${label}: ${emoji} ${change}</div>`;
+                });
+                verificationHTML += '</div>';
+            } else {
+                verificationHTML = '<div class="verification-item">暂无验证数据</div>';
+            }
+            
+            return `
+                <div class="prediction-details">
+                    <div class="detail-section">
+                        <div class="section-title-small">基础信息</div>
+                        <div class="detail-row"><div class="detail-label">时间</div><div class="detail-value">${pred.date || 'N/A'}</div></div>
+                        <div class="detail-row"><div class="detail-label">价格</div><div class="detail-value">${pred.display_price || pred.price || 'N/A'}</div></div>
+                        <div class="detail-row"><div class="detail-label">情绪</div><div class="detail-value"><span class="sentiment-badge ${sentimentClass}">${sentimentText}</span></div></div>
+                        <div class="detail-row"><div class="detail-label">准确率</div><div class="detail-value">${acc.toFixed(1)}%</div></div>
+                        <div class="accuracy-meter"><div class="accuracy-fill ${accClass}" style="width:${acc}%;"></div></div>
+                    </div>
+                    <div class="detail-section">
+                        <div class="section-title-small">预测内容</div>
+                        <div class="prediction-content">${pred.content || 'N/A'}</div>
+                    </div>
+                    <div class="detail-section">
+                        <div class="section-title-small">验证结果</div>
+                        ${verificationHTML}
+                    </div>
+                </div>
+            `;
+        }
+        
+        // 初始化图表交互与CSS热点
+        function initChartInteractions() {
+            const wrapper = document.getElementById('chartWrapper');
+            if (!wrapper || !predictionData || predictionData.length === 0) return;
+            
+            // 获取图表图片
+            const img = wrapper.querySelector('img') || document.getElementById('priceChartImg');
+            if (!img) return;
+            
+            // 图片加载后渲染热点
+            img.onload = function() {
+                predictionData.forEach((pred, index) => addCSSHotpoint(pred, index));
+            };
+            
+            // 若图片已缓存完成，直接渲染
+            if (img.complete) {
+                predictionData.forEach((pred, index) => addCSSHotpoint(pred, index));
+            }
+        }
+    </script>
+</body>
+</html>
