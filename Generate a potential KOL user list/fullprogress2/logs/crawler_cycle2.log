@@ -1,0 +1,913 @@
+2025-06-20 16:37:42,743 - INFO - FollowingCrawler:__init__ - 初始化爬虫，循环次数: 2, 输入文件: following1.db, 输出数据库: following2.db, following阈值: 2200
+2025-06-20 16:37:42,778 - INFO - FollowingCrawler:_init_database - 数据库初始化完成
+2025-06-20 16:37:42,779 - INFO - FollowingCrawler:run - 开始执行run方法，输入文件: following1.db
+2025-06-20 16:37:42,779 - INFO - FollowingCrawler:run - 检测到DB输入文件，开始从数据库加载用户
+2025-06-20 16:37:42,781 - INFO - FollowingCrawler:load_users_from_db - 从数据库 following1.db 中读取了 1000 个用户
+2025-06-20 16:37:42,781 - INFO - FollowingCrawler:run - 加载了 1000 个种子用户
+2025-06-20 16:37:42,781 - INFO - FollowingCrawler:run - 已按followers_count降序排列作者
+2025-06-20 16:37:42,781 - INFO - FollowingCrawler:run - 用户分布：低following用户(1000)，高following用户(0)
+2025-06-20 16:37:42,781 - INFO - FollowingCrawler:run - 处理第 1/1000 个作者: Elon Musk (following: 0)
+2025-06-20 16:37:42,781 - INFO - FollowingCrawler:process_author - 开始处理用户: Elon Musk (following: 0)
+2025-06-20 16:37:42,781 - INFO - FollowingCrawler:get_user_following - 开始获取用户 Elon Musk (ID:44196397) 的following... (friends_count: 0)
+2025-06-20 16:37:42,781 - INFO - FollowingCrawler:get_user_following - 开始请求API, 尝试次数: 1/3
+2025-06-20 16:37:42,781 - INFO - FollowingCrawler:get_user_following - 请求URL: https://api.tweetscout.io/v2/follows, Params: {'user_id': '44196397', 'limit': 100, 'order_by': 'score'}
+2025-06-20 16:38:41,117 - INFO - FollowingCrawler:get_user_following - API响应状态码: 200
+2025-06-20 16:38:41,123 - INFO - FollowingCrawler:get_user_following - 成功获取数据，条目数: 1151
+2025-06-20 16:38:41,123 - INFO - FollowingCrawler:get_user_following - 过滤后following数量(>2000): 1145/1151
+2025-06-20 16:38:41,124 - INFO - FollowingCrawler:get_user_following - Retrieved 1145 filtered following (>2000) for Elon Musk (remain 10000)
+2025-06-20 16:38:41,124 - INFO - FollowingCrawler:process_author - 将1145个用户分为23批处理，每批50个
+2025-06-20 16:38:41,124 - INFO - FollowingCrawler:process_author - 处理第1/23批用户...
+2025-06-20 16:38:41,132 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:38:41,132 - INFO - FollowingCrawler:process_author - 第1批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:38:41,633 - INFO - FollowingCrawler:process_author - 处理第2/23批用户...
+2025-06-20 16:38:41,640 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:38:41,640 - INFO - FollowingCrawler:process_author - 第2批处理完成，耗时0.01秒，平均每用户0.0001秒
+2025-06-20 16:38:42,141 - INFO - FollowingCrawler:process_author - 处理第3/23批用户...
+2025-06-20 16:38:42,147 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:38:42,147 - INFO - FollowingCrawler:process_author - 第3批处理完成，耗时0.01秒，平均每用户0.0001秒
+2025-06-20 16:38:42,648 - INFO - FollowingCrawler:process_author - 处理第4/23批用户...
+2025-06-20 16:38:42,656 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:38:42,656 - INFO - FollowingCrawler:process_author - 第4批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:38:43,157 - INFO - FollowingCrawler:process_author - 处理第5/23批用户...
+2025-06-20 16:38:43,166 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:38:43,166 - INFO - FollowingCrawler:process_author - 第5批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:38:43,667 - INFO - FollowingCrawler:process_author - 处理第6/23批用户...
+2025-06-20 16:38:43,674 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:38:43,674 - INFO - FollowingCrawler:process_author - 第6批处理完成，耗时0.01秒，平均每用户0.0001秒
+2025-06-20 16:38:44,175 - INFO - FollowingCrawler:process_author - 处理第7/23批用户...
+2025-06-20 16:38:44,182 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:38:44,183 - INFO - FollowingCrawler:process_author - 第7批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:38:44,684 - INFO - FollowingCrawler:process_author - 处理第8/23批用户...
+2025-06-20 16:38:44,691 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:38:44,691 - INFO - FollowingCrawler:process_author - 第8批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:38:45,192 - INFO - FollowingCrawler:process_author - 处理第9/23批用户...
+2025-06-20 16:38:45,200 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:38:45,200 - INFO - FollowingCrawler:process_author - 第9批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:38:45,701 - INFO - FollowingCrawler:process_author - 处理第10/23批用户...
+2025-06-20 16:38:45,709 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:38:45,709 - INFO - FollowingCrawler:process_author - 第10批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:38:46,210 - INFO - FollowingCrawler:process_author - 处理第11/23批用户...
+2025-06-20 16:38:46,217 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:38:46,217 - INFO - FollowingCrawler:process_author - 第11批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:38:46,718 - INFO - FollowingCrawler:process_author - 处理第12/23批用户...
+2025-06-20 16:38:46,725 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:38:46,725 - INFO - FollowingCrawler:process_author - 第12批处理完成，耗时0.01秒，平均每用户0.0001秒
+2025-06-20 16:38:47,226 - INFO - FollowingCrawler:process_author - 处理第13/23批用户...
+2025-06-20 16:38:47,234 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:38:47,234 - INFO - FollowingCrawler:process_author - 第13批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:38:47,734 - INFO - FollowingCrawler:process_author - 处理第14/23批用户...
+2025-06-20 16:38:47,745 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:38:47,745 - INFO - FollowingCrawler:process_author - 第14批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:38:48,245 - INFO - FollowingCrawler:process_author - 处理第15/23批用户...
+2025-06-20 16:38:48,254 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:38:48,255 - INFO - FollowingCrawler:process_author - 第15批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:38:48,755 - INFO - FollowingCrawler:process_author - 处理第16/23批用户...
+2025-06-20 16:38:48,764 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:38:48,765 - INFO - FollowingCrawler:process_author - 第16批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:38:49,265 - INFO - FollowingCrawler:process_author - 处理第17/23批用户...
+2025-06-20 16:38:49,273 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:38:49,273 - INFO - FollowingCrawler:process_author - 第17批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:38:49,774 - INFO - FollowingCrawler:process_author - 处理第18/23批用户...
+2025-06-20 16:38:49,782 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:38:49,782 - INFO - FollowingCrawler:process_author - 第18批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:38:50,283 - INFO - FollowingCrawler:process_author - 处理第19/23批用户...
+2025-06-20 16:38:50,292 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:38:50,292 - INFO - FollowingCrawler:process_author - 第19批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:38:50,793 - INFO - FollowingCrawler:process_author - 处理第20/23批用户...
+2025-06-20 16:38:50,803 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:38:50,803 - INFO - FollowingCrawler:process_author - 第20批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:38:51,304 - INFO - FollowingCrawler:process_author - 处理第21/23批用户...
+2025-06-20 16:38:51,316 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:38:51,316 - INFO - FollowingCrawler:process_author - 第21批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:38:51,816 - INFO - FollowingCrawler:process_author - 处理第22/23批用户...
+2025-06-20 16:38:51,827 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:38:51,827 - INFO - FollowingCrawler:process_author - 第22批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:38:52,328 - INFO - FollowingCrawler:process_author - 处理第23/23批用户...
+2025-06-20 16:38:52,338 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增45个用户
+2025-06-20 16:38:52,339 - INFO - FollowingCrawler:process_author - 第23批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:38:52,344 - INFO - FollowingCrawler:process_author - Completed author Elon Musk, saved 1145 users (total_valid=1145), 总耗时: 69.56秒
+2025-06-20 16:38:52,345 - INFO - FollowingCrawler:run - 该作者新增了 1145 个用户，当前总计: 1145/10000
+2025-06-20 16:38:52,345 - INFO - FollowingCrawler:run - 处理第 2/1000 个作者: Donald J. Trump (following: 0)
+2025-06-20 16:38:52,345 - INFO - FollowingCrawler:process_author - 开始处理用户: Donald J. Trump (following: 0)
+2025-06-20 16:38:52,345 - INFO - FollowingCrawler:get_user_following - 开始获取用户 Donald J. Trump (ID:25073877) 的following... (friends_count: 0)
+2025-06-20 16:38:52,345 - INFO - FollowingCrawler:get_user_following - 开始请求API, 尝试次数: 1/3
+2025-06-20 16:38:52,345 - INFO - FollowingCrawler:get_user_following - 请求URL: https://api.tweetscout.io/v2/follows, Params: {'user_id': '25073877', 'limit': 100, 'order_by': 'score'}
+2025-06-20 16:38:56,916 - INFO - FollowingCrawler:get_user_following - API响应状态码: 200
+2025-06-20 16:38:56,917 - INFO - FollowingCrawler:get_user_following - 成功获取数据，条目数: 53
+2025-06-20 16:38:56,917 - INFO - FollowingCrawler:get_user_following - 过滤后following数量(>2000): 53/53
+2025-06-20 16:38:56,917 - INFO - FollowingCrawler:get_user_following - Retrieved 53 filtered following (>2000) for Donald J. Trump (remain 8855)
+2025-06-20 16:38:56,917 - INFO - FollowingCrawler:process_author - 将53个用户分为2批处理，每批50个
+2025-06-20 16:38:56,917 - INFO - FollowingCrawler:process_author - 处理第1/2批用户...
+2025-06-20 16:38:56,930 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:38:56,930 - INFO - FollowingCrawler:process_author - 第1批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 16:38:57,430 - INFO - FollowingCrawler:process_author - 处理第2/2批用户...
+2025-06-20 16:38:57,436 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增3个用户
+2025-06-20 16:38:57,436 - INFO - FollowingCrawler:process_author - 第2批处理完成，耗时0.01秒，平均每用户0.0019秒
+2025-06-20 16:38:57,441 - INFO - FollowingCrawler:process_author - Completed author Donald J. Trump, saved 53 users (total_valid=1198), 总耗时: 5.10秒
+2025-06-20 16:38:57,441 - INFO - FollowingCrawler:run - 该作者新增了 53 个用户，当前总计: 1198/10000
+2025-06-20 16:38:57,441 - INFO - FollowingCrawler:run - 处理第 3/1000 个作者: Bill Gates (following: 0)
+2025-06-20 16:38:57,441 - INFO - FollowingCrawler:process_author - 开始处理用户: Bill Gates (following: 0)
+2025-06-20 16:38:57,441 - INFO - FollowingCrawler:get_user_following - 开始获取用户 Bill Gates (ID:50393960) 的following... (friends_count: 0)
+2025-06-20 16:38:57,441 - INFO - FollowingCrawler:get_user_following - 开始请求API, 尝试次数: 1/3
+2025-06-20 16:38:57,442 - INFO - FollowingCrawler:get_user_following - 请求URL: https://api.tweetscout.io/v2/follows, Params: {'user_id': '50393960', 'limit': 100, 'order_by': 'score'}
+2025-06-20 16:39:24,219 - INFO - FollowingCrawler:get_user_following - API响应状态码: 200
+2025-06-20 16:39:24,222 - INFO - FollowingCrawler:get_user_following - 成功获取数据，条目数: 573
+2025-06-20 16:39:24,222 - INFO - FollowingCrawler:get_user_following - 过滤后following数量(>2000): 531/573
+2025-06-20 16:39:24,222 - INFO - FollowingCrawler:get_user_following - Retrieved 531 filtered following (>2000) for Bill Gates (remain 8802)
+2025-06-20 16:39:24,222 - INFO - FollowingCrawler:process_author - 将531个用户分为11批处理，每批50个
+2025-06-20 16:39:24,222 - INFO - FollowingCrawler:process_author - 处理第1/11批用户...
+2025-06-20 16:39:24,234 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:39:24,234 - INFO - FollowingCrawler:process_author - 第1批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:39:24,734 - INFO - FollowingCrawler:process_author - 处理第2/11批用户...
+2025-06-20 16:39:24,744 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:39:24,744 - INFO - FollowingCrawler:process_author - 第2批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:39:25,245 - INFO - FollowingCrawler:process_author - 处理第3/11批用户...
+2025-06-20 16:39:25,255 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:39:25,255 - INFO - FollowingCrawler:process_author - 第3批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:39:25,756 - INFO - FollowingCrawler:process_author - 处理第4/11批用户...
+2025-06-20 16:39:25,766 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:39:25,766 - INFO - FollowingCrawler:process_author - 第4批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:39:26,266 - INFO - FollowingCrawler:process_author - 处理第5/11批用户...
+2025-06-20 16:39:26,277 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:39:26,277 - INFO - FollowingCrawler:process_author - 第5批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:39:26,778 - INFO - FollowingCrawler:process_author - 处理第6/11批用户...
+2025-06-20 16:39:26,787 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:39:26,787 - INFO - FollowingCrawler:process_author - 第6批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:39:27,289 - INFO - FollowingCrawler:process_author - 处理第7/11批用户...
+2025-06-20 16:39:27,300 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:39:27,300 - INFO - FollowingCrawler:process_author - 第7批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:39:27,800 - INFO - FollowingCrawler:process_author - 处理第8/11批用户...
+2025-06-20 16:39:27,812 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:39:27,812 - INFO - FollowingCrawler:process_author - 第8批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:39:28,313 - INFO - FollowingCrawler:process_author - 处理第9/11批用户...
+2025-06-20 16:39:28,322 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:39:28,322 - INFO - FollowingCrawler:process_author - 第9批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:39:28,823 - INFO - FollowingCrawler:process_author - 处理第10/11批用户...
+2025-06-20 16:39:28,832 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:39:28,833 - INFO - FollowingCrawler:process_author - 第10批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:39:29,333 - INFO - FollowingCrawler:process_author - 处理第11/11批用户...
+2025-06-20 16:39:29,343 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增31个用户
+2025-06-20 16:39:29,344 - INFO - FollowingCrawler:process_author - 第11批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 16:39:29,349 - INFO - FollowingCrawler:process_author - Completed author Bill Gates, saved 531 users (total_valid=1729), 总耗时: 31.91秒
+2025-06-20 16:39:29,349 - INFO - FollowingCrawler:run - 该作者新增了 531 个用户，当前总计: 1729/10000
+2025-06-20 16:39:29,349 - INFO - FollowingCrawler:run - 处理第 4/1000 个作者: BBC News (World) (following: 0)
+2025-06-20 16:39:29,349 - INFO - FollowingCrawler:process_author - 开始处理用户: BBC News (World) (following: 0)
+2025-06-20 16:39:29,349 - INFO - FollowingCrawler:get_user_following - 开始获取用户 BBC News (World) (ID:742143) 的following... (friends_count: 0)
+2025-06-20 16:39:29,349 - INFO - FollowingCrawler:get_user_following - 开始请求API, 尝试次数: 1/3
+2025-06-20 16:39:29,349 - INFO - FollowingCrawler:get_user_following - 请求URL: https://api.tweetscout.io/v2/follows, Params: {'user_id': '742143', 'limit': 100, 'order_by': 'score'}
+2025-06-20 16:39:38,565 - INFO - FollowingCrawler:get_user_following - API响应状态码: 200
+2025-06-20 16:39:38,565 - INFO - FollowingCrawler:get_user_following - 成功获取数据，条目数: 17
+2025-06-20 16:39:38,565 - INFO - FollowingCrawler:get_user_following - 过滤后following数量(>2000): 17/17
+2025-06-20 16:39:38,565 - INFO - FollowingCrawler:get_user_following - Retrieved 17 filtered following (>2000) for BBC News (World) (remain 8271)
+2025-06-20 16:39:38,565 - INFO - FollowingCrawler:process_author - 将17个用户分为1批处理，每批50个
+2025-06-20 16:39:38,565 - INFO - FollowingCrawler:process_author - 处理第1/1批用户...
+2025-06-20 16:39:38,576 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增17个用户
+2025-06-20 16:39:38,576 - INFO - FollowingCrawler:process_author - 第1批处理完成，耗时0.01秒，平均每用户0.0006秒
+2025-06-20 16:39:38,581 - INFO - FollowingCrawler:process_author - Completed author BBC News (World), saved 17 users (total_valid=1746), 总耗时: 9.23秒
+2025-06-20 16:39:38,581 - INFO - FollowingCrawler:run - 该作者新增了 17 个用户，当前总计: 1746/10000
+2025-06-20 16:39:38,581 - INFO - FollowingCrawler:run - 处理第 5/1000 个作者: ye (following: 0)
+2025-06-20 16:39:38,581 - INFO - FollowingCrawler:process_author - 开始处理用户: ye (following: 0)
+2025-06-20 16:39:38,581 - INFO - FollowingCrawler:get_user_following - 开始获取用户 ye (ID:169686021) 的following... (friends_count: 0)
+2025-06-20 16:39:38,581 - INFO - FollowingCrawler:get_user_following - 开始请求API, 尝试次数: 1/3
+2025-06-20 16:39:38,581 - INFO - FollowingCrawler:get_user_following - 请求URL: https://api.tweetscout.io/v2/follows, Params: {'user_id': '169686021', 'limit': 100, 'order_by': 'score'}
+2025-06-20 16:39:42,328 - INFO - FollowingCrawler:get_user_following - API响应状态码: 200
+2025-06-20 16:39:42,328 - INFO - FollowingCrawler:get_user_following - 成功获取数据，条目数: 4
+2025-06-20 16:39:42,328 - INFO - FollowingCrawler:get_user_following - 过滤后following数量(>2000): 4/4
+2025-06-20 16:39:42,328 - INFO - FollowingCrawler:get_user_following - Retrieved 4 filtered following (>2000) for ye (remain 8254)
+2025-06-20 16:39:42,328 - INFO - FollowingCrawler:process_author - 将4个用户分为1批处理，每批50个
+2025-06-20 16:39:42,328 - INFO - FollowingCrawler:process_author - 处理第1/1批用户...
+2025-06-20 16:39:42,335 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增4个用户
+2025-06-20 16:39:42,335 - INFO - FollowingCrawler:process_author - 第1批处理完成，耗时0.01秒，平均每用户0.0017秒
+2025-06-20 16:39:42,341 - INFO - FollowingCrawler:process_author - Completed author ye, saved 4 users (total_valid=1750), 总耗时: 3.76秒
+2025-06-20 16:39:42,342 - INFO - FollowingCrawler:run - 该作者新增了 4 个用户，当前总计: 1750/10000
+2025-06-20 16:39:42,342 - INFO - FollowingCrawler:run - 处理第 6/1000 个作者: MrBeast (following: 0)
+2025-06-20 16:39:42,342 - INFO - FollowingCrawler:process_author - 开始处理用户: MrBeast (following: 0)
+2025-06-20 16:39:42,342 - INFO - FollowingCrawler:get_user_following - 开始获取用户 MrBeast (ID:2455740283) 的following... (friends_count: 0)
+2025-06-20 16:39:42,342 - INFO - FollowingCrawler:get_user_following - 开始请求API, 尝试次数: 1/3
+2025-06-20 16:39:42,342 - INFO - FollowingCrawler:get_user_following - 请求URL: https://api.tweetscout.io/v2/follows, Params: {'user_id': '2455740283', 'limit': 100, 'order_by': 'score'}
+2025-06-20 16:41:42,984 - INFO - FollowingCrawler:get_user_following - API响应状态码: 200
+2025-06-20 16:41:42,995 - INFO - FollowingCrawler:get_user_following - 成功获取数据，条目数: 2116
+2025-06-20 16:41:42,996 - INFO - FollowingCrawler:get_user_following - 过滤后following数量(>2000): 1717/2116
+2025-06-20 16:41:42,996 - INFO - FollowingCrawler:get_user_following - Retrieved 1717 filtered following (>2000) for MrBeast (remain 8250)
+2025-06-20 16:41:42,996 - INFO - FollowingCrawler:process_author - 将1717个用户分为35批处理，每批50个
+2025-06-20 16:41:42,996 - INFO - FollowingCrawler:process_author - 处理第1/35批用户...
+2025-06-20 16:41:43,008 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:43,009 - INFO - FollowingCrawler:process_author - 第1批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 16:41:43,509 - INFO - FollowingCrawler:process_author - 处理第2/35批用户...
+2025-06-20 16:41:43,522 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:43,522 - INFO - FollowingCrawler:process_author - 第2批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 16:41:44,023 - INFO - FollowingCrawler:process_author - 处理第3/35批用户...
+2025-06-20 16:41:44,035 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:44,035 - INFO - FollowingCrawler:process_author - 第3批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:41:44,535 - INFO - FollowingCrawler:process_author - 处理第4/35批用户...
+2025-06-20 16:41:44,548 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:44,548 - INFO - FollowingCrawler:process_author - 第4批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 16:41:45,049 - INFO - FollowingCrawler:process_author - 处理第5/35批用户...
+2025-06-20 16:41:45,061 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:45,061 - INFO - FollowingCrawler:process_author - 第5批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:41:45,562 - INFO - FollowingCrawler:process_author - 处理第6/35批用户...
+2025-06-20 16:41:45,575 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:45,575 - INFO - FollowingCrawler:process_author - 第6批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 16:41:46,076 - INFO - FollowingCrawler:process_author - 处理第7/35批用户...
+2025-06-20 16:41:46,087 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:46,087 - INFO - FollowingCrawler:process_author - 第7批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:41:46,588 - INFO - FollowingCrawler:process_author - 处理第8/35批用户...
+2025-06-20 16:41:46,598 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:46,599 - INFO - FollowingCrawler:process_author - 第8批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:41:47,099 - INFO - FollowingCrawler:process_author - 处理第9/35批用户...
+2025-06-20 16:41:47,113 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:47,113 - INFO - FollowingCrawler:process_author - 第9批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 16:41:47,614 - INFO - FollowingCrawler:process_author - 处理第10/35批用户...
+2025-06-20 16:41:47,628 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:47,628 - INFO - FollowingCrawler:process_author - 第10批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 16:41:48,129 - INFO - FollowingCrawler:process_author - 处理第11/35批用户...
+2025-06-20 16:41:48,140 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:48,140 - INFO - FollowingCrawler:process_author - 第11批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:41:48,641 - INFO - FollowingCrawler:process_author - 处理第12/35批用户...
+2025-06-20 16:41:48,652 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:48,652 - INFO - FollowingCrawler:process_author - 第12批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:41:49,152 - INFO - FollowingCrawler:process_author - 处理第13/35批用户...
+2025-06-20 16:41:49,166 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:49,166 - INFO - FollowingCrawler:process_author - 第13批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 16:41:49,667 - INFO - FollowingCrawler:process_author - 处理第14/35批用户...
+2025-06-20 16:41:49,679 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:49,679 - INFO - FollowingCrawler:process_author - 第14批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:41:50,179 - INFO - FollowingCrawler:process_author - 处理第15/35批用户...
+2025-06-20 16:41:50,193 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:50,193 - INFO - FollowingCrawler:process_author - 第15批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 16:41:50,693 - INFO - FollowingCrawler:process_author - 处理第16/35批用户...
+2025-06-20 16:41:50,705 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:50,705 - INFO - FollowingCrawler:process_author - 第16批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:41:51,205 - INFO - FollowingCrawler:process_author - 处理第17/35批用户...
+2025-06-20 16:41:51,218 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:51,218 - INFO - FollowingCrawler:process_author - 第17批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 16:41:51,719 - INFO - FollowingCrawler:process_author - 处理第18/35批用户...
+2025-06-20 16:41:51,731 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:51,731 - INFO - FollowingCrawler:process_author - 第18批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:41:52,231 - INFO - FollowingCrawler:process_author - 处理第19/35批用户...
+2025-06-20 16:41:52,245 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:52,245 - INFO - FollowingCrawler:process_author - 第19批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 16:41:52,745 - INFO - FollowingCrawler:process_author - 处理第20/35批用户...
+2025-06-20 16:41:52,756 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:52,756 - INFO - FollowingCrawler:process_author - 第20批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:41:53,257 - INFO - FollowingCrawler:process_author - 处理第21/35批用户...
+2025-06-20 16:41:53,269 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:53,269 - INFO - FollowingCrawler:process_author - 第21批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:41:53,770 - INFO - FollowingCrawler:process_author - 处理第22/35批用户...
+2025-06-20 16:41:53,783 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:53,783 - INFO - FollowingCrawler:process_author - 第22批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 16:41:54,284 - INFO - FollowingCrawler:process_author - 处理第23/35批用户...
+2025-06-20 16:41:54,297 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:54,297 - INFO - FollowingCrawler:process_author - 第23批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 16:41:54,797 - INFO - FollowingCrawler:process_author - 处理第24/35批用户...
+2025-06-20 16:41:54,809 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:54,809 - INFO - FollowingCrawler:process_author - 第24批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:41:55,309 - INFO - FollowingCrawler:process_author - 处理第25/35批用户...
+2025-06-20 16:41:55,323 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:55,323 - INFO - FollowingCrawler:process_author - 第25批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 16:41:55,824 - INFO - FollowingCrawler:process_author - 处理第26/35批用户...
+2025-06-20 16:41:55,838 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:55,838 - INFO - FollowingCrawler:process_author - 第26批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 16:41:56,339 - INFO - FollowingCrawler:process_author - 处理第27/35批用户...
+2025-06-20 16:41:56,350 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:56,350 - INFO - FollowingCrawler:process_author - 第27批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:41:56,851 - INFO - FollowingCrawler:process_author - 处理第28/35批用户...
+2025-06-20 16:41:56,862 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:56,863 - INFO - FollowingCrawler:process_author - 第28批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:41:57,363 - INFO - FollowingCrawler:process_author - 处理第29/35批用户...
+2025-06-20 16:41:57,374 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:57,375 - INFO - FollowingCrawler:process_author - 第29批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:41:57,875 - INFO - FollowingCrawler:process_author - 处理第30/35批用户...
+2025-06-20 16:41:57,887 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:57,888 - INFO - FollowingCrawler:process_author - 第30批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:41:58,389 - INFO - FollowingCrawler:process_author - 处理第31/35批用户...
+2025-06-20 16:41:58,401 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:58,401 - INFO - FollowingCrawler:process_author - 第31批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 16:41:58,902 - INFO - FollowingCrawler:process_author - 处理第32/35批用户...
+2025-06-20 16:41:58,915 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:58,915 - INFO - FollowingCrawler:process_author - 第32批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:41:59,415 - INFO - FollowingCrawler:process_author - 处理第33/35批用户...
+2025-06-20 16:41:59,429 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:59,429 - INFO - FollowingCrawler:process_author - 第33批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 16:41:59,930 - INFO - FollowingCrawler:process_author - 处理第34/35批用户...
+2025-06-20 16:41:59,942 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:41:59,942 - INFO - FollowingCrawler:process_author - 第34批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:42:00,442 - INFO - FollowingCrawler:process_author - 处理第35/35批用户...
+2025-06-20 16:42:00,452 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增17个用户
+2025-06-20 16:42:00,452 - INFO - FollowingCrawler:process_author - 第35批处理完成，耗时0.01秒，平均每用户0.0006秒
+2025-06-20 16:42:00,458 - INFO - FollowingCrawler:process_author - Completed author MrBeast, saved 1717 users (total_valid=3467), 总耗时: 138.12秒
+2025-06-20 16:42:00,459 - INFO - FollowingCrawler:run - 该作者新增了 1717 个用户，当前总计: 3467/10000
+2025-06-20 16:42:00,459 - INFO - FollowingCrawler:run - 处理第 7/1000 个作者: Ronaldinho (following: 0)
+2025-06-20 16:42:00,459 - INFO - FollowingCrawler:process_author - 开始处理用户: Ronaldinho (following: 0)
+2025-06-20 16:42:00,459 - INFO - FollowingCrawler:get_user_following - 开始获取用户 Ronaldinho (ID:29479000) 的following... (friends_count: 0)
+2025-06-20 16:42:00,459 - INFO - FollowingCrawler:get_user_following - 开始请求API, 尝试次数: 1/3
+2025-06-20 16:42:00,459 - INFO - FollowingCrawler:get_user_following - 请求URL: https://api.tweetscout.io/v2/follows, Params: {'user_id': '29479000', 'limit': 100, 'order_by': 'score'}
+2025-06-20 16:42:07,379 - INFO - FollowingCrawler:get_user_following - API响应状态码: 200
+2025-06-20 16:42:07,380 - INFO - FollowingCrawler:get_user_following - 成功获取数据，条目数: 132
+2025-06-20 16:42:07,380 - INFO - FollowingCrawler:get_user_following - 过滤后following数量(>2000): 123/132
+2025-06-20 16:42:07,380 - INFO - FollowingCrawler:get_user_following - Retrieved 123 filtered following (>2000) for Ronaldinho (remain 6533)
+2025-06-20 16:42:07,380 - INFO - FollowingCrawler:process_author - 将123个用户分为3批处理，每批50个
+2025-06-20 16:42:07,380 - INFO - FollowingCrawler:process_author - 处理第1/3批用户...
+2025-06-20 16:42:07,394 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:42:07,394 - INFO - FollowingCrawler:process_author - 第1批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 16:42:07,894 - INFO - FollowingCrawler:process_author - 处理第2/3批用户...
+2025-06-20 16:42:07,907 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:42:07,907 - INFO - FollowingCrawler:process_author - 第2批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 16:42:08,408 - INFO - FollowingCrawler:process_author - 处理第3/3批用户...
+2025-06-20 16:42:08,419 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增23个用户
+2025-06-20 16:42:08,419 - INFO - FollowingCrawler:process_author - 第3批处理完成，耗时0.01秒，平均每用户0.0005秒
+2025-06-20 16:42:08,424 - INFO - FollowingCrawler:process_author - Completed author Ronaldinho, saved 123 users (total_valid=3590), 总耗时: 7.96秒
+2025-06-20 16:42:08,424 - INFO - FollowingCrawler:run - 该作者新增了 123 个用户，当前总计: 3590/10000
+2025-06-20 16:42:08,424 - INFO - FollowingCrawler:run - 处理第 8/1000 个作者: Kamala Harris (following: 0)
+2025-06-20 16:42:08,424 - INFO - FollowingCrawler:process_author - 开始处理用户: Kamala Harris (following: 0)
+2025-06-20 16:42:08,424 - INFO - FollowingCrawler:get_user_following - 开始获取用户 Kamala Harris (ID:30354991) 的following... (friends_count: 0)
+2025-06-20 16:42:08,424 - INFO - FollowingCrawler:get_user_following - 开始请求API, 尝试次数: 1/3
+2025-06-20 16:42:08,424 - INFO - FollowingCrawler:get_user_following - 请求URL: https://api.tweetscout.io/v2/follows, Params: {'user_id': '30354991', 'limit': 100, 'order_by': 'score'}
+2025-06-20 16:42:56,508 - INFO - FollowingCrawler:get_user_following - API响应状态码: 200
+2025-06-20 16:42:56,511 - INFO - FollowingCrawler:get_user_following - 成功获取数据，条目数: 702
+2025-06-20 16:42:56,511 - INFO - FollowingCrawler:get_user_following - 过滤后following数量(>2000): 629/702
+2025-06-20 16:42:56,511 - INFO - FollowingCrawler:get_user_following - Retrieved 629 filtered following (>2000) for Kamala Harris (remain 6410)
+2025-06-20 16:42:56,512 - INFO - FollowingCrawler:process_author - 将629个用户分为13批处理，每批50个
+2025-06-20 16:42:56,512 - INFO - FollowingCrawler:process_author - 处理第1/13批用户...
+2025-06-20 16:42:56,524 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:42:56,524 - INFO - FollowingCrawler:process_author - 第1批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 16:42:57,025 - INFO - FollowingCrawler:process_author - 处理第2/13批用户...
+2025-06-20 16:42:57,036 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:42:57,036 - INFO - FollowingCrawler:process_author - 第2批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:42:57,537 - INFO - FollowingCrawler:process_author - 处理第3/13批用户...
+2025-06-20 16:42:57,548 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:42:57,548 - INFO - FollowingCrawler:process_author - 第3批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:42:58,049 - INFO - FollowingCrawler:process_author - 处理第4/13批用户...
+2025-06-20 16:42:58,061 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:42:58,061 - INFO - FollowingCrawler:process_author - 第4批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 16:42:58,562 - INFO - FollowingCrawler:process_author - 处理第5/13批用户...
+2025-06-20 16:42:58,577 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:42:58,577 - INFO - FollowingCrawler:process_author - 第5批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 16:42:59,077 - INFO - FollowingCrawler:process_author - 处理第6/13批用户...
+2025-06-20 16:42:59,090 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:42:59,090 - INFO - FollowingCrawler:process_author - 第6批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 16:42:59,591 - INFO - FollowingCrawler:process_author - 处理第7/13批用户...
+2025-06-20 16:42:59,607 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:42:59,607 - INFO - FollowingCrawler:process_author - 第7批处理完成，耗时0.02秒，平均每用户0.0003秒
+2025-06-20 16:43:00,108 - INFO - FollowingCrawler:process_author - 处理第8/13批用户...
+2025-06-20 16:43:00,120 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:43:00,120 - INFO - FollowingCrawler:process_author - 第8批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 16:43:00,621 - INFO - FollowingCrawler:process_author - 处理第9/13批用户...
+2025-06-20 16:43:00,635 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:43:00,635 - INFO - FollowingCrawler:process_author - 第9批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 16:43:01,136 - INFO - FollowingCrawler:process_author - 处理第10/13批用户...
+2025-06-20 16:43:01,150 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:43:01,150 - INFO - FollowingCrawler:process_author - 第10批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 16:43:01,651 - INFO - FollowingCrawler:process_author - 处理第11/13批用户...
+2025-06-20 16:43:01,664 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:43:01,664 - INFO - FollowingCrawler:process_author - 第11批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 16:43:02,164 - INFO - FollowingCrawler:process_author - 处理第12/13批用户...
+2025-06-20 16:43:02,178 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 16:43:02,178 - INFO - FollowingCrawler:process_author - 第12批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 16:43:02,680 - INFO - FollowingCrawler:process_author - 处理第13/13批用户...
+2025-06-20 16:43:02,692 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增29个用户
+2025-06-20 16:43:02,693 - INFO - FollowingCrawler:process_author - 第13批处理完成，耗时0.01秒，平均每用户0.0004秒
+2025-06-20 16:43:02,698 - INFO - FollowingCrawler:process_author - Completed author Kamala Harris, saved 629 users (total_valid=4219), 总耗时: 54.27秒
+2025-06-20 16:43:02,698 - INFO - FollowingCrawler:run - 该作者新增了 629 个用户，当前总计: 4219/10000
+2025-06-20 16:43:02,699 - INFO - FollowingCrawler:run - 处理第 9/1000 个作者: Forbes (following: 0)
+2025-06-20 16:43:02,699 - INFO - FollowingCrawler:process_author - 开始处理用户: Forbes (following: 0)
+2025-06-20 16:43:02,699 - INFO - FollowingCrawler:get_user_following - 开始获取用户 Forbes (ID:91478624) 的following... (friends_count: 0)
+2025-06-20 16:43:02,699 - INFO - FollowingCrawler:get_user_following - 开始请求API, 尝试次数: 1/3
+2025-06-20 16:43:02,699 - INFO - FollowingCrawler:get_user_following - 请求URL: https://api.tweetscout.io/v2/follows, Params: {'user_id': '91478624', 'limit': 100, 'order_by': 'score'}
+2025-06-20 16:45:02,801 - WARNING - urllib3.connectionpool:urlopen - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='api.tweetscout.io', port=443): Read timed out. (read timeout=120)")': /v2/follows?user_id=91478624&limit=100&order_by=score
+2025-06-20 16:47:06,316 - WARNING - urllib3.connectionpool:urlopen - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='api.tweetscout.io', port=443): Read timed out. (read timeout=120)")': /v2/follows?user_id=91478624&limit=100&order_by=score
+2025-06-20 16:49:12,826 - WARNING - urllib3.connectionpool:urlopen - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='api.tweetscout.io', port=443): Read timed out. (read timeout=120)")': /v2/follows?user_id=91478624&limit=100&order_by=score
+2025-06-20 16:51:13,303 - ERROR - FollowingCrawler:get_user_following - Error get_user_following: HTTPSConnectionPool(host='api.tweetscout.io', port=443): Max retries exceeded with url: /v2/follows?user_id=91478624&limit=100&order_by=score (Caused by ReadTimeoutError("HTTPSConnectionPool(host='api.tweetscout.io', port=443): Read timed out. (read timeout=120)"))
+2025-06-20 16:51:23,314 - INFO - FollowingCrawler:get_user_following - 开始请求API, 尝试次数: 2/3
+2025-06-20 16:51:23,315 - INFO - FollowingCrawler:get_user_following - 请求URL: https://api.tweetscout.io/v2/follows, Params: {'user_id': '91478624', 'limit': 100, 'order_by': 'score'}
+2025-06-20 16:53:23,883 - WARNING - urllib3.connectionpool:urlopen - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='api.tweetscout.io', port=443): Read timed out. (read timeout=120)")': /v2/follows?user_id=91478624&limit=100&order_by=score
+2025-06-20 16:55:27,379 - WARNING - urllib3.connectionpool:urlopen - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='api.tweetscout.io', port=443): Read timed out. (read timeout=120)")': /v2/follows?user_id=91478624&limit=100&order_by=score
+2025-06-20 16:57:33,889 - WARNING - urllib3.connectionpool:urlopen - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='api.tweetscout.io', port=443): Read timed out. (read timeout=120)")': /v2/follows?user_id=91478624&limit=100&order_by=score
+2025-06-20 16:59:34,336 - ERROR - FollowingCrawler:get_user_following - Error get_user_following: HTTPSConnectionPool(host='api.tweetscout.io', port=443): Max retries exceeded with url: /v2/follows?user_id=91478624&limit=100&order_by=score (Caused by ReadTimeoutError("HTTPSConnectionPool(host='api.tweetscout.io', port=443): Read timed out. (read timeout=120)"))
+2025-06-20 16:59:54,357 - INFO - FollowingCrawler:get_user_following - 开始请求API, 尝试次数: 3/3
+2025-06-20 16:59:54,357 - INFO - FollowingCrawler:get_user_following - 请求URL: https://api.tweetscout.io/v2/follows, Params: {'user_id': '91478624', 'limit': 100, 'order_by': 'score'}
+2025-06-20 17:01:54,776 - WARNING - urllib3.connectionpool:urlopen - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='api.tweetscout.io', port=443): Read timed out. (read timeout=120)")': /v2/follows?user_id=91478624&limit=100&order_by=score
+2025-06-20 17:03:58,276 - WARNING - urllib3.connectionpool:urlopen - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='api.tweetscout.io', port=443): Read timed out. (read timeout=120)")': /v2/follows?user_id=91478624&limit=100&order_by=score
+2025-06-20 17:06:04,782 - WARNING - urllib3.connectionpool:urlopen - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='api.tweetscout.io', port=443): Read timed out. (read timeout=120)")': /v2/follows?user_id=91478624&limit=100&order_by=score
+2025-06-20 17:08:05,276 - ERROR - FollowingCrawler:get_user_following - Error get_user_following: HTTPSConnectionPool(host='api.tweetscout.io', port=443): Max retries exceeded with url: /v2/follows?user_id=91478624&limit=100&order_by=score (Caused by ReadTimeoutError("HTTPSConnectionPool(host='api.tweetscout.io', port=443): Read timed out. (read timeout=120)"))
+2025-06-20 17:08:35,307 - ERROR - FollowingCrawler:get_user_following - 在3次尝试后仍无法获取用户Forbes的following数据
+2025-06-20 17:08:35,307 - INFO - FollowingCrawler:process_author - 未获取到任何符合条件的following用户，跳过处理
+2025-06-20 17:08:35,313 - INFO - FollowingCrawler:run - 该作者新增了 0 个用户，当前总计: 4219/10000
+2025-06-20 17:08:35,313 - INFO - FollowingCrawler:run - 处理第 10/1000 个作者: TIME (following: 0)
+2025-06-20 17:08:35,313 - INFO - FollowingCrawler:process_author - 开始处理用户: TIME (following: 0)
+2025-06-20 17:08:35,313 - INFO - FollowingCrawler:get_user_following - 开始获取用户 TIME (ID:14293310) 的following... (friends_count: 0)
+2025-06-20 17:08:35,313 - INFO - FollowingCrawler:get_user_following - 开始请求API, 尝试次数: 1/3
+2025-06-20 17:08:35,313 - INFO - FollowingCrawler:get_user_following - 请求URL: https://api.tweetscout.io/v2/follows, Params: {'user_id': '14293310', 'limit': 100, 'order_by': 'score'}
+2025-06-20 17:08:59,387 - INFO - FollowingCrawler:get_user_following - API响应状态码: 200
+2025-06-20 17:08:59,399 - INFO - FollowingCrawler:get_user_following - 成功获取数据，条目数: 474
+2025-06-20 17:08:59,399 - INFO - FollowingCrawler:get_user_following - 过滤后following数量(>2000): 413/474
+2025-06-20 17:08:59,399 - INFO - FollowingCrawler:get_user_following - Retrieved 413 filtered following (>2000) for TIME (remain 5781)
+2025-06-20 17:08:59,399 - INFO - FollowingCrawler:process_author - 将413个用户分为9批处理，每批50个
+2025-06-20 17:08:59,400 - INFO - FollowingCrawler:process_author - 处理第1/9批用户...
+2025-06-20 17:08:59,414 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:08:59,414 - INFO - FollowingCrawler:process_author - 第1批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:08:59,915 - INFO - FollowingCrawler:process_author - 处理第2/9批用户...
+2025-06-20 17:08:59,927 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:08:59,927 - INFO - FollowingCrawler:process_author - 第2批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 17:09:00,428 - INFO - FollowingCrawler:process_author - 处理第3/9批用户...
+2025-06-20 17:09:00,442 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:09:00,443 - INFO - FollowingCrawler:process_author - 第3批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:09:00,943 - INFO - FollowingCrawler:process_author - 处理第4/9批用户...
+2025-06-20 17:09:00,957 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:09:00,957 - INFO - FollowingCrawler:process_author - 第4批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:09:01,458 - INFO - FollowingCrawler:process_author - 处理第5/9批用户...
+2025-06-20 17:09:01,471 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:09:01,471 - INFO - FollowingCrawler:process_author - 第5批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:09:01,972 - INFO - FollowingCrawler:process_author - 处理第6/9批用户...
+2025-06-20 17:09:01,985 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:09:01,985 - INFO - FollowingCrawler:process_author - 第6批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:09:02,486 - INFO - FollowingCrawler:process_author - 处理第7/9批用户...
+2025-06-20 17:09:02,500 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:09:02,500 - INFO - FollowingCrawler:process_author - 第7批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:09:03,001 - INFO - FollowingCrawler:process_author - 处理第8/9批用户...
+2025-06-20 17:09:03,015 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:09:03,015 - INFO - FollowingCrawler:process_author - 第8批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:09:03,516 - INFO - FollowingCrawler:process_author - 处理第9/9批用户...
+2025-06-20 17:09:03,526 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增13个用户
+2025-06-20 17:09:03,526 - INFO - FollowingCrawler:process_author - 第9批处理完成，耗时0.01秒，平均每用户0.0008秒
+2025-06-20 17:09:03,531 - INFO - FollowingCrawler:process_author - Completed author TIME, saved 413 users (total_valid=4632), 总耗时: 28.22秒
+2025-06-20 17:09:03,531 - INFO - FollowingCrawler:run - 该作者新增了 413 个用户，当前总计: 4632/10000
+2025-06-20 17:09:03,532 - INFO - FollowingCrawler:run - 处理第 11/1000 个作者: Kylian Mbappé (following: 0)
+2025-06-20 17:09:03,532 - INFO - FollowingCrawler:process_author - 开始处理用户: Kylian Mbappé (following: 0)
+2025-06-20 17:09:03,532 - INFO - FollowingCrawler:get_user_following - 开始获取用户 Kylian Mbappé (ID:1725137533) 的following... (friends_count: 0)
+2025-06-20 17:09:03,532 - INFO - FollowingCrawler:get_user_following - 开始请求API, 尝试次数: 1/3
+2025-06-20 17:09:03,532 - INFO - FollowingCrawler:get_user_following - 请求URL: https://api.tweetscout.io/v2/follows, Params: {'user_id': '1725137533', 'limit': 100, 'order_by': 'score'}
+2025-06-20 17:09:10,518 - INFO - FollowingCrawler:get_user_following - API响应状态码: 200
+2025-06-20 17:09:10,519 - INFO - FollowingCrawler:get_user_following - 成功获取数据，条目数: 116
+2025-06-20 17:09:10,519 - INFO - FollowingCrawler:get_user_following - 过滤后following数量(>2000): 113/116
+2025-06-20 17:09:10,519 - INFO - FollowingCrawler:get_user_following - Retrieved 113 filtered following (>2000) for Kylian Mbappé (remain 5368)
+2025-06-20 17:09:10,519 - INFO - FollowingCrawler:process_author - 将113个用户分为3批处理，每批50个
+2025-06-20 17:09:10,519 - INFO - FollowingCrawler:process_author - 处理第1/3批用户...
+2025-06-20 17:09:10,534 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:09:10,534 - INFO - FollowingCrawler:process_author - 第1批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:09:11,035 - INFO - FollowingCrawler:process_author - 处理第2/3批用户...
+2025-06-20 17:09:11,047 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:09:11,047 - INFO - FollowingCrawler:process_author - 第2批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 17:09:11,548 - INFO - FollowingCrawler:process_author - 处理第3/3批用户...
+2025-06-20 17:09:11,561 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增13个用户
+2025-06-20 17:09:11,562 - INFO - FollowingCrawler:process_author - 第3批处理完成，耗时0.01秒，平均每用户0.0011秒
+2025-06-20 17:09:11,568 - INFO - FollowingCrawler:process_author - Completed author Kylian Mbappé, saved 113 users (total_valid=4745), 总耗时: 8.04秒
+2025-06-20 17:09:11,568 - INFO - FollowingCrawler:run - 该作者新增了 113 个用户，当前总计: 4745/10000
+2025-06-20 17:09:11,568 - INFO - FollowingCrawler:run - 处理第 12/1000 个作者: Binance (following: 0)
+2025-06-20 17:09:11,568 - INFO - FollowingCrawler:process_author - 开始处理用户: Binance (following: 0)
+2025-06-20 17:09:11,568 - INFO - FollowingCrawler:get_user_following - 开始获取用户 Binance (ID:877807935493033984) 的following... (friends_count: 0)
+2025-06-20 17:09:11,568 - INFO - FollowingCrawler:get_user_following - 开始请求API, 尝试次数: 1/3
+2025-06-20 17:09:11,569 - INFO - FollowingCrawler:get_user_following - 请求URL: https://api.tweetscout.io/v2/follows, Params: {'user_id': '877807935493033984', 'limit': 100, 'order_by': 'score'}
+2025-06-20 17:09:35,178 - INFO - FollowingCrawler:get_user_following - API响应状态码: 200
+2025-06-20 17:09:35,181 - INFO - FollowingCrawler:get_user_following - 成功获取数据，条目数: 577
+2025-06-20 17:09:35,181 - INFO - FollowingCrawler:get_user_following - 过滤后following数量(>2000): 519/577
+2025-06-20 17:09:35,181 - INFO - FollowingCrawler:get_user_following - Retrieved 519 filtered following (>2000) for Binance (remain 5255)
+2025-06-20 17:09:35,181 - INFO - FollowingCrawler:process_author - 将519个用户分为11批处理，每批50个
+2025-06-20 17:09:35,181 - INFO - FollowingCrawler:process_author - 处理第1/11批用户...
+2025-06-20 17:09:35,198 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:09:35,198 - INFO - FollowingCrawler:process_author - 第1批处理完成，耗时0.02秒，平均每用户0.0003秒
+2025-06-20 17:09:35,699 - INFO - FollowingCrawler:process_author - 处理第2/11批用户...
+2025-06-20 17:09:35,711 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:09:35,711 - INFO - FollowingCrawler:process_author - 第2批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 17:09:36,212 - INFO - FollowingCrawler:process_author - 处理第3/11批用户...
+2025-06-20 17:09:36,225 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:09:36,225 - INFO - FollowingCrawler:process_author - 第3批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:09:36,725 - INFO - FollowingCrawler:process_author - 处理第4/11批用户...
+2025-06-20 17:09:36,737 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:09:36,738 - INFO - FollowingCrawler:process_author - 第4批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:09:37,239 - INFO - FollowingCrawler:process_author - 处理第5/11批用户...
+2025-06-20 17:09:37,253 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:09:37,253 - INFO - FollowingCrawler:process_author - 第5批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:09:37,754 - INFO - FollowingCrawler:process_author - 处理第6/11批用户...
+2025-06-20 17:09:37,768 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:09:37,768 - INFO - FollowingCrawler:process_author - 第6批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:09:38,268 - INFO - FollowingCrawler:process_author - 处理第7/11批用户...
+2025-06-20 17:09:38,281 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:09:38,281 - INFO - FollowingCrawler:process_author - 第7批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:09:38,782 - INFO - FollowingCrawler:process_author - 处理第8/11批用户...
+2025-06-20 17:09:38,796 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:09:38,796 - INFO - FollowingCrawler:process_author - 第8批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:09:39,296 - INFO - FollowingCrawler:process_author - 处理第9/11批用户...
+2025-06-20 17:09:39,310 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:09:39,310 - INFO - FollowingCrawler:process_author - 第9批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:09:39,811 - INFO - FollowingCrawler:process_author - 处理第10/11批用户...
+2025-06-20 17:09:39,823 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:09:39,824 - INFO - FollowingCrawler:process_author - 第10批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:09:40,324 - INFO - FollowingCrawler:process_author - 处理第11/11批用户...
+2025-06-20 17:09:40,338 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增19个用户
+2025-06-20 17:09:40,338 - INFO - FollowingCrawler:process_author - 第11批处理完成，耗时0.01秒，平均每用户0.0007秒
+2025-06-20 17:09:40,344 - INFO - FollowingCrawler:process_author - Completed author Binance, saved 519 users (total_valid=5264), 总耗时: 28.78秒
+2025-06-20 17:09:40,346 - INFO - FollowingCrawler:run - 该作者新增了 519 个用户，当前总计: 5264/10000
+2025-06-20 17:09:40,346 - INFO - FollowingCrawler:run - 处理第 13/1000 个作者: Hamster Kombat (following: 0)
+2025-06-20 17:09:40,346 - INFO - FollowingCrawler:process_author - 开始处理用户: Hamster Kombat (following: 0)
+2025-06-20 17:09:40,346 - INFO - FollowingCrawler:get_user_following - 开始获取用户 Hamster Kombat (ID:1772330982382632960) 的following... (friends_count: 0)
+2025-06-20 17:09:40,346 - INFO - FollowingCrawler:get_user_following - 开始请求API, 尝试次数: 1/3
+2025-06-20 17:09:40,346 - INFO - FollowingCrawler:get_user_following - 请求URL: https://api.tweetscout.io/v2/follows, Params: {'user_id': '1772330982382632960', 'limit': 100, 'order_by': 'score'}
+2025-06-20 17:09:48,941 - INFO - FollowingCrawler:get_user_following - API响应状态码: 200
+2025-06-20 17:09:48,941 - INFO - FollowingCrawler:get_user_following - 成功获取数据，条目数: 14
+2025-06-20 17:09:48,941 - INFO - FollowingCrawler:get_user_following - 过滤后following数量(>2000): 14/14
+2025-06-20 17:09:48,941 - INFO - FollowingCrawler:get_user_following - Retrieved 14 filtered following (>2000) for Hamster Kombat (remain 4736)
+2025-06-20 17:09:48,941 - INFO - FollowingCrawler:process_author - 将14个用户分为1批处理，每批50个
+2025-06-20 17:09:48,941 - INFO - FollowingCrawler:process_author - 处理第1/1批用户...
+2025-06-20 17:09:48,954 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增14个用户
+2025-06-20 17:09:48,954 - INFO - FollowingCrawler:process_author - 第1批处理完成，耗时0.01秒，平均每用户0.0009秒
+2025-06-20 17:09:48,960 - INFO - FollowingCrawler:process_author - Completed author Hamster Kombat, saved 14 users (total_valid=5278), 总耗时: 8.61秒
+2025-06-20 17:09:48,960 - INFO - FollowingCrawler:run - 该作者新增了 14 个用户，当前总计: 5278/10000
+2025-06-20 17:09:48,960 - INFO - FollowingCrawler:run - 处理第 14/1000 个作者: Ivanka Trump (following: 0)
+2025-06-20 17:09:48,960 - INFO - FollowingCrawler:process_author - 开始处理用户: Ivanka Trump (following: 0)
+2025-06-20 17:09:48,960 - INFO - FollowingCrawler:get_user_following - 开始获取用户 Ivanka Trump (ID:52544275) 的following... (friends_count: 0)
+2025-06-20 17:09:48,960 - INFO - FollowingCrawler:get_user_following - 开始请求API, 尝试次数: 1/3
+2025-06-20 17:09:48,960 - INFO - FollowingCrawler:get_user_following - 请求URL: https://api.tweetscout.io/v2/follows, Params: {'user_id': '52544275', 'limit': 100, 'order_by': 'score'}
+2025-06-20 17:11:33,377 - INFO - FollowingCrawler:get_user_following - API响应状态码: 200
+2025-06-20 17:11:33,384 - INFO - FollowingCrawler:get_user_following - 成功获取数据，条目数: 1661
+2025-06-20 17:11:33,386 - INFO - FollowingCrawler:get_user_following - 过滤后following数量(>2000): 1556/1661
+2025-06-20 17:11:33,386 - INFO - FollowingCrawler:get_user_following - Retrieved 1556 filtered following (>2000) for Ivanka Trump (remain 4722)
+2025-06-20 17:11:33,387 - INFO - FollowingCrawler:process_author - 将1556个用户分为32批处理，每批50个
+2025-06-20 17:11:33,387 - INFO - FollowingCrawler:process_author - 处理第1/32批用户...
+2025-06-20 17:11:33,403 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:11:33,403 - INFO - FollowingCrawler:process_author - 第1批处理完成，耗时0.02秒，平均每用户0.0003秒
+2025-06-20 17:11:33,904 - INFO - FollowingCrawler:process_author - 处理第2/32批用户...
+2025-06-20 17:11:33,918 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:11:33,918 - INFO - FollowingCrawler:process_author - 第2批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:11:34,419 - INFO - FollowingCrawler:process_author - 处理第3/32批用户...
+2025-06-20 17:11:34,433 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:11:34,433 - INFO - FollowingCrawler:process_author - 第3批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:11:34,934 - INFO - FollowingCrawler:process_author - 处理第4/32批用户...
+2025-06-20 17:11:34,948 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:11:34,948 - INFO - FollowingCrawler:process_author - 第4批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:11:35,449 - INFO - FollowingCrawler:process_author - 处理第5/32批用户...
+2025-06-20 17:11:35,464 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:11:35,464 - INFO - FollowingCrawler:process_author - 第5批处理完成，耗时0.02秒，平均每用户0.0003秒
+2025-06-20 17:11:35,964 - INFO - FollowingCrawler:process_author - 处理第6/32批用户...
+2025-06-20 17:11:35,978 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:11:35,978 - INFO - FollowingCrawler:process_author - 第6批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:11:36,479 - INFO - FollowingCrawler:process_author - 处理第7/32批用户...
+2025-06-20 17:11:36,495 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:11:36,495 - INFO - FollowingCrawler:process_author - 第7批处理完成，耗时0.02秒，平均每用户0.0003秒
+2025-06-20 17:11:36,995 - INFO - FollowingCrawler:process_author - 处理第8/32批用户...
+2025-06-20 17:11:37,008 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:11:37,008 - INFO - FollowingCrawler:process_author - 第8批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:11:37,509 - INFO - FollowingCrawler:process_author - 处理第9/32批用户...
+2025-06-20 17:11:37,523 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:11:37,523 - INFO - FollowingCrawler:process_author - 第9批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:11:38,024 - INFO - FollowingCrawler:process_author - 处理第10/32批用户...
+2025-06-20 17:11:38,038 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:11:38,038 - INFO - FollowingCrawler:process_author - 第10批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:11:38,539 - INFO - FollowingCrawler:process_author - 处理第11/32批用户...
+2025-06-20 17:11:38,554 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:11:38,554 - INFO - FollowingCrawler:process_author - 第11批处理完成，耗时0.02秒，平均每用户0.0003秒
+2025-06-20 17:11:39,055 - INFO - FollowingCrawler:process_author - 处理第12/32批用户...
+2025-06-20 17:11:39,068 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:11:39,068 - INFO - FollowingCrawler:process_author - 第12批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:11:39,569 - INFO - FollowingCrawler:process_author - 处理第13/32批用户...
+2025-06-20 17:11:39,583 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:11:39,583 - INFO - FollowingCrawler:process_author - 第13批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:11:40,084 - INFO - FollowingCrawler:process_author - 处理第14/32批用户...
+2025-06-20 17:11:40,099 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:11:40,099 - INFO - FollowingCrawler:process_author - 第14批处理完成，耗时0.02秒，平均每用户0.0003秒
+2025-06-20 17:11:40,599 - INFO - FollowingCrawler:process_author - 处理第15/32批用户...
+2025-06-20 17:11:40,612 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:11:40,613 - INFO - FollowingCrawler:process_author - 第15批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:11:41,113 - INFO - FollowingCrawler:process_author - 处理第16/32批用户...
+2025-06-20 17:11:41,128 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:11:41,128 - INFO - FollowingCrawler:process_author - 第16批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:11:41,629 - INFO - FollowingCrawler:process_author - 处理第17/32批用户...
+2025-06-20 17:11:41,643 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:11:41,643 - INFO - FollowingCrawler:process_author - 第17批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:11:42,144 - INFO - FollowingCrawler:process_author - 处理第18/32批用户...
+2025-06-20 17:11:42,157 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:11:42,157 - INFO - FollowingCrawler:process_author - 第18批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:11:42,658 - INFO - FollowingCrawler:process_author - 处理第19/32批用户...
+2025-06-20 17:11:42,672 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:11:42,672 - INFO - FollowingCrawler:process_author - 第19批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:11:43,173 - INFO - FollowingCrawler:process_author - 处理第20/32批用户...
+2025-06-20 17:11:43,188 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:11:43,188 - INFO - FollowingCrawler:process_author - 第20批处理完成，耗时0.02秒，平均每用户0.0003秒
+2025-06-20 17:11:43,689 - INFO - FollowingCrawler:process_author - 处理第21/32批用户...
+2025-06-20 17:11:43,702 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:11:43,702 - INFO - FollowingCrawler:process_author - 第21批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:11:44,203 - INFO - FollowingCrawler:process_author - 处理第22/32批用户...
+2025-06-20 17:11:44,216 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:11:44,216 - INFO - FollowingCrawler:process_author - 第22批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:11:44,717 - INFO - FollowingCrawler:process_author - 处理第23/32批用户...
+2025-06-20 17:11:44,730 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:11:44,730 - INFO - FollowingCrawler:process_author - 第23批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:11:45,231 - INFO - FollowingCrawler:process_author - 处理第24/32批用户...
+2025-06-20 17:11:45,243 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:11:45,244 - INFO - FollowingCrawler:process_author - 第24批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:11:45,744 - INFO - FollowingCrawler:process_author - 处理第25/32批用户...
+2025-06-20 17:11:45,756 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:11:45,757 - INFO - FollowingCrawler:process_author - 第25批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 17:11:46,257 - INFO - FollowingCrawler:process_author - 处理第26/32批用户...
+2025-06-20 17:11:46,271 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:11:46,271 - INFO - FollowingCrawler:process_author - 第26批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:11:46,772 - INFO - FollowingCrawler:process_author - 处理第27/32批用户...
+2025-06-20 17:11:46,786 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:11:46,786 - INFO - FollowingCrawler:process_author - 第27批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:11:47,286 - INFO - FollowingCrawler:process_author - 处理第28/32批用户...
+2025-06-20 17:11:47,300 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:11:47,300 - INFO - FollowingCrawler:process_author - 第28批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:11:47,801 - INFO - FollowingCrawler:process_author - 处理第29/32批用户...
+2025-06-20 17:11:47,814 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:11:47,814 - INFO - FollowingCrawler:process_author - 第29批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:11:48,315 - INFO - FollowingCrawler:process_author - 处理第30/32批用户...
+2025-06-20 17:11:48,329 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:11:48,329 - INFO - FollowingCrawler:process_author - 第30批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:11:48,829 - INFO - FollowingCrawler:process_author - 处理第31/32批用户...
+2025-06-20 17:11:48,845 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:11:48,845 - INFO - FollowingCrawler:process_author - 第31批处理完成，耗时0.02秒，平均每用户0.0003秒
+2025-06-20 17:11:49,346 - INFO - FollowingCrawler:process_author - 处理第32/32批用户...
+2025-06-20 17:11:49,353 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增6个用户
+2025-06-20 17:11:49,354 - INFO - FollowingCrawler:process_author - 第32批处理完成，耗时0.01秒，平均每用户0.0014秒
+2025-06-20 17:11:49,358 - INFO - FollowingCrawler:process_author - Completed author Ivanka Trump, saved 1556 users (total_valid=6834), 总耗时: 120.40秒
+2025-06-20 17:11:49,359 - INFO - FollowingCrawler:run - 该作者新增了 1556 个用户，当前总计: 6834/10000
+2025-06-20 17:11:49,359 - INFO - FollowingCrawler:run - 处理第 15/1000 个作者: CZ 🔶 BNB (following: 0)
+2025-06-20 17:11:49,359 - INFO - FollowingCrawler:process_author - 开始处理用户: CZ 🔶 BNB (following: 0)
+2025-06-20 17:11:49,359 - INFO - FollowingCrawler:get_user_following - 开始获取用户 CZ 🔶 BNB (ID:902926941413453824) 的following... (friends_count: 0)
+2025-06-20 17:11:49,359 - INFO - FollowingCrawler:get_user_following - 开始请求API, 尝试次数: 1/3
+2025-06-20 17:11:49,359 - INFO - FollowingCrawler:get_user_following - 请求URL: https://api.tweetscout.io/v2/follows, Params: {'user_id': '902926941413453824', 'limit': 100, 'order_by': 'score'}
+2025-06-20 17:13:31,662 - INFO - FollowingCrawler:get_user_following - API响应状态码: 200
+2025-06-20 17:13:31,670 - INFO - FollowingCrawler:get_user_following - 成功获取数据，条目数: 1840
+2025-06-20 17:13:31,671 - INFO - FollowingCrawler:get_user_following - 过滤后following数量(>2000): 1583/1840
+2025-06-20 17:13:31,671 - INFO - FollowingCrawler:get_user_following - Retrieved 1583 filtered following (>2000) for CZ 🔶 BNB (remain 3166)
+2025-06-20 17:13:31,671 - INFO - FollowingCrawler:process_author - 将1583个用户分为32批处理，每批50个
+2025-06-20 17:13:31,671 - INFO - FollowingCrawler:process_author - 处理第1/32批用户...
+2025-06-20 17:13:31,686 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:13:31,686 - INFO - FollowingCrawler:process_author - 第1批处理完成，耗时0.02秒，平均每用户0.0003秒
+2025-06-20 17:13:32,187 - INFO - FollowingCrawler:process_author - 处理第2/32批用户...
+2025-06-20 17:13:32,201 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:13:32,202 - INFO - FollowingCrawler:process_author - 第2批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:13:32,702 - INFO - FollowingCrawler:process_author - 处理第3/32批用户...
+2025-06-20 17:13:32,720 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:13:32,720 - INFO - FollowingCrawler:process_author - 第3批处理完成，耗时0.02秒，平均每用户0.0004秒
+2025-06-20 17:13:33,221 - INFO - FollowingCrawler:process_author - 处理第4/32批用户...
+2025-06-20 17:13:33,234 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:13:33,234 - INFO - FollowingCrawler:process_author - 第4批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:13:33,734 - INFO - FollowingCrawler:process_author - 处理第5/32批用户...
+2025-06-20 17:13:33,748 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:13:33,748 - INFO - FollowingCrawler:process_author - 第5批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:13:34,249 - INFO - FollowingCrawler:process_author - 处理第6/32批用户...
+2025-06-20 17:13:34,261 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:13:34,262 - INFO - FollowingCrawler:process_author - 第6批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:13:34,762 - INFO - FollowingCrawler:process_author - 处理第7/32批用户...
+2025-06-20 17:13:34,778 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:13:34,778 - INFO - FollowingCrawler:process_author - 第7批处理完成，耗时0.02秒，平均每用户0.0003秒
+2025-06-20 17:13:35,278 - INFO - FollowingCrawler:process_author - 处理第8/32批用户...
+2025-06-20 17:13:35,293 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:13:35,293 - INFO - FollowingCrawler:process_author - 第8批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:13:35,793 - INFO - FollowingCrawler:process_author - 处理第9/32批用户...
+2025-06-20 17:13:35,809 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:13:35,809 - INFO - FollowingCrawler:process_author - 第9批处理完成，耗时0.02秒，平均每用户0.0003秒
+2025-06-20 17:13:36,310 - INFO - FollowingCrawler:process_author - 处理第10/32批用户...
+2025-06-20 17:13:36,325 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:13:36,325 - INFO - FollowingCrawler:process_author - 第10批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:13:36,826 - INFO - FollowingCrawler:process_author - 处理第11/32批用户...
+2025-06-20 17:13:36,840 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:13:36,840 - INFO - FollowingCrawler:process_author - 第11批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:13:37,341 - INFO - FollowingCrawler:process_author - 处理第12/32批用户...
+2025-06-20 17:13:37,354 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:13:37,354 - INFO - FollowingCrawler:process_author - 第12批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:13:37,856 - INFO - FollowingCrawler:process_author - 处理第13/32批用户...
+2025-06-20 17:13:37,870 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:13:37,870 - INFO - FollowingCrawler:process_author - 第13批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:13:38,371 - INFO - FollowingCrawler:process_author - 处理第14/32批用户...
+2025-06-20 17:13:38,385 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:13:38,385 - INFO - FollowingCrawler:process_author - 第14批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:13:38,886 - INFO - FollowingCrawler:process_author - 处理第15/32批用户...
+2025-06-20 17:13:38,900 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:13:38,900 - INFO - FollowingCrawler:process_author - 第15批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:13:39,401 - INFO - FollowingCrawler:process_author - 处理第16/32批用户...
+2025-06-20 17:13:39,415 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:13:39,415 - INFO - FollowingCrawler:process_author - 第16批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:13:39,915 - INFO - FollowingCrawler:process_author - 处理第17/32批用户...
+2025-06-20 17:13:39,931 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:13:39,931 - INFO - FollowingCrawler:process_author - 第17批处理完成，耗时0.02秒，平均每用户0.0003秒
+2025-06-20 17:13:40,432 - INFO - FollowingCrawler:process_author - 处理第18/32批用户...
+2025-06-20 17:13:40,445 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:13:40,446 - INFO - FollowingCrawler:process_author - 第18批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:13:40,947 - INFO - FollowingCrawler:process_author - 处理第19/32批用户...
+2025-06-20 17:13:40,962 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:13:40,962 - INFO - FollowingCrawler:process_author - 第19批处理完成，耗时0.02秒，平均每用户0.0003秒
+2025-06-20 17:13:41,463 - INFO - FollowingCrawler:process_author - 处理第20/32批用户...
+2025-06-20 17:13:41,477 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:13:41,477 - INFO - FollowingCrawler:process_author - 第20批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:13:41,978 - INFO - FollowingCrawler:process_author - 处理第21/32批用户...
+2025-06-20 17:13:41,992 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:13:41,992 - INFO - FollowingCrawler:process_author - 第21批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:13:42,493 - INFO - FollowingCrawler:process_author - 处理第22/32批用户...
+2025-06-20 17:13:42,509 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:13:42,509 - INFO - FollowingCrawler:process_author - 第22批处理完成，耗时0.02秒，平均每用户0.0003秒
+2025-06-20 17:13:43,010 - INFO - FollowingCrawler:process_author - 处理第23/32批用户...
+2025-06-20 17:13:43,024 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:13:43,024 - INFO - FollowingCrawler:process_author - 第23批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:13:43,525 - INFO - FollowingCrawler:process_author - 处理第24/32批用户...
+2025-06-20 17:13:43,538 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:13:43,538 - INFO - FollowingCrawler:process_author - 第24批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:13:44,039 - INFO - FollowingCrawler:process_author - 处理第25/32批用户...
+2025-06-20 17:13:44,052 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:13:44,052 - INFO - FollowingCrawler:process_author - 第25批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:13:44,553 - INFO - FollowingCrawler:process_author - 处理第26/32批用户...
+2025-06-20 17:13:44,568 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:13:44,568 - INFO - FollowingCrawler:process_author - 第26批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:13:45,069 - INFO - FollowingCrawler:process_author - 处理第27/32批用户...
+2025-06-20 17:13:45,082 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:13:45,082 - INFO - FollowingCrawler:process_author - 第27批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:13:45,583 - INFO - FollowingCrawler:process_author - 处理第28/32批用户...
+2025-06-20 17:13:45,597 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:13:45,597 - INFO - FollowingCrawler:process_author - 第28批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:13:46,098 - INFO - FollowingCrawler:process_author - 处理第29/32批用户...
+2025-06-20 17:13:46,113 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:13:46,114 - INFO - FollowingCrawler:process_author - 第29批处理完成，耗时0.02秒，平均每用户0.0003秒
+2025-06-20 17:13:46,615 - INFO - FollowingCrawler:process_author - 处理第30/32批用户...
+2025-06-20 17:13:46,631 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:13:46,631 - INFO - FollowingCrawler:process_author - 第30批处理完成，耗时0.02秒，平均每用户0.0003秒
+2025-06-20 17:13:47,132 - INFO - FollowingCrawler:process_author - 处理第31/32批用户...
+2025-06-20 17:13:47,146 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:13:47,146 - INFO - FollowingCrawler:process_author - 第31批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:13:47,646 - INFO - FollowingCrawler:process_author - 处理第32/32批用户...
+2025-06-20 17:13:47,661 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增33个用户
+2025-06-20 17:13:47,661 - INFO - FollowingCrawler:process_author - 第32批处理完成，耗时0.01秒，平均每用户0.0005秒
+2025-06-20 17:13:47,668 - INFO - FollowingCrawler:process_author - Completed author CZ 🔶 BNB, saved 1583 users (total_valid=8417), 总耗时: 118.31秒
+2025-06-20 17:13:47,669 - INFO - FollowingCrawler:run - 该作者新增了 1583 个用户，当前总计: 8417/10000
+2025-06-20 17:13:47,669 - INFO - FollowingCrawler:run - 处理第 16/1000 个作者: Maria Sharapova (following: 0)
+2025-06-20 17:13:47,669 - INFO - FollowingCrawler:process_author - 开始处理用户: Maria Sharapova (following: 0)
+2025-06-20 17:13:47,669 - INFO - FollowingCrawler:get_user_following - 开始获取用户 Maria Sharapova (ID:288333760) 的following... (friends_count: 0)
+2025-06-20 17:13:47,669 - INFO - FollowingCrawler:get_user_following - 开始请求API, 尝试次数: 1/3
+2025-06-20 17:13:47,669 - INFO - FollowingCrawler:get_user_following - 请求URL: https://api.tweetscout.io/v2/follows, Params: {'user_id': '288333760', 'limit': 100, 'order_by': 'score'}
+2025-06-20 17:13:52,933 - INFO - FollowingCrawler:get_user_following - API响应状态码: 200
+2025-06-20 17:13:52,934 - INFO - FollowingCrawler:get_user_following - 成功获取数据，条目数: 79
+2025-06-20 17:13:52,934 - INFO - FollowingCrawler:get_user_following - 过滤后following数量(>2000): 76/79
+2025-06-20 17:13:52,934 - INFO - FollowingCrawler:get_user_following - Retrieved 76 filtered following (>2000) for Maria Sharapova (remain 1583)
+2025-06-20 17:13:52,934 - INFO - FollowingCrawler:process_author - 将76个用户分为2批处理，每批50个
+2025-06-20 17:13:52,934 - INFO - FollowingCrawler:process_author - 处理第1/2批用户...
+2025-06-20 17:13:52,951 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:13:52,951 - INFO - FollowingCrawler:process_author - 第1批处理完成，耗时0.02秒，平均每用户0.0003秒
+2025-06-20 17:13:53,452 - INFO - FollowingCrawler:process_author - 处理第2/2批用户...
+2025-06-20 17:13:53,466 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增26个用户
+2025-06-20 17:13:53,466 - INFO - FollowingCrawler:process_author - 第2批处理完成，耗时0.01秒，平均每用户0.0005秒
+2025-06-20 17:13:53,472 - INFO - FollowingCrawler:process_author - Completed author Maria Sharapova, saved 76 users (total_valid=8493), 总耗时: 5.80秒
+2025-06-20 17:13:53,472 - INFO - FollowingCrawler:run - 该作者新增了 76 个用户，当前总计: 8493/10000
+2025-06-20 17:13:53,472 - INFO - FollowingCrawler:run - 处理第 17/1000 个作者: Nayib Bukele (following: 0)
+2025-06-20 17:13:53,472 - INFO - FollowingCrawler:process_author - 开始处理用户: Nayib Bukele (following: 0)
+2025-06-20 17:13:53,472 - INFO - FollowingCrawler:get_user_following - 开始获取用户 Nayib Bukele (ID:20736511) 的following... (friends_count: 0)
+2025-06-20 17:13:53,472 - INFO - FollowingCrawler:get_user_following - 开始请求API, 尝试次数: 1/3
+2025-06-20 17:13:53,472 - INFO - FollowingCrawler:get_user_following - 请求URL: https://api.tweetscout.io/v2/follows, Params: {'user_id': '20736511', 'limit': 100, 'order_by': 'score'}
+2025-06-20 17:14:58,836 - INFO - FollowingCrawler:get_user_following - API响应状态码: 200
+2025-06-20 17:14:58,838 - INFO - FollowingCrawler:get_user_following - 成功获取数据，条目数: 537
+2025-06-20 17:14:58,839 - INFO - FollowingCrawler:get_user_following - 过滤后following数量(>2000): 448/537
+2025-06-20 17:14:58,839 - INFO - FollowingCrawler:get_user_following - Retrieved 448 filtered following (>2000) for Nayib Bukele (remain 1507)
+2025-06-20 17:14:58,839 - INFO - FollowingCrawler:process_author - 将448个用户分为9批处理，每批50个
+2025-06-20 17:14:58,839 - INFO - FollowingCrawler:process_author - 处理第1/9批用户...
+2025-06-20 17:14:58,855 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:14:58,855 - INFO - FollowingCrawler:process_author - 第1批处理完成，耗时0.02秒，平均每用户0.0003秒
+2025-06-20 17:14:59,355 - INFO - FollowingCrawler:process_author - 处理第2/9批用户...
+2025-06-20 17:14:59,371 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:14:59,372 - INFO - FollowingCrawler:process_author - 第2批处理完成，耗时0.02秒，平均每用户0.0003秒
+2025-06-20 17:14:59,872 - INFO - FollowingCrawler:process_author - 处理第3/9批用户...
+2025-06-20 17:14:59,886 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:14:59,886 - INFO - FollowingCrawler:process_author - 第3批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:15:00,387 - INFO - FollowingCrawler:process_author - 处理第4/9批用户...
+2025-06-20 17:15:00,401 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:15:00,401 - INFO - FollowingCrawler:process_author - 第4批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:15:00,901 - INFO - FollowingCrawler:process_author - 处理第5/9批用户...
+2025-06-20 17:15:00,916 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:15:00,917 - INFO - FollowingCrawler:process_author - 第5批处理完成，耗时0.02秒，平均每用户0.0003秒
+2025-06-20 17:15:01,417 - INFO - FollowingCrawler:process_author - 处理第6/9批用户...
+2025-06-20 17:15:01,431 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:15:01,431 - INFO - FollowingCrawler:process_author - 第6批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:15:01,932 - INFO - FollowingCrawler:process_author - 处理第7/9批用户...
+2025-06-20 17:15:01,946 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:15:01,946 - INFO - FollowingCrawler:process_author - 第7批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:15:02,446 - INFO - FollowingCrawler:process_author - 处理第8/9批用户...
+2025-06-20 17:15:02,459 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:15:02,459 - INFO - FollowingCrawler:process_author - 第8批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-06-20 17:15:02,959 - INFO - FollowingCrawler:process_author - 处理第9/9批用户...
+2025-06-20 17:15:02,973 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增48个用户
+2025-06-20 17:15:02,973 - INFO - FollowingCrawler:process_author - 第9批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:15:02,979 - INFO - FollowingCrawler:process_author - Completed author Nayib Bukele, saved 448 users (total_valid=8941), 总耗时: 69.51秒
+2025-06-20 17:15:02,979 - INFO - FollowingCrawler:run - 该作者新增了 448 个用户，当前总计: 8941/10000
+2025-06-20 17:15:02,979 - INFO - FollowingCrawler:run - 处理第 18/1000 个作者: CoinMarketCap (following: 0)
+2025-06-20 17:15:02,979 - INFO - FollowingCrawler:process_author - 开始处理用户: CoinMarketCap (following: 0)
+2025-06-20 17:15:02,979 - INFO - FollowingCrawler:get_user_following - 开始获取用户 CoinMarketCap (ID:2260491445) 的following... (friends_count: 0)
+2025-06-20 17:15:02,979 - INFO - FollowingCrawler:get_user_following - 开始请求API, 尝试次数: 1/3
+2025-06-20 17:15:02,979 - INFO - FollowingCrawler:get_user_following - 请求URL: https://api.tweetscout.io/v2/follows, Params: {'user_id': '2260491445', 'limit': 100, 'order_by': 'score'}
+2025-06-20 17:15:35,139 - INFO - FollowingCrawler:get_user_following - API响应状态码: 200
+2025-06-20 17:15:35,141 - INFO - FollowingCrawler:get_user_following - 成功获取数据，条目数: 507
+2025-06-20 17:15:35,141 - INFO - FollowingCrawler:get_user_following - 过滤后following数量(>2000): 488/507
+2025-06-20 17:15:35,142 - INFO - FollowingCrawler:get_user_following - Retrieved 488 filtered following (>2000) for CoinMarketCap (remain 1059)
+2025-06-20 17:15:35,142 - INFO - FollowingCrawler:process_author - 将488个用户分为10批处理，每批50个
+2025-06-20 17:15:35,142 - INFO - FollowingCrawler:process_author - 处理第1/10批用户...
+2025-06-20 17:15:35,161 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:15:35,161 - INFO - FollowingCrawler:process_author - 第1批处理完成，耗时0.02秒，平均每用户0.0004秒
+2025-06-20 17:15:35,661 - INFO - FollowingCrawler:process_author - 处理第2/10批用户...
+2025-06-20 17:15:35,677 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:15:35,677 - INFO - FollowingCrawler:process_author - 第2批处理完成，耗时0.02秒，平均每用户0.0003秒
+2025-06-20 17:15:36,178 - INFO - FollowingCrawler:process_author - 处理第3/10批用户...
+2025-06-20 17:15:36,192 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:15:36,192 - INFO - FollowingCrawler:process_author - 第3批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:15:36,693 - INFO - FollowingCrawler:process_author - 处理第4/10批用户...
+2025-06-20 17:15:36,707 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:15:36,707 - INFO - FollowingCrawler:process_author - 第4批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:15:37,208 - INFO - FollowingCrawler:process_author - 处理第5/10批用户...
+2025-06-20 17:15:37,224 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:15:37,224 - INFO - FollowingCrawler:process_author - 第5批处理完成，耗时0.02秒，平均每用户0.0003秒
+2025-06-20 17:15:37,725 - INFO - FollowingCrawler:process_author - 处理第6/10批用户...
+2025-06-20 17:15:37,740 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:15:37,740 - INFO - FollowingCrawler:process_author - 第6批处理完成，耗时0.02秒，平均每用户0.0003秒
+2025-06-20 17:15:38,241 - INFO - FollowingCrawler:process_author - 处理第7/10批用户...
+2025-06-20 17:15:38,256 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:15:38,256 - INFO - FollowingCrawler:process_author - 第7批处理完成，耗时0.02秒，平均每用户0.0003秒
+2025-06-20 17:15:38,757 - INFO - FollowingCrawler:process_author - 处理第8/10批用户...
+2025-06-20 17:15:38,770 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:15:38,771 - INFO - FollowingCrawler:process_author - 第8批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:15:39,271 - INFO - FollowingCrawler:process_author - 处理第9/10批用户...
+2025-06-20 17:15:39,286 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:15:39,286 - INFO - FollowingCrawler:process_author - 第9批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:15:39,787 - INFO - FollowingCrawler:process_author - 处理第10/10批用户...
+2025-06-20 17:15:39,802 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增38个用户
+2025-06-20 17:15:39,802 - INFO - FollowingCrawler:process_author - 第10批处理完成，耗时0.02秒，平均每用户0.0004秒
+2025-06-20 17:15:39,808 - INFO - FollowingCrawler:process_author - Completed author CoinMarketCap, saved 488 users (total_valid=9429), 总耗时: 36.83秒
+2025-06-20 17:15:39,808 - INFO - FollowingCrawler:run - 该作者新增了 488 个用户，当前总计: 9429/10000
+2025-06-20 17:15:39,808 - INFO - FollowingCrawler:run - 处理第 19/1000 个作者: Coinbase 🛡️ (following: 0)
+2025-06-20 17:15:39,808 - INFO - FollowingCrawler:process_author - 开始处理用户: Coinbase 🛡️ (following: 0)
+2025-06-20 17:15:39,808 - INFO - FollowingCrawler:get_user_following - 开始获取用户 Coinbase 🛡️ (ID:574032254) 的following... (friends_count: 0)
+2025-06-20 17:15:39,808 - INFO - FollowingCrawler:get_user_following - 开始请求API, 尝试次数: 1/3
+2025-06-20 17:15:39,808 - INFO - FollowingCrawler:get_user_following - 请求URL: https://api.tweetscout.io/v2/follows, Params: {'user_id': '574032254', 'limit': 100, 'order_by': 'score'}
+2025-06-20 17:15:43,118 - INFO - FollowingCrawler:get_user_following - API响应状态码: 200
+2025-06-20 17:15:43,119 - INFO - FollowingCrawler:get_user_following - 成功获取数据，条目数: 34
+2025-06-20 17:15:43,119 - INFO - FollowingCrawler:get_user_following - 过滤后following数量(>2000): 33/34
+2025-06-20 17:15:43,119 - INFO - FollowingCrawler:get_user_following - Retrieved 33 filtered following (>2000) for Coinbase 🛡️ (remain 571)
+2025-06-20 17:15:43,119 - INFO - FollowingCrawler:process_author - 将33个用户分为1批处理，每批50个
+2025-06-20 17:15:43,119 - INFO - FollowingCrawler:process_author - 处理第1/1批用户...
+2025-06-20 17:15:43,137 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增33个用户
+2025-06-20 17:15:43,137 - INFO - FollowingCrawler:process_author - 第1批处理完成，耗时0.02秒，平均每用户0.0005秒
+2025-06-20 17:15:43,142 - INFO - FollowingCrawler:process_author - Completed author Coinbase 🛡️, saved 33 users (total_valid=9462), 总耗时: 3.33秒
+2025-06-20 17:15:43,142 - INFO - FollowingCrawler:run - 该作者新增了 33 个用户，当前总计: 9462/10000
+2025-06-20 17:15:43,142 - INFO - FollowingCrawler:run - 处理第 20/1000 个作者: jack (following: 0)
+2025-06-20 17:15:43,142 - INFO - FollowingCrawler:process_author - 开始处理用户: jack (following: 0)
+2025-06-20 17:15:43,142 - INFO - FollowingCrawler:get_user_following - 开始获取用户 jack (ID:12) 的following... (friends_count: 0)
+2025-06-20 17:15:43,142 - INFO - FollowingCrawler:get_user_following - 开始请求API, 尝试次数: 1/3
+2025-06-20 17:15:43,142 - INFO - FollowingCrawler:get_user_following - 请求URL: https://api.tweetscout.io/v2/follows, Params: {'user_id': '12', 'limit': 100, 'order_by': 'score'}
+2025-06-20 17:15:49,072 - INFO - FollowingCrawler:get_user_following - API响应状态码: 200
+2025-06-20 17:15:49,072 - INFO - FollowingCrawler:get_user_following - 成功获取数据，条目数: 3
+2025-06-20 17:15:49,072 - INFO - FollowingCrawler:get_user_following - 过滤后following数量(>2000): 3/3
+2025-06-20 17:15:49,072 - INFO - FollowingCrawler:get_user_following - Retrieved 3 filtered following (>2000) for jack (remain 538)
+2025-06-20 17:15:49,072 - INFO - FollowingCrawler:process_author - 将3个用户分为1批处理，每批50个
+2025-06-20 17:15:49,072 - INFO - FollowingCrawler:process_author - 处理第1/1批用户...
+2025-06-20 17:15:49,078 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增3个用户
+2025-06-20 17:15:49,078 - INFO - FollowingCrawler:process_author - 第1批处理完成，耗时0.01秒，平均每用户0.0020秒
+2025-06-20 17:15:49,083 - INFO - FollowingCrawler:process_author - Completed author jack, saved 3 users (total_valid=9465), 总耗时: 5.94秒
+2025-06-20 17:15:49,083 - INFO - FollowingCrawler:run - 该作者新增了 3 个用户，当前总计: 9465/10000
+2025-06-20 17:15:49,083 - INFO - FollowingCrawler:run - 处理第 21/1000 个作者: Dr Jordan B Peterson (following: 0)
+2025-06-20 17:15:49,083 - INFO - FollowingCrawler:process_author - 开始处理用户: Dr Jordan B Peterson (following: 0)
+2025-06-20 17:15:49,083 - INFO - FollowingCrawler:get_user_following - 开始获取用户 Dr Jordan B Peterson (ID:95092020) 的following... (friends_count: 0)
+2025-06-20 17:15:49,083 - INFO - FollowingCrawler:get_user_following - 开始请求API, 尝试次数: 1/3
+2025-06-20 17:15:49,083 - INFO - FollowingCrawler:get_user_following - 请求URL: https://api.tweetscout.io/v2/follows, Params: {'user_id': '95092020', 'limit': 100, 'order_by': 'score'}
+2025-06-20 17:17:44,423 - INFO - FollowingCrawler:get_user_following - API响应状态码: 200
+2025-06-20 17:17:44,431 - INFO - FollowingCrawler:get_user_following - 成功获取数据，条目数: 1661
+2025-06-20 17:17:44,431 - INFO - FollowingCrawler:get_user_following - 过滤后following数量(>2000): 1551/1661
+2025-06-20 17:17:44,431 - INFO - FollowingCrawler:get_user_following - Retrieved 535 filtered following (>2000) for Dr Jordan B Peterson (remain 535)
+2025-06-20 17:17:44,432 - INFO - FollowingCrawler:process_author - 将535个用户分为11批处理，每批50个
+2025-06-20 17:17:44,432 - INFO - FollowingCrawler:process_author - 处理第1/11批用户...
+2025-06-20 17:17:44,452 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:17:44,452 - INFO - FollowingCrawler:process_author - 第1批处理完成，耗时0.02秒，平均每用户0.0004秒
+2025-06-20 17:17:44,953 - INFO - FollowingCrawler:process_author - 处理第2/11批用户...
+2025-06-20 17:17:44,967 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:17:44,967 - INFO - FollowingCrawler:process_author - 第2批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:17:45,468 - INFO - FollowingCrawler:process_author - 处理第3/11批用户...
+2025-06-20 17:17:45,482 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:17:45,482 - INFO - FollowingCrawler:process_author - 第3批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:17:45,983 - INFO - FollowingCrawler:process_author - 处理第4/11批用户...
+2025-06-20 17:17:45,999 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:17:45,999 - INFO - FollowingCrawler:process_author - 第4批处理完成，耗时0.02秒，平均每用户0.0003秒
+2025-06-20 17:17:46,500 - INFO - FollowingCrawler:process_author - 处理第5/11批用户...
+2025-06-20 17:17:46,514 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:17:46,514 - INFO - FollowingCrawler:process_author - 第5批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:17:47,014 - INFO - FollowingCrawler:process_author - 处理第6/11批用户...
+2025-06-20 17:17:47,029 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:17:47,029 - INFO - FollowingCrawler:process_author - 第6批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:17:47,530 - INFO - FollowingCrawler:process_author - 处理第7/11批用户...
+2025-06-20 17:17:47,544 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:17:47,544 - INFO - FollowingCrawler:process_author - 第7批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:17:48,045 - INFO - FollowingCrawler:process_author - 处理第8/11批用户...
+2025-06-20 17:17:48,059 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:17:48,059 - INFO - FollowingCrawler:process_author - 第8批处理完成，耗时0.01秒，平均每用户0.0003秒
+2025-06-20 17:17:48,560 - INFO - FollowingCrawler:process_author - 处理第9/11批用户...
+2025-06-20 17:17:48,577 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:17:48,577 - INFO - FollowingCrawler:process_author - 第9批处理完成，耗时0.02秒，平均每用户0.0003秒
+2025-06-20 17:17:49,078 - INFO - FollowingCrawler:process_author - 处理第10/11批用户...
+2025-06-20 17:17:49,093 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-06-20 17:17:49,093 - INFO - FollowingCrawler:process_author - 第10批处理完成，耗时0.02秒，平均每用户0.0003秒
+2025-06-20 17:17:49,594 - INFO - FollowingCrawler:process_author - 处理第11/11批用户...
+2025-06-20 17:17:49,609 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增35个用户
+2025-06-20 17:17:49,609 - INFO - FollowingCrawler:process_author - 第11批处理完成，耗时0.02秒，平均每用户0.0004秒
+2025-06-20 17:17:49,615 - INFO - FollowingCrawler:process_author - Completed author Dr Jordan B Peterson, saved 535 users (total_valid=10000), 总耗时: 120.53秒
+2025-06-20 17:17:49,615 - INFO - FollowingCrawler:run - 该作者新增了 535 个用户，当前总计: 10000/10000
+2025-06-20 17:17:49,615 - INFO - FollowingCrawler:run - 处理第 22/1000 个作者: Eric Trump (following: 0)
+2025-06-20 17:17:49,615 - INFO - FollowingCrawler:run - 已达到阈值 10000，停止处理更多作者
+2025-06-20 17:17:49,615 - INFO - FollowingCrawler:run - 循环完成统计:
+2025-06-20 17:17:49,615 - INFO - FollowingCrawler:run -   - 处理作者数: 21/1000
+2025-06-20 17:17:49,615 - INFO - FollowingCrawler:run -   - 跳过高following用户: 0
+2025-06-20 17:17:49,615 - INFO - FollowingCrawler:run -   - 新增有效用户: 10000
+2025-06-20 17:17:49,615 - INFO - FollowingCrawler:run -   - 总计有效用户: 10000
+2025-06-20 17:17:49,615 - INFO - FollowingCrawler:run -   - 总耗时: 2406.84秒

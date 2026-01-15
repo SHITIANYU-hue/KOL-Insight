@@ -1,0 +1,183 @@
+2025-07-01 10:23:24,312 - INFO - FollowingCrawler:__init__ - 初始化爬虫，循环次数: 1, 输入文件: ../data/input/twitter_users.json, 输出数据库: ../data/temp/following1.db, following阈值: 2000
+2025-07-01 10:23:24,343 - INFO - FollowingCrawler:_init_database - 数据库初始化完成
+2025-07-01 10:23:24,343 - INFO - FollowingCrawler:run - 开始执行run方法，输入文件: ../data/input/twitter_users.json
+2025-07-01 10:23:24,343 - INFO - FollowingCrawler:run - 检测到JSON输入文件，开始加载种子用户
+2025-07-01 10:23:24,343 - ERROR - FollowingCrawler:load_seed_users - 加载种子用户文件错误: [Errno 2] No such file or directory: '../data/input/twitter_users.json'
+2025-07-01 10:23:24,344 - INFO - FollowingCrawler:run - 加载了 0 个种子用户
+2025-07-01 10:23:24,344 - WARNING - FollowingCrawler:run - 没有获取到种子用户，请检查输入文件
+2025-07-01 10:34:11,035 - INFO - FollowingCrawler:__init__ - 初始化爬虫，循环次数: 1, 输入文件: /home/ec2-user/fullprogress1_17/fullprogress1_9/data/input/twitter_users.json, 输出数据库: /home/ec2-user/fullprogress1_17/fullprogress1_9/data/temp/following1.db, following阈值: 2000
+2025-07-01 10:34:11,035 - INFO - FollowingCrawler:_init_database - Backed up existing database to /home/ec2-user/fullprogress1_17/fullprogress1_9/data/temp/following1.db.1751366051.bak
+2025-07-01 10:34:11,069 - INFO - FollowingCrawler:_init_database - 数据库初始化完成
+2025-07-01 10:34:11,069 - INFO - FollowingCrawler:run - 开始执行run方法，输入文件: /home/ec2-user/fullprogress1_17/fullprogress1_9/data/input/twitter_users.json
+2025-07-01 10:34:11,069 - INFO - FollowingCrawler:run - 检测到JSON输入文件，开始加载种子用户
+2025-07-01 10:34:11,069 - INFO - FollowingCrawler:load_seed_users - 从JSON文件加载了数据类型: <class 'list'>, 长度: 2
+2025-07-01 10:34:11,069 - INFO - FollowingCrawler:load_seed_users - 第一个用户数据: {"user_id": "1373081719834775554", "username": "connectfarm1", "name": "潜水观察员 🇨🇳", "description": "不被定义，头衔太多就不写了｜新人用ok: https://t.co/f52uvW5oK5｜链上神器：https://t.co/vci2xnFL0L ｜四亿用户在币安：https://t.co/cKzZoL9bvx", "followers_count": 118760, "friends_count": 1673, "tweets_count": 11377, "register_date": "2021-03-20", "avatar": "https://pbs.twimg.com/profile_images/1896754276699082752/Z6OKc6D1_normal.jpg", "banner": "https://pbs.twimg.com/profile_banners/1373081719834775554/1655043945", "verified": 1, "can_dm": 1, "last_updated": "2025-07-01 10:34:07"}
+2025-07-01 10:34:11,069 - INFO - FollowingCrawler:run - 加载了 2 个种子用户
+2025-07-01 10:34:11,069 - INFO - FollowingCrawler:run - 已按followers_count降序排列作者
+2025-07-01 10:34:11,070 - INFO - FollowingCrawler:run - 用户分布：低following用户(2)，高following用户(0)
+2025-07-01 10:34:11,070 - INFO - FollowingCrawler:run - 处理第 1/2 个作者: connectfarm1 (following: 1673)
+2025-07-01 10:34:11,070 - INFO - FollowingCrawler:process_author - 开始处理用户: connectfarm1 (following: 1673)
+2025-07-01 10:34:11,070 - INFO - FollowingCrawler:get_user_following - 开始获取用户 connectfarm1 (ID:1373081719834775554) 的following... (friends_count: 1673)
+2025-07-01 10:34:11,070 - INFO - FollowingCrawler:get_user_following - 开始请求API, 尝试次数: 1/3
+2025-07-01 10:34:11,070 - INFO - FollowingCrawler:get_user_following - 请求URL: https://api.tweetscout.io/v2/follows, Params: {'user_id': '1373081719834775554', 'limit': 100, 'order_by': 'score'}
+2025-07-01 10:35:28,657 - INFO - FollowingCrawler:get_user_following - API响应状态码: 200
+2025-07-01 10:35:28,666 - INFO - FollowingCrawler:get_user_following - 成功获取数据，条目数: 1673
+2025-07-01 10:35:28,667 - INFO - FollowingCrawler:get_user_following - 过滤后following数量(>2000): 1451/1673
+2025-07-01 10:35:28,667 - INFO - FollowingCrawler:get_user_following - Retrieved 100 filtered following (>2000, 排除已存在) for connectfarm1 (remain 100)
+2025-07-01 10:35:28,667 - INFO - FollowingCrawler:process_author - 将100个用户分为2批处理，每批50个
+2025-07-01 10:35:28,667 - INFO - FollowingCrawler:process_author - 处理第1/2批用户...
+2025-07-01 10:35:28,675 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-07-01 10:35:28,675 - INFO - FollowingCrawler:process_author - 第1批处理完成，耗时0.01秒，平均每用户0.0001秒
+2025-07-01 10:35:29,176 - INFO - FollowingCrawler:process_author - 处理第2/2批用户...
+2025-07-01 10:35:29,183 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-07-01 10:35:29,183 - INFO - FollowingCrawler:process_author - 第2批处理完成，耗时0.01秒，平均每用户0.0001秒
+2025-07-01 10:35:29,188 - INFO - FollowingCrawler:process_author - Completed author connectfarm1, saved 100 users (total_valid=100), 总耗时: 78.12秒
+2025-07-01 10:35:29,189 - INFO - FollowingCrawler:run - 该作者新增了 100 个用户，当前总计: 100/100
+2025-07-01 10:35:29,189 - INFO - FollowingCrawler:run - 处理第 2/2 个作者: Super4DeFi (following: 1725)
+2025-07-01 10:35:29,189 - INFO - FollowingCrawler:run - 已达到阈值 100，停止处理更多作者
+2025-07-01 10:35:29,189 - INFO - FollowingCrawler:run - 循环完成统计:
+2025-07-01 10:35:29,189 - INFO - FollowingCrawler:run -   - 处理作者数: 1/2
+2025-07-01 10:35:29,189 - INFO - FollowingCrawler:run -   - 跳过高following用户: 0
+2025-07-01 10:35:29,189 - INFO - FollowingCrawler:run -   - 新增有效用户: 100
+2025-07-01 10:35:29,189 - INFO - FollowingCrawler:run -   - 总计有效用户: 100
+2025-07-01 10:35:29,189 - INFO - FollowingCrawler:run -   - 总耗时: 78.12秒
+2025-07-01 15:14:58,990 - INFO - FollowingCrawler:__init__ - 初始化爬虫，循环次数: 1, 输入文件: /home/ec2-user/fullprogress1_21/fullprogress1_9/data/input/twitter_users.json, 输出数据库: /home/ec2-user/fullprogress1_21/fullprogress1_9/data/temp/following1.db, following阈值: 2200
+2025-07-01 15:14:58,990 - INFO - FollowingCrawler:_load_existing_user_ids - 从排除数据库 /home/ec2-user/fullprogress1_21/fullprogress1_9/data/output/followingA.db 中加载了 100 个已存在用户ID
+2025-07-01 15:14:59,025 - INFO - FollowingCrawler:_init_database - 数据库初始化完成
+2025-07-01 15:14:59,025 - INFO - FollowingCrawler:run - 开始执行run方法，输入文件: /home/ec2-user/fullprogress1_21/fullprogress1_9/data/input/twitter_users.json
+2025-07-01 15:14:59,025 - INFO - FollowingCrawler:run - 排除数据库: /home/ec2-user/fullprogress1_21/fullprogress1_9/data/output/followingA.db, 已加载 100 个已存在用户ID
+2025-07-01 15:14:59,025 - INFO - FollowingCrawler:run - 检测到JSON输入文件，开始加载种子用户
+2025-07-01 15:14:59,026 - INFO - FollowingCrawler:load_seed_users - 从JSON文件加载了数据类型: <class 'list'>, 长度: 12
+2025-07-01 15:14:59,026 - INFO - FollowingCrawler:load_seed_users - 第一个用户数据: {"user_id": "1373081719834775554", "username": "connectfarm1", "name": "潜水观察员 🇨🇳", "description": "不被定义，头衔太多就不写了｜新人用ok: https://t.co/f52uvW5oK5｜链上神器：https://t.co/vci2xnFL0L ｜四亿用户在币安：https://t.co/cKzZoL9bvx", "followers_count": 118760, "friends_count": 1673, "tweets_count": 11377, "register_date": "2021-03-20", "avatar": "https://pbs.twimg.com/profile_images/1896754276699082752/Z6OKc6D1_normal.jpg", "banner": "https://pbs.twimg.com/profile_banners/1373081719834775554/1655043945", "verified": 1, "can_dm": 1, "last_updated": "2025-07-01 10:34:07"}
+2025-07-01 15:14:59,026 - INFO - FollowingCrawler:run - 加载了 12 个种子用户
+2025-07-01 15:14:59,026 - INFO - FollowingCrawler:run - 已按followers_count降序排列作者
+2025-07-01 15:14:59,026 - INFO - FollowingCrawler:run - 用户分布：低following用户(10)，高following用户(2)
+2025-07-01 15:14:59,026 - INFO - FollowingCrawler:run - 处理第 1/12 个作者: VitalikButerin (following: 496)
+2025-07-01 15:14:59,026 - INFO - FollowingCrawler:process_author - 开始处理用户: VitalikButerin (following: 496)
+2025-07-01 15:14:59,026 - INFO - FollowingCrawler:get_user_following - 开始获取用户 VitalikButerin (ID:295218901) 的following... (friends_count: 496)
+2025-07-01 15:14:59,026 - INFO - FollowingCrawler:get_user_following - 开始请求API, 尝试次数: 1/3
+2025-07-01 15:14:59,026 - INFO - FollowingCrawler:get_user_following - 请求URL: https://api.tweetscout.io/v2/follows, Params: {'user_id': '295218901', 'limit': 100, 'order_by': 'score'}
+2025-07-01 15:15:20,520 - INFO - FollowingCrawler:get_user_following - API响应状态码: 200
+2025-07-01 15:15:20,522 - INFO - FollowingCrawler:get_user_following - 成功获取数据，条目数: 496
+2025-07-01 15:15:20,523 - INFO - FollowingCrawler:_filter_existing_users - 排除了 5 个已存在用户，剩余 491 个新用户
+2025-07-01 15:15:20,523 - INFO - FollowingCrawler:get_user_following - 排除了 5 个已存在用户
+2025-07-01 15:15:20,523 - INFO - FollowingCrawler:get_user_following - 过滤后following数量(>2000): 441/491
+2025-07-01 15:15:20,523 - INFO - FollowingCrawler:get_user_following - Retrieved 441 filtered following (>2000, 排除已存在) for VitalikButerin (remain 1000)
+2025-07-01 15:15:20,523 - INFO - FollowingCrawler:process_author - 将441个用户分为9批处理，每批50个
+2025-07-01 15:15:20,523 - INFO - FollowingCrawler:process_author - 处理第1/9批用户...
+2025-07-01 15:15:20,530 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-07-01 15:15:20,530 - INFO - FollowingCrawler:process_author - 第1批处理完成，耗时0.01秒，平均每用户0.0001秒
+2025-07-01 15:15:21,031 - INFO - FollowingCrawler:process_author - 处理第2/9批用户...
+2025-07-01 15:15:21,041 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-07-01 15:15:21,041 - INFO - FollowingCrawler:process_author - 第2批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-07-01 15:15:21,542 - INFO - FollowingCrawler:process_author - 处理第3/9批用户...
+2025-07-01 15:15:21,549 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-07-01 15:15:21,549 - INFO - FollowingCrawler:process_author - 第3批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-07-01 15:15:22,050 - INFO - FollowingCrawler:process_author - 处理第4/9批用户...
+2025-07-01 15:15:22,058 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-07-01 15:15:22,058 - INFO - FollowingCrawler:process_author - 第4批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-07-01 15:15:22,559 - INFO - FollowingCrawler:process_author - 处理第5/9批用户...
+2025-07-01 15:15:22,569 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-07-01 15:15:22,569 - INFO - FollowingCrawler:process_author - 第5批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-07-01 15:15:23,069 - INFO - FollowingCrawler:process_author - 处理第6/9批用户...
+2025-07-01 15:15:23,077 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-07-01 15:15:23,078 - INFO - FollowingCrawler:process_author - 第6批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-07-01 15:15:23,578 - INFO - FollowingCrawler:process_author - 处理第7/9批用户...
+2025-07-01 15:15:23,587 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-07-01 15:15:23,587 - INFO - FollowingCrawler:process_author - 第7批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-07-01 15:15:24,088 - INFO - FollowingCrawler:process_author - 处理第8/9批用户...
+2025-07-01 15:15:24,095 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-07-01 15:15:24,095 - INFO - FollowingCrawler:process_author - 第8批处理完成，耗时0.01秒，平均每用户0.0001秒
+2025-07-01 15:15:24,596 - INFO - FollowingCrawler:process_author - 处理第9/9批用户...
+2025-07-01 15:15:24,603 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增41个用户
+2025-07-01 15:15:24,603 - INFO - FollowingCrawler:process_author - 第9批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-07-01 15:15:24,608 - INFO - FollowingCrawler:process_author - Completed author VitalikButerin, saved 441 users (total_valid=441), 总耗时: 25.58秒
+2025-07-01 15:15:24,608 - INFO - FollowingCrawler:run - 该作者新增了 441 个用户，当前总计: 441/1000
+2025-07-01 15:15:24,609 - INFO - FollowingCrawler:run - 处理第 2/12 个作者: BNBCHAIN (following: 627)
+2025-07-01 15:15:24,609 - INFO - FollowingCrawler:process_author - 开始处理用户: BNBCHAIN (following: 627)
+2025-07-01 15:15:24,609 - INFO - FollowingCrawler:get_user_following - 开始获取用户 BNBCHAIN (ID:1052454006537314306) 的following... (friends_count: 627)
+2025-07-01 15:15:24,609 - INFO - FollowingCrawler:get_user_following - 开始请求API, 尝试次数: 1/3
+2025-07-01 15:15:24,609 - INFO - FollowingCrawler:get_user_following - 请求URL: https://api.tweetscout.io/v2/follows, Params: {'user_id': '1052454006537314306', 'limit': 100, 'order_by': 'score'}
+2025-07-01 15:15:58,724 - INFO - FollowingCrawler:get_user_following - API响应状态码: 200
+2025-07-01 15:15:58,728 - INFO - FollowingCrawler:get_user_following - 成功获取数据，条目数: 627
+2025-07-01 15:15:58,728 - INFO - FollowingCrawler:_filter_existing_users - 排除了 16 个已存在用户，剩余 608 个新用户
+2025-07-01 15:15:58,728 - INFO - FollowingCrawler:get_user_following - 排除了 19 个已存在用户
+2025-07-01 15:15:58,728 - INFO - FollowingCrawler:get_user_following - 过滤后following数量(>2000): 547/608
+2025-07-01 15:15:58,728 - INFO - FollowingCrawler:get_user_following - Retrieved 547 filtered following (>2000, 排除已存在) for BNBCHAIN (remain 559)
+2025-07-01 15:15:58,728 - INFO - FollowingCrawler:process_author - 将547个用户分为11批处理，每批50个
+2025-07-01 15:15:58,728 - INFO - FollowingCrawler:process_author - 处理第1/11批用户...
+2025-07-01 15:15:58,736 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-07-01 15:15:58,736 - INFO - FollowingCrawler:process_author - 第1批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-07-01 15:15:59,237 - INFO - FollowingCrawler:process_author - 处理第2/11批用户...
+2025-07-01 15:15:59,246 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-07-01 15:15:59,246 - INFO - FollowingCrawler:process_author - 第2批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-07-01 15:15:59,746 - INFO - FollowingCrawler:process_author - 处理第3/11批用户...
+2025-07-01 15:15:59,755 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-07-01 15:15:59,755 - INFO - FollowingCrawler:process_author - 第3批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-07-01 15:16:00,255 - INFO - FollowingCrawler:process_author - 处理第4/11批用户...
+2025-07-01 15:16:00,265 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-07-01 15:16:00,265 - INFO - FollowingCrawler:process_author - 第4批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-07-01 15:16:00,765 - INFO - FollowingCrawler:process_author - 处理第5/11批用户...
+2025-07-01 15:16:00,775 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-07-01 15:16:00,775 - INFO - FollowingCrawler:process_author - 第5批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-07-01 15:16:01,276 - INFO - FollowingCrawler:process_author - 处理第6/11批用户...
+2025-07-01 15:16:01,284 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-07-01 15:16:01,284 - INFO - FollowingCrawler:process_author - 第6批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-07-01 15:16:01,785 - INFO - FollowingCrawler:process_author - 处理第7/11批用户...
+2025-07-01 15:16:01,795 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-07-01 15:16:01,795 - INFO - FollowingCrawler:process_author - 第7批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-07-01 15:16:02,296 - INFO - FollowingCrawler:process_author - 处理第8/11批用户...
+2025-07-01 15:16:02,304 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-07-01 15:16:02,304 - INFO - FollowingCrawler:process_author - 第8批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-07-01 15:16:02,805 - INFO - FollowingCrawler:process_author - 处理第9/11批用户...
+2025-07-01 15:16:02,817 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-07-01 15:16:02,817 - INFO - FollowingCrawler:process_author - 第9批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-07-01 15:16:03,317 - INFO - FollowingCrawler:process_author - 处理第10/11批用户...
+2025-07-01 15:16:03,328 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增50个用户
+2025-07-01 15:16:03,328 - INFO - FollowingCrawler:process_author - 第10批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-07-01 15:16:03,829 - INFO - FollowingCrawler:process_author - 处理第11/11批用户...
+2025-07-01 15:16:03,838 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增47个用户
+2025-07-01 15:16:03,838 - INFO - FollowingCrawler:process_author - 第11批处理完成，耗时0.01秒，平均每用户0.0002秒
+2025-07-01 15:16:03,843 - INFO - FollowingCrawler:process_author - Completed author BNBCHAIN, saved 547 users (total_valid=988), 总耗时: 39.23秒
+2025-07-01 15:16:03,844 - INFO - FollowingCrawler:run - 该作者新增了 547 个用户，当前总计: 988/1000
+2025-07-01 15:16:03,844 - INFO - FollowingCrawler:run - 处理第 3/12 个作者: berachain (following: 6)
+2025-07-01 15:16:03,844 - INFO - FollowingCrawler:process_author - 开始处理用户: berachain (following: 6)
+2025-07-01 15:16:03,844 - INFO - FollowingCrawler:get_user_following - 开始获取用户 berachain (ID:1471917994762670081) 的following... (friends_count: 6)
+2025-07-01 15:16:03,844 - INFO - FollowingCrawler:get_user_following - 开始请求API, 尝试次数: 1/3
+2025-07-01 15:16:03,844 - INFO - FollowingCrawler:get_user_following - 请求URL: https://api.tweetscout.io/v2/follows, Params: {'user_id': '1471917994762670081', 'limit': 100, 'order_by': 'score'}
+2025-07-01 15:16:06,884 - INFO - FollowingCrawler:get_user_following - API响应状态码: 200
+2025-07-01 15:16:06,885 - INFO - FollowingCrawler:get_user_following - 成功获取数据，条目数: 6
+2025-07-01 15:16:06,885 - INFO - FollowingCrawler:get_user_following - 过滤后following数量(>2000): 4/6
+2025-07-01 15:16:06,885 - INFO - FollowingCrawler:get_user_following - Retrieved 4 filtered following (>2000, 排除已存在) for berachain (remain 12)
+2025-07-01 15:16:06,885 - INFO - FollowingCrawler:process_author - 将4个用户分为1批处理，每批50个
+2025-07-01 15:16:06,885 - INFO - FollowingCrawler:process_author - 处理第1/1批用户...
+2025-07-01 15:16:06,893 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增4个用户
+2025-07-01 15:16:06,893 - INFO - FollowingCrawler:process_author - 第1批处理完成，耗时0.01秒，平均每用户0.0021秒
+2025-07-01 15:16:06,898 - INFO - FollowingCrawler:process_author - Completed author berachain, saved 4 users (total_valid=992), 总耗时: 3.05秒
+2025-07-01 15:16:06,898 - INFO - FollowingCrawler:run - 该作者新增了 4 个用户，当前总计: 992/1000
+2025-07-01 15:16:06,898 - INFO - FollowingCrawler:run - 处理第 4/12 个作者: Optimism (following: 211)
+2025-07-01 15:16:06,898 - INFO - FollowingCrawler:process_author - 开始处理用户: Optimism (following: 211)
+2025-07-01 15:16:06,898 - INFO - FollowingCrawler:get_user_following - 开始获取用户 Optimism (ID:1044836083530452992) 的following... (friends_count: 211)
+2025-07-01 15:16:06,898 - INFO - FollowingCrawler:get_user_following - 开始请求API, 尝试次数: 1/3
+2025-07-01 15:16:06,898 - INFO - FollowingCrawler:get_user_following - 请求URL: https://api.tweetscout.io/v2/follows, Params: {'user_id': '1044836083530452992', 'limit': 100, 'order_by': 'score'}
+2025-07-01 15:16:21,441 - INFO - FollowingCrawler:get_user_following - API响应状态码: 200
+2025-07-01 15:16:21,442 - INFO - FollowingCrawler:get_user_following - 成功获取数据，条目数: 211
+2025-07-01 15:16:21,442 - INFO - FollowingCrawler:_filter_existing_users - 排除了 6 个已存在用户，剩余 204 个新用户
+2025-07-01 15:16:21,442 - INFO - FollowingCrawler:get_user_following - 排除了 7 个已存在用户
+2025-07-01 15:16:21,442 - INFO - FollowingCrawler:get_user_following - 过滤后following数量(>2000): 150/204
+2025-07-01 15:16:21,442 - INFO - FollowingCrawler:get_user_following - Retrieved 8 filtered following (>2000, 排除已存在) for Optimism (remain 8)
+2025-07-01 15:16:21,442 - INFO - FollowingCrawler:process_author - 将8个用户分为1批处理，每批50个
+2025-07-01 15:16:21,442 - INFO - FollowingCrawler:process_author - 处理第1/1批用户...
+2025-07-01 15:16:21,451 - INFO - FollowingCrawler:process_author - 批量保存成功，本批次新增8个用户
+2025-07-01 15:16:21,451 - INFO - FollowingCrawler:process_author - 第1批处理完成，耗时0.01秒，平均每用户0.0010秒
+2025-07-01 15:16:21,456 - INFO - FollowingCrawler:process_author - Completed author Optimism, saved 8 users (total_valid=1000), 总耗时: 14.56秒
+2025-07-01 15:16:21,456 - INFO - FollowingCrawler:run - 该作者新增了 8 个用户，当前总计: 1000/1000
+2025-07-01 15:16:21,456 - INFO - FollowingCrawler:run - 处理第 5/12 个作者: heyibinance (following: 1043)
+2025-07-01 15:16:21,456 - INFO - FollowingCrawler:run - 已达到阈值 1000，停止处理更多作者
+2025-07-01 15:16:21,456 - INFO - FollowingCrawler:run - 循环完成统计:
+2025-07-01 15:16:21,456 - INFO - FollowingCrawler:run -   - 处理作者数: 4/12
+2025-07-01 15:16:21,456 - INFO - FollowingCrawler:run -   - 跳过高following用户: 0
+2025-07-01 15:16:21,456 - INFO - FollowingCrawler:run -   - 新增有效用户: 1000
+2025-07-01 15:16:21,456 - INFO - FollowingCrawler:run -   - 总计有效用户: 1000
+2025-07-01 15:16:21,456 - INFO - FollowingCrawler:run -   - 排除的已存在用户: 100
+2025-07-01 15:16:21,456 - INFO - FollowingCrawler:run -   - 总耗时: 82.43秒
