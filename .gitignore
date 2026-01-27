@@ -1,0 +1,8 @@
+__pycache__/
+outputs/*
+.env
+static_html/*
+static_html*.zip
+*.db-shm
+*.db-wal
+readme.pdf

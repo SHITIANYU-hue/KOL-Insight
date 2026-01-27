@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KOL 评分展示</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .controls {
+            padding: 20px 30px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .sort-select {
+            padding: 10px 15px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 14px;
+            background: white;
+            cursor: pointer;
+        }
+
+        .stats {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            padding: 8px 15px;
+            background: white;
+            border-radius: 6px;
+            font-size: 14px;
+            border: 1px solid #dee2e6;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            max-height: 70vh;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            position: sticky;
+            top: 0;
+            background: #667eea;
+            color: white;
+            z-index: 10;
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.2s;
+        }
+
+        th:hover {
+            background: #5568d3;
+        }
+
+        th.sortable::after {
+            content: ' ↕';
+            opacity: 0.5;
+        }
+
+        th.sort-asc::after {
+            content: ' ↑';
+            opacity: 1;
+        }
+
+        th.sort-desc::after {
+            content: ' ↓';
+            opacity: 1;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid #e9ecef;
+            transition: background 0.2s;
+        }
+
+        tbody tr:hover {
+            background: #f8f9fa;
+        }
+
+        td {
+            padding: 12px 15px;
+            font-size: 14px;
+        }
+
+        .score-cell {
+            text-align: right;
+            font-family: 'Courier New', monospace;
+        }
+
+        .score-bar {
+            display: inline-block;
+            width: 60px;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .score-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 50px;
+            color: #6c757d;
+        }
+
+        .error {
+            text-align: center;
+            padding: 50px;
+            color: #dc3545;
+        }
+
+        .username {
+            font-weight: 600;
+            color: #667eea;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .username:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        .user-id {
+            font-size: 12px;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>KOL 评分展示</h1>
+            <p>用户评分数据可视化</p>
+        </div>
+
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="搜索用户名、ID 或描述...">
+            </div>
+            <select class="sort-select" id="sortSelect">
+                <option value="root">按总分排序</option>
+                <option value="username">按用户名排序</option>
+            </select>
+            <div class="stats">
+                <div class="stat-item">总用户数: <strong id="totalUsers">0</strong></div>
+                <div class="stat-item">显示: <strong id="displayedUsers">0</strong></div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <div id="loading" class="loading">正在加载数据...</div>
+            <div id="error" class="error" style="display: none;"></div>
+            <table id="scoreTable" style="display: none;">
+                <thead id="tableHead">
+                    <tr>
+                        <th class="sortable" data-sort="username">用户名</th>
+                        <th class="sortable" data-sort="user_id">用户ID</th>
+                        <th class="sortable" data-sort="root">总分</th>
+                        <!-- 动态生成列 -->
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        let accounts = [];
+        let scores = {};
+        let filteredData = [];
+        let sortColumn = 'root';
+        let sortDirection = 'desc';
+        let treeStructure = null;
+        let leafNodes = []; // 所有叶节点
+
+        // 从树结构中提取所有叶节点
+        function extractLeafNodes(node) {
+            const leaves = [];
+            function traverse(n) {
+                if (n.is_leaf) {
+                    leaves.push(n);
+                } else if (n.children) {
+                    n.children.forEach(child => traverse(child));
+                }
+            }
+            traverse(node);
+            return leaves;
+        }
+
+        // 动态生成表头
+        function generateTableHeader() {
+            const thead = document.getElementById('tableHead');
+            const tr = thead.querySelector('tr');
+            
+            // 保留前面的列，移除后面的列
+            while (tr.children.length > 3) {
+                tr.removeChild(tr.lastChild);
+            }
+            
+            // 添加叶节点列
+            leafNodes.forEach(leaf => {
+                const th = document.createElement('th');
+                th.className = 'sortable';
+                th.setAttribute('data-sort', leaf.key);
+                th.textContent = leaf.name;
+                tr.appendChild(th);
+            });
+            
+            // 添加描述列
+            const descTh = document.createElement('th');
+            descTh.textContent = '描述';
+            tr.appendChild(descTh);
+        }
+
+        // 动态生成排序选项
+        function generateSortOptions() {
+            const sortSelect = document.getElementById('sortSelect');
+            
+            // 保留前面的选项，移除后面的选项
+            while (sortSelect.children.length > 2) {
+                sortSelect.removeChild(sortSelect.lastChild);
+            }
+            
+            // 添加叶节点选项
+            leafNodes.forEach(leaf => {
+                const option = document.createElement('option');
+                option.value = leaf.key;
+                option.textContent = `按${leaf.name}排序`;
+                sortSelect.appendChild(option);
+            });
+        }
+
+        // 带超时的fetch
+        async function fetchWithTimeout(url, timeout = 5000) {
+            const startTime = Date.now();
+            const fetchPromise = fetch(url).then(response => {
+                const elapsed = Date.now() - startTime;
+                console.log(`fetch 完成 (${elapsed}ms):`, url, response.status);
+                return response;
+            }).catch(err => {
+                const elapsed = Date.now() - startTime;
+                console.error(`fetch 错误 (${elapsed}ms):`, url, err);
+                throw err;
+            });
+            
+            const timeoutPromise = new Promise((_, reject) => {
+                setTimeout(() => {
+                    const elapsed = Date.now() - startTime;
+                    console.error(`请求超时 (${elapsed}ms):`, url);
+                    reject(new Error(`请求超时 (${elapsed}ms): ${url}`));
+                }, timeout);
+            });
+            
+            try {
+                const response = await Promise.race([fetchPromise, timeoutPromise]);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                return response;
+            } catch (error) {
+                console.error('fetchWithTimeout 最终错误:', url, error);
+                throw error;
+            }
+        }
+
+        // 加载数据
+        async function loadData() {
+            try {
+                console.log('开始加载数据...');
+                const basePath = window.location.pathname.includes('/views/') ? '../outputs/' : 'outputs/';
+                const accountsUrl = basePath + 'accounts.json';
+                const scoresUrl = basePath + 'scores.json';
+                const treeUrl = basePath + 'tree_structure.json';
+                
+                const [accountsRes, scoresRes, treeRes] = await Promise.all([
+                    fetchWithTimeout(accountsUrl),
+                    fetchWithTimeout(scoresUrl),
+                    fetchWithTimeout(treeUrl)
+                ]);
+
+                if (!accountsRes.ok || !scoresRes.ok || !treeRes.ok) {
+                    throw new Error(`无法加载数据文件`);
+                }
+
+                accounts = await accountsRes.json();
+                const scoresData = await scoresRes.json();
+                treeStructure = await treeRes.json();
+                
+                scores = scoresData.scores || scoresData;
+                
+                // 提取所有叶节点
+                leafNodes = extractLeafNodes(treeStructure);
+                console.log('叶节点:', leafNodes.map(n => n.name));
+
+                // 动态生成表头和排序选项
+                generateTableHeader();
+                generateSortOptions();
+
+                // 合并数据
+                filteredData = accounts.map((account, index) => {
+                    const item = {
+                        ...account,
+                        index: index,
+                        root: scores.root?.[index] ?? 0
+                    };
+                    
+                    // 动态添加叶节点分数
+                    leafNodes.forEach(leaf => {
+                        item[leaf.key] = scores[leaf.key]?.[index] ?? 0;
+                    });
+                    
+                    return item;
+                });
+
+                console.log('数据合并完成, filteredData数量:', filteredData.length);
+
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('scoreTable').style.display = 'table';
+                renderTable();
+                console.log('渲染完成');
+            } catch (error) {
+                console.error('加载数据时出错:', error);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+                const errorMsg = error.name === 'AbortError' 
+                    ? '请求超时，请检查服务器是否正常运行' 
+                    : `错误: ${error.message}`;
+                document.getElementById('error').textContent = errorMsg;
+            }
+        }
+
+        // 渲染表格
+        function renderTable() {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+
+            // 排序
+            filteredData.sort((a, b) => {
+                const aVal = a[sortColumn] ?? 0;
+                const bVal = b[sortColumn] ?? 0;
+                const comparison = aVal > bVal ? 1 : aVal < bVal ? -1 : 0;
+                return sortDirection === 'asc' ? comparison : -comparison;
+            });
+
+            // 搜索过滤
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const displayData = filteredData.filter(item => {
+                if (!searchTerm) return true;
+                return (
+                    item.username?.toLowerCase().includes(searchTerm) ||
+                    item.user_id?.toString().includes(searchTerm) ||
+                    item.description?.toLowerCase().includes(searchTerm)
+                );
+            });
+
+            // 更新统计
+            document.getElementById('totalUsers').textContent = filteredData.length;
+            document.getElementById('displayedUsers').textContent = displayData.length;
+
+            // 渲染行
+            displayData.forEach(item => {
+                const row = document.createElement('tr');
+                
+                // 用户名和ID列
+                let rowHTML = `
+                    <td>
+                        <div class="username" onclick="window.location.href='user_report.html?index=${item.index}'">${escapeHtml(item.username || '未知')}</div>
+                    </td>
+                    <td>
+                        <div class="user-id">${escapeHtml(item.user_id || '')}</div>
+                    </td>
+                    <td class="score-cell">
+                        <div class="score-bar">
+                            <div class="score-bar-fill" style="width: ${item.root * 100}%"></div>
+                        </div>
+                        ${formatScore(item.root)}
+                    </td>
+                `;
+                
+                // 动态生成叶节点列
+                leafNodes.forEach(leaf => {
+                    const score = item[leaf.key] ?? 0;
+                    rowHTML += `
+                        <td class="score-cell">
+                            <div class="score-bar">
+                                <div class="score-bar-fill" style="width: ${score * 100}%"></div>
+                            </div>
+                            ${formatScore(score)}
+                        </td>
+                    `;
+                });
+                
+                // 描述列
+                rowHTML += `
+                    <td style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                        ${escapeHtml(item.description || '')}
+                    </td>
+                `;
+                
+                row.innerHTML = rowHTML;
+                tbody.appendChild(row);
+            });
+
+            // 更新表头排序指示器
+            document.querySelectorAll('th.sortable').forEach(th => {
+                th.classList.remove('sort-asc', 'sort-desc');
+                if (th.getAttribute('data-sort') === sortColumn) {
+                    th.classList.add(sortDirection === 'asc' ? 'sort-asc' : 'sort-desc');
+                }
+            });
+        }
+
+        // 格式化分数
+        function formatScore(score) {
+            if (score === null || score === undefined) return '0.00%';
+            return (score * 100).toFixed(2) + '%';
+        }
+
+        // 转义 HTML
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // 事件监听
+        document.getElementById('searchInput').addEventListener('input', renderTable);
+        
+        document.getElementById('sortSelect').addEventListener('change', (e) => {
+            sortColumn = e.target.value;
+            renderTable();
+        });
+
+        // 表头排序
+        document.addEventListener('DOMContentLoaded', () => {
+            // 使用事件委托处理动态生成的表头
+            document.getElementById('tableHead').addEventListener('click', (e) => {
+                const th = e.target.closest('th.sortable');
+                if (!th) return;
+                
+                const newSortColumn = th.getAttribute('data-sort');
+                if (newSortColumn === sortColumn) {
+                    sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
+                } else {
+                    sortColumn = newSortColumn;
+                    sortDirection = 'desc';
+                }
+                renderTable();
+            });
+        });
+
+        // 初始化
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                loadData().catch(err => {
+                    console.error('loadData 失败:', err);
+                    document.getElementById('loading').style.display = 'none';
+                    document.getElementById('error').style.display = 'block';
+                    document.getElementById('error').textContent = `错误: ${err.message}`;
+                });
+            });
+        } else {
+            loadData().catch(err => {
+                console.error('loadData 失败:', err);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+                document.getElementById('error').textContent = `错误: ${err.message}`;
+            });
+        }
+    </script>
+</body>
+</html>

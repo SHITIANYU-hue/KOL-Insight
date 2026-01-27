@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人评分报告</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            position: relative;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 8px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .header-content {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .user-info {
+            padding: 30px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .user-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .info-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .info-label {
+            font-size: 12px;
+            color: #6c757d;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .score-tree {
+            padding: 30px;
+        }
+
+        .tree-node {
+            margin-bottom: 15px;
+        }
+
+        .tree-node-content {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s;
+        }
+
+        .tree-node-content:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .tree-toggle {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #667eea;
+            color: white;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .tree-toggle:hover {
+            background: #5568d3;
+        }
+
+        .tree-toggle.collapsed::before {
+            content: '+';
+        }
+
+        .tree-toggle.expanded::before {
+            content: '−';
+        }
+
+        .tree-node-header {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .tree-node-name {
+            font-weight: 600;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .tree-node-description {
+            font-size: 12px;
+            color: #6c757d;
+            margin-top: 5px;
+            line-height: 1.4;
+        }
+
+        .tree-node-comment {
+            font-size: 13px;
+            color: #495057;
+            margin-top: 8px;
+            padding: 8px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            border-left: 3px solid #667eea;
+        }
+
+        .tree-node-weight {
+            font-size: 12px;
+            color: #6c757d;
+            margin-left: 10px;
+        }
+
+        .tree-node-score {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-left: 20px;
+        }
+
+        .score-value {
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            font-weight: 600;
+            color: #667eea;
+            min-width: 80px;
+            text-align: right;
+        }
+
+        .score-bar {
+            width: 200px;
+            height: 12px;
+            background: #e9ecef;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .score-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.5s;
+        }
+
+        .tree-children {
+            margin-left: 40px;
+            margin-top: 10px;
+            border-left: 2px solid #dee2e6;
+            padding-left: 20px;
+        }
+
+        .tree-children.collapsed {
+            display: none;
+        }
+
+        .leaf-node {
+            background: #fff;
+            border-left-color: #28a745;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 50px;
+            color: #6c757d;
+        }
+
+        .error {
+            text-align: center;
+            padding: 50px;
+            color: #dc3545;
+        }
+
+        .score-summary {
+            padding: 30px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .score-summary-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .total-score {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .total-score-label {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .total-score-value {
+            font-size: 3.5em;
+            font-weight: bold;
+        }
+
+        .chart-and-comment {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .radar-chart-wrapper {
+            flex: 1;
+            min-width: 400px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .radar-chart-title {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .root-comment {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .root-comment-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .root-comment-content {
+            font-size: 14px;
+            color: #495057;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        @media (max-width: 900px) {
+            .chart-and-comment {
+                flex-direction: column;
+            }
+            
+            .radar-chart-wrapper,
+            .root-comment {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="view_scores.html" class="back-button">← 返回总览</a>
+            <div class="header-content">
+                <h1>个人评分报告</h1>
+            </div>
+        </div>
+
+        <div id="loading" class="loading">正在加载数据...</div>
+        <div id="error" class="error" style="display: none;"></div>
+        
+        <div id="content" style="display: none;">
+            <div class="user-info">
+                <div class="user-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">用户名</div>
+                        <div class="info-value" id="username">-</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">用户ID</div>
+                        <div class="info-value" id="user_id">-</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">粉丝数</div>
+                        <div class="info-value" id="followers_count">-</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">关注数</div>
+                        <div class="info-value" id="friends_count">-</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">推文数</div>
+                        <div class="info-value" id="tweets_count">-</div>
+                    </div>
+                </div>
+                <div class="info-item" style="margin-top: 15px;">
+                    <div class="info-label">个人描述</div>
+                    <div class="info-value" id="description" style="font-weight: normal; word-wrap: break-word;">-</div>
+                </div>
+            </div>
+
+            <div class="score-summary">
+                <div class="score-summary-content">
+                    <div class="total-score">
+                        <div class="total-score-label">总分</div>
+                        <div class="total-score-value" id="totalScore">0.00%</div>
+                    </div>
+                    <div class="chart-and-comment">
+                        <div class="radar-chart-wrapper">
+                            <div class="radar-chart-title">Metrics Distribution</div>
+                            <canvas id="radarChart"></canvas>
+                        </div>
+                        <div class="root-comment">
+                            <div class="root-comment-title">综合评语</div>
+                            <div class="root-comment-content" id="rootComment">-</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="score-tree">
+                <div id="treeContainer"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let account = null;
+        let scores = {};
+        let comments = {};
+        let treeStructure = null;
+        let userIndex = null;
+
+        // 从URL获取用户索引
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('index');
+        }
+
+        // 加载数据
+        async function loadData() {
+            try {
+                userIndex = getUrlParams();
+                if (userIndex === null) {
+                    throw new Error('缺少用户索引参数');
+                }
+                userIndex = parseInt(userIndex);
+
+                const [accountsRes, scoresRes, treeRes] = await Promise.all([
+                    fetch('../outputs/accounts.json'),
+                    fetch('../outputs/scores.json'),
+                    fetch('../outputs/tree_structure.json')
+                ]);
+
+                if (!accountsRes.ok || !scoresRes.ok || !treeRes.ok) {
+                    throw new Error('无法加载数据文件');
+                }
+
+                const accounts = await accountsRes.json();
+                const scoresData = await scoresRes.json();
+                scores = scoresData.scores || scoresData;
+                comments = scoresData.comments || {};
+                treeStructure = await treeRes.json();
+
+                if (userIndex < 0 || userIndex >= accounts.length) {
+                    throw new Error('用户索引无效');
+                }
+
+                account = accounts[userIndex];
+
+                // 显示用户信息
+                document.getElementById('username').textContent = account.username || '未知';
+                document.getElementById('user_id').textContent = account.user_id || '-';
+                document.getElementById('followers_count').textContent = account.followers_count?.toLocaleString() || '-';
+                document.getElementById('friends_count').textContent = account.friends_count?.toLocaleString() || '-';
+                document.getElementById('tweets_count').textContent = account.tweets_count?.toLocaleString() || '-';
+                document.getElementById('description').textContent = account.description || '-';
+
+                // 显示总分
+                const totalScore = scores.root?.[userIndex] ?? 0;
+                document.getElementById('totalScore').textContent = formatScore(totalScore);
+
+                // 显示root节点的评语
+                const rootComment = comments.root?.[userIndex] || '';
+                document.getElementById('rootComment').textContent = rootComment || '暂无评语';
+
+                // 渲染树结构（不包含root节点，因为它已经在上面显示了）
+                renderTree();
+
+                // 绘制雷达图
+                renderRadarChart();
+
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+            } catch (error) {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+                document.getElementById('error').textContent = `错误: ${error.message}`;
+            }
+        }
+
+        // 渲染树节点
+        function renderTreeNode(node, depth = 0) {
+            const score = scores[node.key]?.[userIndex] ?? 0;
+            const comment = comments[node.key]?.[userIndex] ?? "";
+            const isLeaf = node.is_leaf;
+            const hasChildren = node.children && node.children.length > 0;
+
+            const nodeDiv = document.createElement('div');
+            nodeDiv.className = `tree-node ${isLeaf ? 'leaf-node' : ''}`;
+            nodeDiv.style.marginLeft = `${depth * 20}px`;
+
+            let toggleButton = '';
+            if (hasChildren) {
+                toggleButton = `<div class="tree-toggle expanded" onclick="toggleNode(this)"></div>`;
+            } else {
+                toggleButton = `<div style="width: 24px; margin-right: 10px;"></div>`;
+            }
+
+            // 先渲染子节点
+            let childrenHTML = '';
+            if (hasChildren) {
+                childrenHTML = node.children.map(child => renderTreeNode(child, depth + 1)).join('');
+            }
+
+            let descriptionHTML = '';
+            if (node.description) {
+                descriptionHTML = `<div class="tree-node-description">${escapeHtml(node.description)}</div>`;
+            }
+
+            let commentHTML = '';
+            if (comment) {
+                commentHTML = `<div class="tree-node-comment">${escapeHtml(comment)}</div>`;
+            }
+
+            nodeDiv.innerHTML = `
+                <div class="tree-node-content">
+                    ${toggleButton}
+                    <div class="tree-node-header">
+                        <div style="flex: 1;">
+                            <div>
+                                <span class="tree-node-name">${escapeHtml(node.name)}</span>
+                                <span class="tree-node-weight">(权重: ${node.weight})</span>
+                            </div>
+                            ${descriptionHTML}
+                            ${commentHTML}
+                        </div>
+                    </div>
+                    <div class="tree-node-score">
+                        <div class="score-bar">
+                            <div class="score-bar-fill" style="width: ${score * 100}%"></div>
+                        </div>
+                        <div class="score-value">${formatScore(score)}</div>
+                    </div>
+                </div>
+                ${hasChildren ? `<div class="tree-children" id="children-${node.key}">${childrenHTML}</div>` : ''}
+            `;
+
+            return nodeDiv.outerHTML;
+        }
+
+        // 渲染整个树（不包含root节点，只渲染root的子节点）
+        function renderTree() {
+            const container = document.getElementById('treeContainer');
+            if (treeStructure && treeStructure.children && treeStructure.children.length > 0) {
+                // 只渲染root的子节点
+                const childrenHTML = treeStructure.children.map(child => renderTreeNode(child, 0)).join('');
+                container.innerHTML = childrenHTML;
+            } else {
+                container.innerHTML = '';
+            }
+        }
+
+        // 切换节点展开/折叠
+        function toggleNode(button) {
+            const nodeContent = button.closest('.tree-node-content');
+            const childrenDiv = nodeContent.nextElementSibling;
+            
+            if (childrenDiv && childrenDiv.classList.contains('tree-children')) {
+                const isCollapsed = childrenDiv.classList.contains('collapsed');
+                if (isCollapsed) {
+                    childrenDiv.classList.remove('collapsed');
+                    button.classList.remove('collapsed');
+                    button.classList.add('expanded');
+                } else {
+                    childrenDiv.classList.add('collapsed');
+                    button.classList.remove('expanded');
+                    button.classList.add('collapsed');
+                }
+            }
+        }
+
+        // 绘制雷达图
+        let radarChart = null;
+        function renderRadarChart() {
+            if (!scores || userIndex === null) {
+                return;
+            }
+
+            const ctx = document.getElementById('radarChart');
+            if (!ctx) return;
+
+            // 如果图表已存在，先销毁
+            if (radarChart) {
+                radarChart.destroy();
+            }
+
+            // 从tree_structure中提取所有叶节点
+            function extractLeafNodes(node) {
+                const leaves = [];
+                function traverse(n) {
+                    if (n.is_leaf) {
+                        leaves.push(n);
+                    } else if (n.children) {
+                        n.children.forEach(child => traverse(child));
+                    }
+                }
+                traverse(node);
+                return leaves;
+            }
+
+            const leafNodes = extractLeafNodes(treeStructure);
+            
+            // 动态获取该用户的所有叶节点评分
+            const labels = [];
+            const data = [];
+            leafNodes.forEach(leaf => {
+                labels.push(leaf.name);
+                data.push(scores[leaf.key]?.[userIndex] ?? 0);
+            });
+
+            radarChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'KOL Metrics',
+                        data: data,
+                        backgroundColor: 'rgba(102, 126, 234, 0.2)',
+                        borderColor: 'rgba(102, 126, 234, 1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: 'rgba(102, 126, 234, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(102, 126, 234, 1)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            min: 0,
+                            max: 1,
+                            ticks: {
+                                stepSize: 0.2,
+                                display: true
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            },
+                            pointLabels: {
+                                font: {
+                                    size: 12,
+                                    weight: 'bold'
+                                },
+                                color: '#333'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'bottom',
+                            labels: {
+                                font: {
+                                    size: 12
+                                },
+                                padding: 15
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + (context.parsed.r * 100).toFixed(2) + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // 格式化分数
+        function formatScore(score) {
+            if (score === null || score === undefined) return '0.00%';
+            return (score * 100).toFixed(2) + '%';
+        }
+
+        // 转义 HTML
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // 初始化
+        loadData();
+    </script>
+</body>
+</html>
+
