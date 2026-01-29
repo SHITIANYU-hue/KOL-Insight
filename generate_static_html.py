@@ -95,17 +95,17 @@ def generate_main_page(accounts, scores, tree_structure):
             return leaves;
         }
 
-        // 动态生成表头
+        // Dynamically generate table header
         function generateTableHeader() {
             const thead = document.getElementById('tableHead');
             const tr = thead.querySelector('tr');
             
-            // 保留前面的列，移除后面的列
+            // Keep the first columns, remove the rest
             while (tr.children.length > 3) {
                 tr.removeChild(tr.lastChild);
             }
             
-            // 添加叶节点列
+            // Add leaf node columns
             leafNodes.forEach(leaf => {
                 const th = document.createElement('th');
                 th.className = 'sortable';
@@ -114,41 +114,41 @@ def generate_main_page(accounts, scores, tree_structure):
                 tr.appendChild(th);
             });
             
-            // 添加描述列
+            // Add description column
             const descTh = document.createElement('th');
-            descTh.textContent = '描述';
+            descTh.textContent = 'Description';
             tr.appendChild(descTh);
         }
 
-        // 动态生成排序选项
+        // Dynamically generate sort options
         function generateSortOptions() {
             const sortSelect = document.getElementById('sortSelect');
             
-            // 保留前面的选项，移除后面的选项
+            // Keep the first options, remove the rest
             while (sortSelect.children.length > 2) {
                 sortSelect.removeChild(sortSelect.lastChild);
             }
             
-            // 添加叶节点选项
+            // Add leaf node options
             leafNodes.forEach(leaf => {
                 const option = document.createElement('option');
                 option.value = leaf.key;
-                option.textContent = `按${leaf.name}排序`;
+                option.textContent = `Sort by ${leaf.name}`;
                 sortSelect.appendChild(option);
             });
         }
 
-        // 加载数据（已内嵌，无需fetch）
+        // Load data (embedded, no fetch needed)
         function loadData() {
             try {
-                // 提取所有叶节点
+                // Extract all leaf nodes
                 leafNodes = extractLeafNodes(treeStructure);
 
-                // 动态生成表头和排序选项
+                // Dynamically generate table header and sort options
                 generateTableHeader();
                 generateSortOptions();
 
-                // 合并数据（动态添加叶节点分数）
+                // Merge data (dynamically add leaf node scores)
                 filteredData = accounts.map((account, index) => {
                     const item = {
                         ...account,
@@ -156,7 +156,7 @@ def generate_main_page(accounts, scores, tree_structure):
                         root: scores.root?.[index] ?? 0
                     };
                     
-                    // 动态添加叶节点分数
+                    // Dynamically add leaf node scores
                     leafNodes.forEach(leaf => {
                         item[leaf.key] = scores[leaf.key]?.[index] ?? 0;
                     });
@@ -170,16 +170,16 @@ def generate_main_page(accounts, scores, tree_structure):
             } catch (error) {
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('error').style.display = 'block';
-                document.getElementById('error').textContent = `错误: ${error.message}`;
+                document.getElementById('error').textContent = `Error: ${error.message}`;
             }
         }
 
-        // 渲染表格
+        // Render table
         function renderTable() {
             const tbody = document.getElementById('tableBody');
             tbody.innerHTML = '';
 
-            // 排序
+            // Sort
             filteredData.sort((a, b) => {
                 const aVal = a[sortColumn] ?? 0;
                 const bVal = b[sortColumn] ?? 0;
@@ -187,7 +187,7 @@ def generate_main_page(accounts, scores, tree_structure):
                 return sortDirection === 'asc' ? comparison : -comparison;
             });
 
-            // 搜索过滤
+            // Search filter
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
             const displayData = filteredData.filter(item => {
                 if (!searchTerm) return true;
@@ -198,16 +198,16 @@ def generate_main_page(accounts, scores, tree_structure):
                 );
             });
 
-            // 更新统计
+            // Update statistics
             document.getElementById('totalUsers').textContent = filteredData.length;
             document.getElementById('displayedUsers').textContent = displayData.length;
 
-            // 渲染行
+            // Render rows
             displayData.forEach(item => {
                 const row = document.createElement('tr');
                 let rowHTML = `
                     <td>
-                        <div class="username" onclick="window.location.href='user_${item.index}.html'">${escapeHtml(item.username || '未知')}</div>
+                        <div class="username" onclick="window.location.href='user_${item.index}.html'">${escapeHtml(item.username || 'Unknown')}</div>
                     </td>
                     <td>
                         <div class="user-id">${escapeHtml(item.user_id || '')}</div>
@@ -220,7 +220,7 @@ def generate_main_page(accounts, scores, tree_structure):
                     </td>
                 `;
                 
-                // 动态生成叶节点列
+                // Dynamically generate leaf node columns
                 leafNodes.forEach(leaf => {
                     const score = item[leaf.key] ?? 0;
                     rowHTML += `
@@ -233,7 +233,7 @@ def generate_main_page(accounts, scores, tree_structure):
                     `;
                 });
                 
-                // 描述列
+                // Description column
                 rowHTML += `
                     <td style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
                         ${escapeHtml(item.description || '')}
@@ -244,7 +244,7 @@ def generate_main_page(accounts, scores, tree_structure):
                 tbody.appendChild(row);
             });
 
-            // 更新表头排序指示器
+            // Update table header sort indicator
             document.querySelectorAll('th.sortable').forEach(th => {
                 th.classList.remove('sort-asc', 'sort-desc');
                 if (th.getAttribute('data-sort') === sortColumn) {
@@ -253,20 +253,20 @@ def generate_main_page(accounts, scores, tree_structure):
             });
         }
 
-        // 格式化分数
+        // Format score
         function formatScore(score) {
             if (score === null || score === undefined) return '0.00%';
             return (score * 100).toFixed(2) + '%';
         }
 
-        // 转义 HTML
+        // Escape HTML
         function escapeHtml(text) {
             const div = document.createElement('div');
             div.textContent = text;
             return div.innerHTML;
         }
 
-        // 事件监听
+        // Event listeners
         document.getElementById('searchInput').addEventListener('input', renderTable);
         
         document.getElementById('sortSelect').addEventListener('change', (e) => {
@@ -274,9 +274,9 @@ def generate_main_page(accounts, scores, tree_structure):
             renderTable();
         });
 
-        // 表头排序
+        // Table header sorting
         document.addEventListener('DOMContentLoaded', () => {
-            // 使用事件委托处理动态生成的表头
+            // Use event delegation to handle dynamically generated table headers
             document.getElementById('tableHead').addEventListener('click', (e) => {
                 const th = e.target.closest('th.sortable');
                 if (!th) return;
@@ -289,14 +289,14 @@ def generate_main_page(accounts, scores, tree_structure):
                     sortDirection = 'desc';
                 }
                 
-                // 更新排序选择框
+                // Update sort select box
                 document.getElementById('sortSelect').value = sortColumn;
                 
                 renderTable();
             });
         });
 
-        // 初始化 - 等待DOM加载完成
+        // Initialize - wait for DOM to load
         if (document.readyState === "loading") {
             document.addEventListener("DOMContentLoaded", loadData);
         } else {
@@ -374,34 +374,34 @@ def generate_user_page(account, scores, comments, tree_structure, user_index):
         let treeStructure = """ + tree_structure_js + """;
         let userIndex = """ + str(user_index) + """;
 
-        // 从URL获取用户索引（已内嵌，无需从URL获取）
+        // Get user index from URL (embedded, no need to get from URL)
         function getUrlParams() {
             return """ + str(user_index) + """;
         }
 
-        // 加载数据（已内嵌，无需fetch）
+        // Load data (embedded, no fetch needed)
         function loadData() {
             try {
-                // 显示用户信息
-                document.getElementById('username').textContent = account.username || '未知';
+                // Display user information
+                document.getElementById('username').textContent = account.username || 'Unknown';
                 document.getElementById('user_id').textContent = account.user_id || '-';
                 document.getElementById('followers_count').textContent = account.followers_count?.toLocaleString() || '-';
                 document.getElementById('friends_count').textContent = account.friends_count?.toLocaleString() || '-';
                 document.getElementById('tweets_count').textContent = account.tweets_count?.toLocaleString() || '-';
                 document.getElementById('description').textContent = account.description || '-';
 
-                // 显示总分
+                // Display total score
                 const totalScore = scores.root?.[userIndex] ?? 0;
                 document.getElementById('totalScore').textContent = formatScore(totalScore);
 
-                // 显示root节点的评语
+                // Display root node comment
                 const rootComment = comments.root?.[userIndex] || '';
-                document.getElementById('rootComment').textContent = rootComment || '暂无评语';
+                document.getElementById('rootComment').textContent = rootComment || 'No comment available';
 
-                // 渲染树结构（不包含root节点，因为它已经在上面显示了）
+                // Render tree structure (excluding root node, as it's already displayed above)
                 renderTree();
 
-                // 绘制雷达图
+                // Draw radar chart
                 renderRadarChart();
 
                 document.getElementById('loading').style.display = 'none';
@@ -409,11 +409,11 @@ def generate_user_page(account, scores, comments, tree_structure, user_index):
             } catch (error) {
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('error').style.display = 'block';
-                document.getElementById('error').textContent = `错误: ${error.message}`;
+                document.getElementById('error').textContent = `Error: ${error.message}`;
             }
         }
 
-        // 渲染树节点
+        // Render tree node
         function renderTreeNode(node, depth = 0) {
             const score = scores[node.key]?.[userIndex] ?? 0;
             const comment = comments[node.key]?.[userIndex] ?? "";
@@ -431,7 +431,7 @@ def generate_user_page(account, scores, comments, tree_structure, user_index):
                 toggleButton = `<div style="width: 24px; margin-right: 10px;"></div>`;
             }
 
-            // 先渲染子节点
+            // Render child nodes first
             let childrenHTML = '';
             if (hasChildren) {
                 childrenHTML = node.children.map(child => renderTreeNode(child, depth + 1)).join('');
@@ -454,7 +454,7 @@ def generate_user_page(account, scores, comments, tree_structure, user_index):
                         <div style="flex: 1;">
                             <div>
                                 <span class="tree-node-name">${escapeHtml(node.name)}</span>
-                                <span class="tree-node-weight">(权重: ${node.weight})</span>
+                                <span class="tree-node-weight">(Weight: ${node.weight})</span>
                             </div>
                             ${descriptionHTML}
                             ${commentHTML}
@@ -473,11 +473,11 @@ def generate_user_page(account, scores, comments, tree_structure, user_index):
             return nodeDiv.outerHTML;
         }
 
-        // 渲染整个树（不包含root节点，只渲染root的子节点）
+        // Render entire tree (excluding root node, only render root's children)
         function renderTree() {
             const container = document.getElementById('treeContainer');
             if (treeStructure && treeStructure.children && treeStructure.children.length > 0) {
-                // 只渲染root的子节点
+                // Only render root's children
                 const childrenHTML = treeStructure.children.map(child => renderTreeNode(child, 0)).join('');
                 container.innerHTML = childrenHTML;
             } else {
@@ -485,7 +485,7 @@ def generate_user_page(account, scores, comments, tree_structure, user_index):
             }
         }
 
-        // 切换节点展开/折叠
+        // Toggle node expand/collapse
         function toggleNode(button) {
             const nodeContent = button.closest('.tree-node-content');
             const childrenDiv = nodeContent.nextElementSibling;
@@ -504,7 +504,7 @@ def generate_user_page(account, scores, comments, tree_structure, user_index):
             }
         }
 
-        // 绘制雷达图
+        // Draw radar chart
         let radarChart = null;
         function renderRadarChart() {
             if (!scores || userIndex === null) {
@@ -514,12 +514,12 @@ def generate_user_page(account, scores, comments, tree_structure, user_index):
             const ctx = document.getElementById('radarChart');
             if (!ctx) return;
 
-            // 如果图表已存在，先销毁
+            // If chart already exists, destroy it first
             if (radarChart) {
                 radarChart.destroy();
             }
 
-            // 从tree_structure中提取所有叶节点
+            // Extract all leaf nodes from tree_structure
             function extractLeafNodes(node) {
                 const leaves = [];
                 function traverse(n) {
@@ -535,7 +535,7 @@ def generate_user_page(account, scores, comments, tree_structure, user_index):
 
             const leafNodes = extractLeafNodes(treeStructure);
             
-            // 动态获取该用户的所有叶节点评分
+            // Dynamically get all leaf node scores for this user
             const labels = [];
             const data = [];
             leafNodes.forEach(leaf => {
@@ -606,20 +606,20 @@ def generate_user_page(account, scores, comments, tree_structure, user_index):
             });
         }
 
-        // 格式化分数
+        // Format score
         function formatScore(score) {
             if (score === null || score === undefined) return '0.00%';
             return (score * 100).toFixed(2) + '%';
         }
 
-        // 转义 HTML
+        // Escape HTML
         function escapeHtml(text) {
             const div = document.createElement('div');
             div.textContent = text;
             return div.innerHTML;
         }
 
-        // 初始化 - 等待DOM加载完成
+        // Initialize - wait for DOM to load
         if (document.readyState === "loading") {
             document.addEventListener("DOMContentLoaded", loadData);
         } else {
@@ -647,10 +647,10 @@ def main():
     if sys.platform == 'win32':
         sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
     
-    print("开始生成静态HTML文件...")
+    print("Starting to generate static HTML files...")
     
-    # 读取数据文件
-    print("读取数据文件...")
+    # Read data files
+    print("Reading data files...")
     accounts = read_json_file('outputs/accounts.json')
     scores_data = read_json_file('outputs/scores.json')
     tree_structure = read_json_file('outputs/tree_structure.json')
@@ -658,30 +658,30 @@ def main():
     scores = scores_data.get('scores', scores_data)
     comments = scores_data.get('comments', {})
     
-    # 创建输出目录
+    # Create output directory
     output_dir = Path('static_html')
     output_dir.mkdir(exist_ok=True)
-    print(f"输出目录: {output_dir.absolute()}")
+    print(f"Output directory: {output_dir.absolute()}")
     
-    # 生成主页面
-    print("生成主页面...")
+    # Generate main page
+    print("Generating main page...")
     main_html = generate_main_page(accounts, scores, tree_structure)
     with open(output_dir / 'index.html', 'w', encoding='utf-8') as f:
         f.write(main_html)
-    print(f"  已生成: {output_dir / 'index.html'}")
+    print(f"  Generated: {output_dir / 'index.html'}")
     
-    # 生成每个用户的页面
-    print(f"生成用户页面（共 {len(accounts)} 个）...")
+    # Generate pages for each user
+    print(f"Generating user pages (total {len(accounts)})...")
     for i, account in enumerate(accounts):
         user_html = generate_user_page(account, scores, comments, tree_structure, i)
         filename = f'user_{i}.html'
         with open(output_dir / filename, 'w', encoding='utf-8') as f:
             f.write(user_html)
-        username = account.get('username', '未知')
-        print(f"  已生成: {output_dir / filename} (用户: {username})")
+        username = account.get('username', 'Unknown')
+        print(f"  Generated: {output_dir / filename} (User: {username})")
     
-    print(f"\n完成！所有静态HTML文件已保存到 {output_dir.absolute()}")
-    print(f"可以直接打开 {output_dir / 'index.html'} 查看效果，无需服务器")
+    print(f"\nComplete! All static HTML files saved to {output_dir.absolute()}")
+    print(f"You can directly open {output_dir / 'index.html'} to view, no server needed")
 
 
 if __name__ == "__main__":

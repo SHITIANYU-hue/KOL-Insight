@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KOL 评价报告生成器</title>
+    <title>KOL Insight Report Generator</title>
     <style>
         * {
             margin: 0;
@@ -239,24 +239,24 @@
 </head>
 <body>
     <div class="container">
-        <h1>🎯 KOL 评价报告生成器</h1>
-        <p class="subtitle">输入 Twitter 用户名，自动生成评价报告</p>
+        <h1>🎯 KOL Insight Report Generator</h1>
+        <p class="subtitle">Enter a Twitter username to automatically generate an evaluation report</p>
         
         <form id="analyzeForm">
             <div class="input-group">
-                <label for="username">Twitter 用户名（不含 @）</label>
+                <label for="username">Twitter Username (without @)</label>
                 <input 
                     type="text" 
                     id="username" 
                     name="username" 
-                    placeholder="例如: elonmusk"
+                    placeholder="e.g., elonmusk"
                     required
                     autocomplete="off"
                 >
             </div>
             
             <button type="submit" class="btn" id="submitBtn">
-                开始分析
+                Start Analysis
             </button>
         </form>
         
@@ -264,27 +264,27 @@
             <div class="progress-bar">
                 <div class="progress-fill" id="progressFill"></div>
             </div>
-            <div class="progress-text" id="progressText">准备中...</div>
+            <div class="progress-text" id="progressText">Preparing...</div>
         </div>
         
         <div class="error-message" id="errorMessage"></div>
         
         <div class="result-container" id="resultContainer">
-            <div class="result-title">✅ 分析完成！</div>
+            <div class="result-title">✅ Analysis Complete!</div>
             <div class="score-display">
-                <div>综合评分</div>
+                <div>Overall Score</div>
                 <div class="score-value" id="scoreValue">-</div>
             </div>
             <div style="margin-top: 15px;">
-                <a href="#" class="result-link" id="mainPageLink" target="_blank">查看主页面</a>
-                <a href="#" class="result-link" id="userPageLink" target="_blank">查看详细报告</a>
+                <a href="#" class="result-link" id="mainPageLink" target="_blank">View Main Page</a>
+                <a href="#" class="result-link" id="userPageLink" target="_blank">View Detailed Report</a>
             </div>
         </div>
         
         <div class="history-container" id="historyContainer">
-            <div class="history-title">📋 历史查询记录</div>
+            <div class="history-title">📋 Query History</div>
             <div class="history-list" id="historyList">
-                <div class="history-empty">加载中...</div>
+                <div class="history-empty">Loading...</div>
             </div>
         </div>
     </div>
@@ -310,21 +310,21 @@
             const username = document.getElementById('username').value.trim().replace('@', '');
             
             if (!username) {
-                showError('请输入用户名');
+                showError('Please enter a username');
                 return;
             }
             
-            // 重置UI
+            // Reset UI
             submitBtn.disabled = true;
-            submitBtn.textContent = '处理中...';
+            submitBtn.textContent = 'Processing...';
             progressContainer.classList.add('active');
             resultContainer.classList.remove('active');
             errorMessage.classList.remove('active');
             progressFill.style.width = '0%';
-            progressText.textContent = '正在启动任务...';
+            progressText.textContent = 'Starting task...';
             
             try {
-                // 提交任务
+                // Submit task
                 const response = await fetch('/api/analyze', {
                     method: 'POST',
                     headers: {
@@ -336,7 +336,7 @@
                 const data = await response.json();
                 
                 if (!response.ok) {
-                    throw new Error(data.error || '请求失败');
+                    throw new Error(data.error || 'Request failed');
                 }
                 
                 taskId = data.task_id;
@@ -359,7 +359,7 @@
                     const data = await response.json();
                     
                     if (!response.ok) {
-                        throw new Error(data.error || '获取任务状态失败');
+                        throw new Error(data.error || 'Failed to get task status');
                     }
                     
                     updateProgress(data);
@@ -368,11 +368,11 @@
                         clearInterval(pollInterval);
                         showResult(data.result);
                         resetForm();
-                        // 刷新历史记录
+                        // Refresh history
                         loadHistory();
                     } else if (data.status === 'error') {
                         clearInterval(pollInterval);
-                        showError(data.error || '处理失败');
+                        showError(data.error || 'Processing failed');
                         resetForm();
                     }
                     
@@ -386,7 +386,7 @@
         
         function updateProgress(data) {
             progressFill.style.width = `${data.progress || 0}%`;
-            progressText.textContent = data.message || '处理中...';
+            progressText.textContent = data.message || 'Processing...';
         }
         
         function showResult(result) {
@@ -411,10 +411,10 @@
         
         function resetForm() {
             submitBtn.disabled = false;
-            submitBtn.textContent = '开始分析';
+            submitBtn.textContent = 'Start Analysis';
         }
         
-        // 加载历史记录
+        // Load history
         async function loadHistory() {
             try {
                 const response = await fetch('/api/history');
@@ -423,7 +423,7 @@
                 const historyList = document.getElementById('historyList');
                 
                 if (!data.success || !data.history || data.history.length === 0) {
-                    historyList.innerHTML = '<div class="history-empty">暂无历史记录</div>';
+                    historyList.innerHTML = '<div class="history-empty">No history records</div>';
                     return;
                 }
                 
@@ -440,8 +440,8 @@
                 }).join('');
                 
             } catch (error) {
-                console.error('加载历史记录失败:', error);
-                document.getElementById('historyList').innerHTML = '<div class="history-empty">加载失败</div>';
+                console.error('Failed to load history:', error);
+                document.getElementById('historyList').innerHTML = '<div class="history-empty">Failed to load</div>';
             }
         }
         

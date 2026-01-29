@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KOL 评分展示</title>
+    <title>KOL Score Dashboard</title>
     <style>
         * {
             margin: 0;
@@ -207,33 +207,33 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>KOL 评分展示</h1>
-            <p>用户评分数据可视化</p>
+            <h1>KOL Score Dashboard</h1>
+            <p>User Score Data Visualization</p>
         </div>
 
         <div class="controls">
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="搜索用户名、ID 或描述...">
+                <input type="text" id="searchInput" placeholder="Search username, ID or description...">
             </div>
             <select class="sort-select" id="sortSelect">
-                <option value="root">按总分排序</option>
-                <option value="username">按用户名排序</option>
+                <option value="root">Sort by Total Score</option>
+                <option value="username">Sort by Username</option>
             </select>
             <div class="stats">
-                <div class="stat-item">总用户数: <strong id="totalUsers">0</strong></div>
-                <div class="stat-item">显示: <strong id="displayedUsers">0</strong></div>
+                <div class="stat-item">Total Users: <strong id="totalUsers">0</strong></div>
+                <div class="stat-item">Displayed: <strong id="displayedUsers">0</strong></div>
             </div>
         </div>
 
         <div class="table-container">
-            <div id="loading" class="loading">正在加载数据...</div>
+            <div id="loading" class="loading">Loading data...</div>
             <div id="error" class="error" style="display: none;"></div>
             <table id="scoreTable" style="display: none;">
                 <thead id="tableHead">
                     <tr>
-                        <th class="sortable" data-sort="username">用户名</th>
-                        <th class="sortable" data-sort="user_id">用户ID</th>
-                        <th class="sortable" data-sort="root">总分</th>
+                        <th class="sortable" data-sort="username">Username</th>
+                        <th class="sortable" data-sort="user_id">User ID</th>
+                        <th class="sortable" data-sort="root">Total Score</th>
                         <!-- 动态生成列 -->
                     </tr>
                 </thead>
@@ -285,9 +285,9 @@
                 tr.appendChild(th);
             });
             
-            // 添加描述列
+            // Add description column
             const descTh = document.createElement('th');
-            descTh.textContent = '描述';
+            descTh.textContent = 'Description';
             tr.appendChild(descTh);
         }
 
@@ -304,7 +304,7 @@
             leafNodes.forEach(leaf => {
                 const option = document.createElement('option');
                 option.value = leaf.key;
-                option.textContent = `按${leaf.name}排序`;
+                option.textContent = `Sort by ${leaf.name}`;
                 sortSelect.appendChild(option);
             });
         }
@@ -318,7 +318,7 @@
                 return response;
             }).catch(err => {
                 const elapsed = Date.now() - startTime;
-                console.error(`fetch 错误 (${elapsed}ms):`, url, err);
+                console.error(`fetch error (${elapsed}ms):`, url, err);
                 throw err;
             });
             
@@ -337,7 +337,7 @@
                 }
                 return response;
             } catch (error) {
-                console.error('fetchWithTimeout 最终错误:', url, error);
+                console.error('fetchWithTimeout final error:', url, error);
                 throw error;
             }
         }
@@ -358,7 +358,7 @@
                 ]);
 
                 if (!accountsRes.ok || !scoresRes.ok || !treeRes.ok) {
-                    throw new Error(`无法加载数据文件`);
+                    throw new Error(`Unable to load data files`);
                 }
 
                 accounts = await accountsRes.json();
@@ -402,8 +402,8 @@
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('error').style.display = 'block';
                 const errorMsg = error.name === 'AbortError' 
-                    ? '请求超时，请检查服务器是否正常运行' 
-                    : `错误: ${error.message}`;
+                    ? 'Request timeout, please check if the server is running normally' 
+                    : `Error: ${error.message}`;
                 document.getElementById('error').textContent = errorMsg;
             }
         }
@@ -443,7 +443,7 @@
                 // 用户名和ID列
                 let rowHTML = `
                     <td>
-                        <div class="username" onclick="window.location.href='user_report.html?index=${item.index}'">${escapeHtml(item.username || '未知')}</div>
+                        <div class="username" onclick="window.location.href='user_report.html?index=${item.index}'">${escapeHtml(item.username || 'Unknown')}</div>
                     </td>
                     <td>
                         <div class="user-id">${escapeHtml(item.user_id || '')}</div>
@@ -532,10 +532,10 @@
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => {
                 loadData().catch(err => {
-                    console.error('loadData 失败:', err);
+                    console.error('loadData failed:', err);
                     document.getElementById('loading').style.display = 'none';
                     document.getElementById('error').style.display = 'block';
-                    document.getElementById('error').textContent = `错误: ${err.message}`;
+                    document.getElementById('error').textContent = `Error: ${err.message}`;
                 });
             });
         } else {

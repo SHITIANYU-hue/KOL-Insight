@@ -14,7 +14,7 @@ def get_default_comment(score: float, thresholds: list, comments: list) -> str:
 # 1. Originality - 原创性
 def originality_score(account: Account):
     if not account.tweets:
-        return (0.0, "无推文数据")
+        return (0.0, "No tweet data")
     
     total_tweets = len(account.tweets)
     original_count = 0
@@ -45,7 +45,7 @@ def originality_score(account: Account):
         "Poor: Almost no original content, mainly reposts"
     ]
     comment = get_default_comment(score, thresholds, comments)
-    comment = f"{comment} (原创推文: {original_count}/{total_tweets}, 比例: {originality_ratio:.2f})"
+    comment = f"{comment} (Original tweets: {original_count}/{total_tweets}, Ratio: {originality_ratio:.2f})"
     
     return (score, comment)
 
@@ -61,40 +61,40 @@ originality_node = ScoreNode(
 # 2. Bot Impact - 机器人影响
 async def bot_impact_score(account: Account):
     if not account.tweets:
-        return (0.0, "无推文数据")
+        return (0.0, "No tweet data")
     
-    # 计算views/follower比例
+    # Calculate views/follower ratio
     total_views = sum(t.views_count for t in account.tweets if t.views_count)
     avg_views_per_tweet = total_views / len(account.tweets) if account.tweets else 0
     views_follower_ratio = avg_views_per_tweet / account.followers_count if account.followers_count > 0 else 0
     
-    # 计算互动率异常
+    # Calculate engagement rate
     total_interactions = sum(t.likes_count + t.retweets_count + t.replies_count for t in account.tweets)
     engagement_rate = total_interactions / total_views if total_views > 0 else 0
     
-    # 使用LLM评估机器人活动
+    # Use LLM to evaluate bot activity
     tweets_text = account.get_tweets_text()
     json_schema = {
-        "bot_score": "机器人活动分数，0-100的整数，越高表示机器人活动越多",
-        "anomaly_detection": "异常检测结果，描述发现的异常模式",
-        "comment": "评语，简要说明机器人活动情况"
+        "bot_score": "Bot activity score, integer 0-100, higher means more bot activity",
+        "anomaly_detection": "Anomaly detection results, describing discovered abnormal patterns",
+        "comment": "Comment, briefly describing bot activity situation"
     }
-    prompt = f"""请评估这个账号的互动真实性。分析以下指标：
-- 平均每条推文的浏览量/粉丝数比例: {views_follower_ratio:.4f}
-- 平均互动率（点赞+转推+回复）/浏览量: {engagement_rate:.4f}
-- 粉丝数: {account.followers_count}
-- 推文数: {len(account.tweets)}
+    prompt = f"""Please evaluate the authenticity of interactions for this account. Analyze the following metrics:
+- Average views per tweet / followers ratio: {views_follower_ratio:.4f}
+- Average engagement rate (likes + retweets + replies) / views: {engagement_rate:.4f}
+- Followers count: {account.followers_count}
+- Tweet count: {len(account.tweets)}
 
-推文内容：
+Tweet content:
 {tweets_text}
 
-请评估是否存在机器人活动、假粉丝、刷量等异常情况。给出机器人活动分数（0-100），分数越高表示机器人活动越多，真实性越低。然后转换为真实性分数（100-机器人活动分数）。评分不要太严格，如果没有明显机器人活动，可以按照70分左右回复。请按照JSON结构回复。"""
+Please evaluate if there are bot activities, fake followers, engagement manipulation, or other anomalies. Provide a bot activity score (0-100), where higher scores indicate more bot activity and lower authenticity. Then convert to authenticity score (100 - bot_score). Don't be too strict in scoring; if there's no obvious bot activity, you can respond with around 70 points. Please respond in JSON format and use English for all comments."""
     
     result = await call_gpt(prompt, json_schema)
     bot_score = float(result.get("bot_score", 70))
     authenticity_score = (100 - bot_score) / 100
     comment = result.get("comment", "")
-    print(f"有多像人: {authenticity_score}")
+    print(f"Human authenticity score: {authenticity_score}")
     return (authenticity_score, comment)
 
 human_vitality_node = ScoreNode(
@@ -112,10 +112,10 @@ def kol_influence_score(account: Account):
     friends_count = account.friends_count or 0
     
     if friends_count == 0:
-        return (0.0, "无KOL连接数据")
+        return (0.0, "No KOL connection data")
     
     # 返回原始值，归一化在engine中完成
-    comment = f"KOL连接数: {friends_count}"
+    comment = f"KOL connections: {friends_count}"
     return (float(friends_count), comment)
 
 kol_influence_node = ScoreNode(
@@ -129,27 +129,27 @@ kol_influence_node = ScoreNode(
 # 4. Content Depth - 内容深度
 async def content_depth_score(account: Account):
     if not account.tweets:
-        return (0.0, "无推文内容")
+        return (0.0, "No tweet content")
     
-    # 使用LLM评估每条推文的内容深度
-    tweets_text = "\n\n".join([f"推文{i+1}: {t.full_text}" for i, t in enumerate(account.tweets)])
+    # Use LLM to evaluate content depth of each tweet
+    tweets_text = "\n\n".join([f"Tweet {i+1}: {t.full_text}" for i, t in enumerate(account.tweets)])
     json_schema = {
-        "tweets": [{"index": "推文序号（从1开始）", "depth_score": "内容深度分数，0-100的整数，越高表示内容越深入"}],
-        "comment": "评语，简要说明内容深度情况"
+        "tweets": [{"index": "Tweet index (starting from 1)", "depth_score": "Content depth score, integer 0-100, higher means deeper content"}],
+        "comment": "Comment, briefly describing content depth situation"
     }
-    result = await call_gpt(f"请评估每条推文的内容深度。内容深度包括：分析的深入程度、洞察的质量、提供的信息价值等。对每条推文给出深度分数（0-100），分数越高表示内容越深入、越有洞察力。请按照JSON结构回复。\n\n推文内容：\n\n{tweets_text}", json_schema)
+    result = await call_gpt(f"Please evaluate the content depth of each tweet. Content depth includes: depth of analysis, quality of insights, information value provided, etc. Give each tweet a depth score (0-100), where higher scores indicate deeper and more insightful content. Please respond in JSON format and use English for all comments.\n\nTweet content:\n\n{tweets_text}", json_schema)
     
     depth_scores = []
     for item in result.get("tweets", []):
         depth_scores.append(float(item.get("depth_score", 0)))
     
     if not depth_scores:
-        return (0.0, "无法评估内容深度")
+        return (0.0, "Unable to evaluate content depth")
     
     avg_depth = sum(depth_scores) / len(depth_scores)
-    comment = result.get("comment", f"平均内容深度: {avg_depth:.2f}")
-    print(f"内容深度得分: {avg_depth}")
-    return (avg_depth / 100.0, comment) # 归一化到0-1
+    comment = result.get("comment", f"Average content depth: {avg_depth:.2f}")
+    print(f"Content depth score: {avg_depth}")
+    return (avg_depth / 100.0, comment) # Normalize to 0-1
 
 content_depth_node = ScoreNode(
     key="content_depth",
@@ -163,13 +163,13 @@ content_depth_node = ScoreNode(
 # 5. Engagement - 参与度
 def engagement_score(account: Account):
     if not account.tweets:
-        return (0.0, "无推文数据")
+        return (0.0, "No tweet data")
     
     total_interactions = sum(t.likes_count + t.retweets_count + t.replies_count for t in account.tweets)
     total_views = sum(t.views_count for t in account.tweets if t.views_count)
     
     if total_views == 0:
-        return (0.0, "无浏览量数据")
+        return (0.0, "No view count data")
     
     engagement_rate = total_interactions / total_views
     
@@ -179,11 +179,11 @@ def engagement_score(account: Account):
     
     thresholds = [0.08, 0.06, 0.04, 0.02]
     comments = [
-        "参与度极高，受众互动积极",
-        "参与度良好，受众有一定互动",
-        "参与度中等",
-        "参与度较低",
-        "参与度很低"
+        "Extremely high engagement, active audience interaction",
+        "Good engagement, moderate audience interaction",
+        "Average engagement",
+        "Low engagement",
+        "Very low engagement"
     ]
     comment = get_default_comment(engagement_rate, thresholds, comments)
     
@@ -200,13 +200,13 @@ engagement_node = ScoreNode(
 # 6. Views - 浏览量
 def views_score(account: Account):
     if not account.tweets:
-        return (0.0, "无推文数据")
+        return (0.0, "No tweet data")
     
     total_views = sum(t.views_count for t in account.tweets if t.views_count)
     avg_views = total_views / len(account.tweets) if account.tweets else 0
     
     if avg_views <= 0:
-        return (0.0, "无浏览量数据")
+        return (0.0, "No view count data")
     
     # 对数变换
     log_views = math.log(avg_views + 1)
@@ -216,11 +216,11 @@ def views_score(account: Account):
     # log(1000+1)≈6.9, log(10000+1)≈9.2, log(100000+1)≈11.5
     thresholds = [8.5, 7.5, 6.5, 5.5]
     comments = [
-        "浏览量极高，覆盖范围广泛。平均每条推文浏览量通常在数万级别，处于KOL群体的前10-15%水平，显示出强大的内容传播力和影响力，能够触达大量目标受众，适合进行品牌推广和大规模营销活动。",
-        "浏览量较高，覆盖范围良好。平均每条推文浏览量通常在数千到上万级别，处于KOL群体的前30-40%水平，内容传播效果良好，能够有效触达目标受众群体，具备一定的品牌推广价值。",
-        "浏览量中等，覆盖范围稳定。平均每条推文浏览量通常在数百到数千级别，处于KOL群体的中游水平（约30-60%分位），内容传播效果稳定，能够覆盖一定规模的受众，适合垂直领域的精准营销。",
-        "浏览量较低，覆盖范围有限。平均每条推文浏览量通常在数十到数百级别，处于KOL群体的中下水平（约60-80%分位），内容传播范围相对有限，主要面向特定小规模受众群体，更适合小众领域的深度运营。",
-        "浏览量很低，覆盖范围极小。平均每条推文浏览量通常在个位数到数十级别，处于KOL群体的后20%水平，内容传播范围非常有限，影响力较小，可能需要通过内容优化或平台运营来提升曝光度。"
+        "Extremely high views with broad reach. Average views per tweet typically in the tens of thousands, ranking in the top 10-15% of KOLs, demonstrating strong content dissemination and influence, capable of reaching large target audiences, suitable for brand promotion and large-scale marketing campaigns.",
+        "High views with good reach. Average views per tweet typically in the thousands to tens of thousands, ranking in the top 30-40% of KOLs, good content dissemination effectiveness, capable of effectively reaching target audience groups, with certain brand promotion value.",
+        "Moderate views with stable reach. Average views per tweet typically in the hundreds to thousands, ranking in the middle tier of KOLs (approximately 30-60th percentile), stable content dissemination effectiveness, capable of covering a certain scale of audience, suitable for vertical field precision marketing.",
+        "Low views with limited reach. Average views per tweet typically in the tens to hundreds, ranking in the lower-middle tier of KOLs (approximately 60-80th percentile), relatively limited content dissemination range, mainly targeting specific small-scale audience groups, more suitable for niche field deep operations.",
+        "Very low views with minimal reach. Average views per tweet typically in single digits to tens, ranking in the bottom 20% of KOLs, very limited content dissemination range, small influence, may need to improve exposure through content optimization or platform operations."
     ]
     comment = get_default_comment(log_views, thresholds, comments)
     

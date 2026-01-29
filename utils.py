@@ -30,7 +30,7 @@ async def call_gpt(prompt: str, json_schema: Optional[Dict[str, Any]] = None) ->
         if json_schema:
             messages.append({
                 "role": "system",
-                "content": f"请按照以下 JSON 结构回复，不要添加任何其他内容，保证结果可以直接被解析：\n{json.dumps(json_schema, ensure_ascii=False, indent=2)}"
+                "content": f"Please respond according to the following JSON structure, do not add any other content, ensure the result can be directly parsed:\n{json.dumps(json_schema, ensure_ascii=False, indent=2)}"
             })
             response_format = {"type": "json_object"}
         else:

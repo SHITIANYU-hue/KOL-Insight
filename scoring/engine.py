@@ -49,11 +49,11 @@ async def generate_root_comment(account: Account, account_idx: int, root_score: 
             if field.name not in account_fields_to_exclude:
                 value = getattr(account, field.name, None)
                 if value is None:
-                    value = '无' if field.type == str or (hasattr(field.type, '__origin__') and field.type.__origin__ is str) else 0
+                    value = 'N/A' if field.type == str or (hasattr(field.type, '__origin__') and field.type.__origin__ is str) else 0
                 account_info_list.append(f"- {field.name}: {value}")
         account_info = "\n".join(account_info_list)
         
-        # 动态获取各个维度的得分和评语
+        # Dynamically get scores and comments for each dimension
         dimension_info_list = []
         for leaf_node in leaf_nodes:
             key = leaf_node.key
@@ -61,39 +61,39 @@ async def generate_root_comment(account: Account, account_idx: int, root_score: 
             if key in scores and key in comments:
                 score = scores[key][account_idx] if account_idx < len(scores[key]) else 0.0
                 comment = comments[key][account_idx] if account_idx < len(comments[key]) else ""
-                # 判断是否归一化：直接使用leaf_node.normalize属性
+                # Check if normalized: directly use leaf_node.normalize attribute
                 is_normalized = leaf_node.normalize
                 score_label = f"{score:.2%}" if is_normalized else f"{score:.2f}"
-                dimension_info_list.append(f"- {name} ({key}): 得分 {score_label}" + (" [已归一化]" if is_normalized else " [原始分]") + f", 评语: {comment}")
+                dimension_info_list.append(f"- {name} ({key}): Score {score_label}" + (" [Normalized]" if is_normalized else " [Raw Score]") + f", Comment: {comment}")
         
         dimension_info = "\n".join(dimension_info_list)
         
-        # 构建提示词
-        prompt = f"""请基于以下KOL的综合评分信息，生成一段整体评论。
+        # Build prompt
+        prompt = f"""Please generate an overall comment based on the following KOL's comprehensive scoring information.
 
-账号信息：
+Account Information:
 {account_info}
 
-各维度评分：
+Dimension Scores:
 {dimension_info}
 
-综合评分（根节点得分，已归一化）: {root_score:.2%}
+Overall Score (Root node score, normalized): {root_score:.2%}
 
-请生成一段综合评论，总结该KOL的整体表现，包括优势、不足和建议。评论应该：
-1. 简洁明了（100-200字）
-2. 基于各个维度的得分和评语
-3. 提供有价值的洞察
-4. 用中文表达
+Please generate a comprehensive comment summarizing this KOL's overall performance, including strengths, weaknesses, and recommendations. The comment should:
+1. Be concise and clear (100-200 words)
+2. Be based on scores and comments from each dimension
+3. Provide valuable insights
+4. Be written in English
 
-请直接返回评论内容，不要添加其他格式。"""
+Please return the comment content directly without any additional formatting."""
         
-        result = await call_gpt(prompt, None)  # 不使用json_schema，直接返回文本
+        result = await call_gpt(prompt, None)  # Don't use json_schema, return text directly
         if isinstance(result, dict):
-            return result.get("comment", "无法生成评论")
-        return str(result) if result else "无法生成评论"
+            return result.get("comment", "Unable to generate comment")
+        return str(result) if result else "Unable to generate comment"
     except Exception as e:
-        print(f"生成根节点评论时发生错误（账号 {getattr(account, 'username', '未知')}）: {e}")
-        return "无法生成评论"
+        print(f"Error generating root node comment (account {getattr(account, 'username', 'Unknown')}): {e}")
+        return "Unable to generate comment"
 
 
 async def calculate(accounts: List[Account], root: ScoreNode, 

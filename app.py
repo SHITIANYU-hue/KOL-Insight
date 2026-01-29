@@ -142,7 +142,7 @@ def process_user(username: str, task_id: str):
         
         # 步骤 1: 爬取数据
         tasks[task_id]['progress'] = 10
-        tasks[task_id]['message'] = '正在爬取 Twitter 数据...'
+        tasks[task_id]['message'] = 'Crawling data...'
         
         crawler = TwitterCrawler(
             api_key=TWEETSCOUT_API_KEY,
@@ -171,31 +171,31 @@ def process_user(username: str, task_id: str):
         
         # 步骤 2: 转换数据格式
         tasks[task_id]['progress'] = 30
-        tasks[task_id]['message'] = '正在转换数据格式...'
+        tasks[task_id]['message'] = 'Converting data format...'
         
         try:
             accounts, all_tweets = convert_twitter_db_to_scoring_format(twitter_db_path, username)
             
             if not accounts or len(accounts) == 0:
                 tasks[task_id]['status'] = 'error'
-                tasks[task_id]['error'] = f'未找到用户数据: {username}'
+                tasks[task_id]['error'] = f'No user data found: {username}'
                 return
             
             account = accounts[0]
             
             if len(account.tweets) == 0:
                 tasks[task_id]['status'] = 'error'
-                tasks[task_id]['error'] = '该用户没有推文数据，无法计算评分'
+                tasks[task_id]['error'] = 'This user has no tweet data, cannot calculate score'
                 return
             
         except Exception as e:
             tasks[task_id]['status'] = 'error'
-            tasks[task_id]['error'] = f'数据转换失败: {str(e)}'
+            tasks[task_id]['error'] = f'Data conversion failed: {str(e)}'
             return
         
         # 步骤 3: 计算评分
         tasks[task_id]['progress'] = 50
-        tasks[task_id]['message'] = '正在计算评分（这可能需要一些时间）...'
+        tasks[task_id]['message'] = 'Calculating score (this may take some time)...'
         
         norm_manager = NormalizationManager()
         norm_manager.load_normalization_params()
@@ -219,12 +219,12 @@ def process_user(username: str, task_id: str):
             
         except Exception as e:
             tasks[task_id]['status'] = 'error'
-            tasks[task_id]['error'] = f'评分计算失败: {str(e)}'
+            tasks[task_id]['error'] = f'Score calculation failed: {str(e)}'
             return
         
         # 步骤 4: 生成 HTML 网页
         tasks[task_id]['progress'] = 80
-        tasks[task_id]['message'] = '正在生成评价网页...'
+        tasks[task_id]['message'] = 'Generating evaluation page...'
         
         try:
             # 读取数据
@@ -250,7 +250,7 @@ def process_user(username: str, task_id: str):
             # 完成
             tasks[task_id]['progress'] = 100
             tasks[task_id]['status'] = 'completed'
-            tasks[task_id]['message'] = '完成！'
+            tasks[task_id]['message'] = 'Completed!'
             tasks[task_id]['result'] = {
                 'username': username,
                 'main_page': f'/static_html/index_{username}.html',
@@ -260,12 +260,12 @@ def process_user(username: str, task_id: str):
             
         except Exception as e:
             tasks[task_id]['status'] = 'error'
-            tasks[task_id]['error'] = f'生成网页失败: {str(e)}'
+            tasks[task_id]['error'] = f'Failed to generate page: {str(e)}'
             return
             
     except Exception as e:
         tasks[task_id]['status'] = 'error'
-        tasks[task_id]['error'] = f'处理失败: {str(e)}'
+        tasks[task_id]['error'] = f'Processing failed: {str(e)}'
 
 
 @app.route('/')
@@ -281,7 +281,7 @@ def analyze():
     username = data.get('username', '').strip().lstrip('@')
     
     if not username:
-        return jsonify({'error': '请输入用户名'}), 400
+        return jsonify({'error': 'Please enter a username'}), 400
     
     # 生成任务ID
     import uuid
@@ -294,7 +294,7 @@ def analyze():
     
     return jsonify({
         'task_id': task_id,
-        'message': '任务已启动'
+        'message': 'Task started'
     })
 
 
@@ -302,7 +302,7 @@ def analyze():
 def get_task_status(task_id):
     """获取任务状态"""
     if task_id not in tasks:
-        return jsonify({'error': '任务不存在'}), 404
+        return jsonify({'error': 'Task not found'}), 404
     
     return jsonify(tasks[task_id])
 
@@ -362,9 +362,9 @@ def get_history():
 
 if __name__ == '__main__':
     print("=" * 60)
-    print("KOL 评价报告生成器 - Web 服务")
+    print("KOL Evaluation Report Generator - Web Service")
     print("=" * 60)
-    print("访问 http://localhost:5000 使用Web界面")
+    print("Visit http://localhost:5000 to use the web interface")
     print()
     app.run(debug=True, host='0.0.0.0', port=5000)
 
