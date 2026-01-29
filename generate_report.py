@@ -87,16 +87,19 @@ def convert_twitter_db_to_scoring_format(twitter_db_path: str, username: str):
     # 转换为 Tweet 对象
     all_tweets = []
     for row in tweet_rows:
+        # 确保 full_text 是字符串类型
+        full_text = str(row[4]) if len(row) > 4 and row[4] is not None else ""
+        
         tweet = Tweet(
-            tweet_id=row[0] or "",
-            author_id=row[2] or "",
-            full_text=row[4] or "",
-            likes_count=row[6] or 0,
-            retweets_count=row[7] or 0,
-            replies_count=row[8] or 0,
-            views_count=row[9] or 0,
-            in_reply_to_status_id_str=row[10] if len(row) > 10 else None,
-            is_quote_status=row[11] if len(row) > 11 else 0
+            tweet_id=str(row[0]) if row[0] is not None else "",
+            author_id=str(row[2]) if len(row) > 2 and row[2] is not None else "",
+            full_text=full_text,
+            likes_count=int(row[6]) if len(row) > 6 and row[6] is not None else 0,
+            retweets_count=int(row[7]) if len(row) > 7 and row[7] is not None else 0,
+            replies_count=int(row[8]) if len(row) > 8 and row[8] is not None else 0,
+            views_count=int(row[9]) if len(row) > 9 and row[9] is not None else 0,
+            in_reply_to_status_id_str=str(row[10]) if len(row) > 10 and row[10] is not None else None,
+            is_quote_status=int(row[11]) if len(row) > 11 and row[11] is not None else 0
         )
         all_tweets.append(tweet)
     

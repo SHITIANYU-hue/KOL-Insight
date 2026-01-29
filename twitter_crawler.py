@@ -477,6 +477,35 @@ class TwitterCrawler:
             retweeted_status_json = json.dumps(tweet_data.get('retweeted_status'), ensure_ascii=False) if tweet_data.get('retweeted_status') else None
             user_json = json.dumps(tweet_data.get('user'), ensure_ascii=False) if tweet_data.get('user') else None
             
+            # 尝试多种可能的字段名来获取浏览量数据
+            view_count = 0
+            public_metrics = tweet_data.get('public_metrics', {})
+            if isinstance(public_metrics, dict):
+                # 尝试从 public_metrics 中获取
+                view_count = public_metrics.get('view_count', 0) or public_metrics.get('impression_count', 0)
+            
+            # 如果 public_metrics 中没有，尝试直接字段
+            if view_count == 0:
+                view_count = (tweet_data.get('view_count') or 
+                             tweet_data.get('views_count') or 
+                             tweet_data.get('views') or 
+                             tweet_data.get('impression_count') or 0)
+            
+            # 确保是整数
+            try:
+                view_count = int(view_count) if view_count else 0
+            except (ValueError, TypeError):
+                view_count = 0
+            
+            # 如果仍然没有获取到浏览量数据，记录警告（仅对前几条推文记录，避免日志过多）
+            if view_count == 0 and len([k for k in tweet_data.keys() if 'view' in k.lower() or 'impression' in k.lower()]) == 0:
+                # 只在第一次遇到这种情况时记录详细日志
+                if not hasattr(self, '_view_count_warning_logged'):
+                    self.logger.warning(f"未找到浏览量数据字段。推文数据中的可用字段: {list(tweet_data.keys())[:10]}")
+                    if public_metrics:
+                        self.logger.warning(f"public_metrics 中的字段: {list(public_metrics.keys())}")
+                    self._view_count_warning_logged = True
+            
             self.cursor.execute('''
                 INSERT OR REPLACE INTO tweets
                 (tweet_id, conversation_id, author_id, author_name, full_text, created_at,
@@ -494,7 +523,7 @@ class TwitterCrawler:
                 tweet_data.get('favorite_count', 0),
                 tweet_data.get('retweet_count', 0),
                 tweet_data.get('reply_count', 0),
-                tweet_data.get('view_count', 0),
+                view_count,
                 tweet_data.get('bookmark_count', 0),
                 tweet_data.get('in_reply_to_status_id_str'),
                 1 if tweet_data.get('is_quote_status', False) else 0,

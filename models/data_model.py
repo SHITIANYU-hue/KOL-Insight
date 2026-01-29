@@ -25,4 +25,11 @@ class Account:
     #register_date: Optional[str] = '2025-01-01'
 
     def get_tweets_text(self) -> str:
-        return "\n\n".join([tweet.full_text for tweet in self.tweets])
+        # 确保所有 full_text 都是字符串，过滤掉 None 和空值
+        texts = []
+        for tweet in self.tweets:
+            if tweet and hasattr(tweet, 'full_text'):
+                text = str(tweet.full_text) if tweet.full_text is not None else ""
+                if text:
+                    texts.append(text)
+        return "\n\n".join(texts)

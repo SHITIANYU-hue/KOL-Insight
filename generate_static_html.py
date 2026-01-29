@@ -341,10 +341,29 @@ def generate_user_page(account, scores, comments, tree_structure, user_index):
         'tweets_count': account.get('tweets_count'),
     }
     
+    # 清理 comments 中的换行符，避免破坏 JavaScript 语法
+    def clean_comments(comments_data):
+        """清理 comments 中的换行符"""
+        if isinstance(comments_data, dict):
+            return {k: clean_comments(v) for k, v in comments_data.items()}
+        elif isinstance(comments_data, list):
+            return [clean_comments(item) for item in comments_data]
+        elif isinstance(comments_data, str):
+            # 将换行符、回车符替换为空格，并清理多余空格
+            cleaned = comments_data.replace('\n', ' ').replace('\r', ' ').replace('\t', ' ')
+            # 将多个连续空格替换为单个空格
+            while '  ' in cleaned:
+                cleaned = cleaned.replace('  ', ' ')
+            return cleaned.strip()
+        else:
+            return comments_data
+    
+    cleaned_comments = clean_comments(comments)
+    
     # 将数据内嵌到JavaScript中
     account_js = json.dumps(account_simple, ensure_ascii=False)
     scores_js = json.dumps(scores, ensure_ascii=False)
-    comments_js = json.dumps(comments, ensure_ascii=False)
+    comments_js = json.dumps(cleaned_comments, ensure_ascii=False)
     tree_structure_js = json.dumps(tree_structure, ensure_ascii=False)
     
     # 替换fetch调用为内嵌数据

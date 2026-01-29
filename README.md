@@ -11,14 +11,14 @@
 
 ## 快速开始
 
-### 1. 安装依赖
+### 方式一：使用 Web 界面（推荐）
 
+1. **安装依赖**
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. 设置 API 密钥
-
+2. **设置 API 密钥**
 ```bash
 # Linux/macOS
 export TWEETSCOUT_API_KEY="your-tweetscout-key"
@@ -29,7 +29,33 @@ $env:TWEETSCOUT_API_KEY="your-tweetscout-key"
 $env:OPENAI_API_KEY="your-openai-key"
 ```
 
-### 3. 修改用户名
+3. **启动 Web 服务**
+```bash
+python app.py
+```
+
+4. **访问 Web 界面**
+打开浏览器访问 `http://localhost:5000`，输入 Twitter 用户名即可自动生成评价报告。
+
+### 方式二：使用命令行
+
+1. **安装依赖**
+```bash
+pip install -r requirements.txt
+```
+
+2. **设置 API 密钥**
+```bash
+# Linux/macOS
+export TWEETSCOUT_API_KEY="your-tweetscout-key"
+export OPENAI_API_KEY="your-openai-key"
+
+# Windows PowerShell
+$env:TWEETSCOUT_API_KEY="your-tweetscout-key"
+$env:OPENAI_API_KEY="your-openai-key"
+```
+
+3. **修改用户名**
 
 编辑 `generate_report.py`，修改第 26 行的用户名：
 
@@ -37,13 +63,12 @@ $env:OPENAI_API_KEY="your-openai-key"
 USERNAME = "elonmusk"  # 改成你要分析的用户名
 ```
 
-### 4. 运行程序
-
+4. **运行程序**
 ```bash
 python generate_report.py
 ```
 
-### 5. 查看结果
+5. **查看结果**
 
 程序运行完成后，打开 `static_html/index.html` 或 `static_html/user_0.html` 查看评价报告。
 

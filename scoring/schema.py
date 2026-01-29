@@ -149,14 +149,15 @@ async def content_depth_score(account: Account):
     avg_depth = sum(depth_scores) / len(depth_scores)
     comment = result.get("comment", f"平均内容深度: {avg_depth:.2f}")
     print(f"内容深度得分: {avg_depth}")
-    return (avg_depth, comment)
+    return (avg_depth / 100.0, comment) # 归一化到0-1
 
 content_depth_node = ScoreNode(
     key="content_depth",
     name="Content Depth",
     description="Content analysis depth and quality. Calculated as the average depth score (depth_score) across all tweets, reflecting overall content quality.",
     weight=1.0,
-    calc_raw=content_depth_score
+    calc_raw=content_depth_score,
+    normalize=False
 )
 
 # 5. Engagement - 参与度
